@@ -1,0 +1,241 @@
+body {
+    margin-top: 50px;
+    font-family: 'Open Sans', sans-serif;
+    /*background-color: #e6fff7;*/
+}
+
+/*.navbar {
+    background-color: rgba(255,93,177,1);
+    color: #0047b3;
+    border: #0047b3;
+}*/
+
+ .navbar a {
+    color: #0047b3;
+}
+
+
+
+.header-image {
+    display: block;
+    width: 100%;
+    min-height: 100%;
+    text-align: center;
+    background: rgba(255,93,177,.5);
+    background: -webkit-gradient(left top, right bottom, color-stop(0%, rgba(255,93,177,1)), color-stop(100%, rgba(85,3,237,1)));
+    background: -webkit-linear-gradient(-45deg, rgba(255,93,177,1) 0%, rgba(85,3,237,1) 100%);
+    background: -o-linear-gradient(-45deg, rgba(255,93,177,1) 0%, rgba(85,3,237,1) 100%);
+    background: -ms-linear-gradient(-45deg, rgba(255,93,177,1) 0%, rgba(85,3,237,1) 100%);
+    background: linear-gradient(135deg, rgba(255,93,177,1) 0%, rgba(85,3,237,1) 100%);
+    background: black;
+    filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#ff5db1', endColorstr='#5503ed', GradientType=1 );
+    -webkit-background-size: cover;
+    -moz-background-size: cover;
+    background-size: cover;
+    -o-background-size: cover;
+
+}
+
+.headline {
+    padding: 120px 0;
+}
+
+.headline h1 {
+    font-size: 130px;
+    color: #ffffff;
+    font-family: 'Pacifico', cursive;
+}
+
+.headline h2 {
+    font-size: 77px;
+    color: #fff;
+}
+
+.headline h3 {
+    font-size: 25px;
+    color: #fff;
+}
+
+#about #unt {
+    color: #00853E;
+    font-style: italic;
+    font-size: .9em;
+}
+
+#about #su {
+    color: #AA0000;
+    font-style: italic;
+    font-size: .9em;
+}
+
+#about h2 {
+    font-family: 'Pacifico', cursive;
+}
+
+.featurette-divider {
+    margin: 80px 0;
+}
+
+.featurette {
+    overflow: hidden;
+}
+
+.featurette-image.pull-left {
+    margin-right: 40px;
+}
+
+.featurette-image.pull-right {
+    margin-left: 40px;
+}
+
+.featurette-heading {
+    font-size: 50px;
+}
+
+hr {
+    border: none;
+    height: 3px;
+    /* Set the hr color */
+    /*color: #0047b3; /* old IE */
+    /*background-color: #0047b3; /* Modern Browsers */
+    color: black;
+    background-color: black;
+}
+
+footer {
+    margin: 50px 0;
+}
+
+#linkedin {
+    padding-right: 20px;
+}
+
+@media(max-width:1200px) {
+    .headline h1 {
+        font-size: 125px;
+    }
+
+    .headline h2 {
+        font-size: 63px;
+    }
+
+    .headline h3 {
+        font-size: 20px;
+    }
+
+    .featurette-divider {
+        margin: 50px 0;
+    }
+
+    .featurette-image.pull-left {
+        margin-right: 20px;
+    }
+
+    .featurette-image.pull-right {
+        margin-left: 20px;
+    }
+
+    .featurette-heading {
+        font-size: 35px;
+    }
+}
+
+@media(max-width:991px) {
+    .headline h1 {
+        font-size: 105px;
+    }
+
+    .headline h2 {
+        font-size: 50px;
+    }
+
+    .headline h3 {
+        font-size: 17px;
+    }
+
+    .featurette-divider {
+        margin: 40px 0;
+    }
+
+    .featurette-image {
+        max-width: 50%;
+    }
+
+    .featurette-image.pull-left {
+        margin-right: 10px;
+    }
+
+    .featurette-image.pull-right {
+        margin-left: 10px;
+    }
+
+    .featurette-heading {
+        font-size: 30px;
+    }
+}
+
+@media(max-width:768px) {
+    .container {
+        margin: 0 15px;
+    }
+
+    .featurette-divider {
+        margin: 40px 0;
+    }
+
+    .featurette-heading {
+        font-size: 25px;
+    }
+}
+
+@media(max-width:668px) {
+    .headline h1 {
+        font-size: 70px;
+    }
+
+    .headline h2 {
+        font-size: 32px;
+    }
+
+    .headline h3 {
+        font-size: 15px;
+    }
+
+    .featurette-divider {
+        margin: 30px 0;
+    }
+}
+
+@media(max-width:640px) {
+    .headline {
+        padding: 75px 0 25px 0;
+    }
+
+    .headline h1 {
+        font-size: 60px;
+    }
+
+    .headline h2 {
+        font-size: 30px;
+    }
+}
+
+@media(max-width:375px) {
+    .featurette-divider {
+        margin: 10px 0;
+    }
+
+    .featurette-image {
+        max-width: 100%;
+    }
+
+    .featurette-image.pull-left {
+        margin-right: 0;
+        margin-bottom: 10px;
+    }
+
+    .featurette-image.pull-right {
+        margin-bottom: 10px;
+        margin-left: 0;
+    }
+}
