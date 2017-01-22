@@ -33,9 +33,19 @@ body {
     -moz-background-size: cover;
     background-size: cover;
     -o-background-size: cover;
+    position: relative;
 
 }
 
+#ra {
+    width: 85%;
+    height: auto;
+    margin: 0 auto;
+    position: relative;
+  top: 50%;
+  transform: translateY(-20%);
+
+}
 .headline {
     padding: 120px 0;
 }
