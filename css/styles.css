@@ -41,6 +41,10 @@ body {
 
 }
 
+.main-content {
+    background: white;
+}
+
 #ra {
     position: absolute;
     max-height: 75%;
@@ -51,15 +55,36 @@ body {
     transform: translate(-50%, -60%);
 }
 
-#down {
-    position: absolute;
+
+.arrow-down {
     width: 20%;
-    height: auto;
-    margin: 0 auto;
-    top: 50%;
+    position:absolute;
+    top: 80%;
     left: 50%;
-    transform: translate(-50%, 100%);
+    transform: translate(-50%, -50%);
+    -webkit-transition: opacity 0.3s; 
+    -moz-transition: opacity 0.3s; 
+    -ms-transition: opacity 0.3s; 
+    -o-transition: opacity 0.3s; 
+    transition: opacity 0.3s;
 }
+
+.arrow-down.top:hover {
+    opacity:100;
+}
+
+.arrow-down.bottom:hover {
+    opacity: 0;
+}
+
+.top {
+    width: 19.5%;
+    margin-top: -.69%;
+    z-index: 0;
+    opacity: 0;
+}
+
+
 .headline {
     padding: 120px 0;
 }
@@ -81,13 +106,13 @@ body {
     color: #fff;
 }
 
-#about #unt {
+#unt {
     color: #00853E;
     font-style: italic;
     font-size: .9em;
 }
 
-#about #su {
+#su {
     color: #AA0000;
     font-style: italic;
     font-size: .9em;
@@ -128,7 +153,20 @@ hr {
 }
 
 footer {
-    margin: 50px 0;
+    background-color: black;
+    position: absolute;
+    left: 0;
+    right: 0;
+    width: 100%;
+    padding: 50px 15px;
+    color: white;
+    margin-top: 50px;
+
+}
+
+a.svg:after {
+    content: "";
+    position: absolute;
 }
 
 #linkedin {
