@@ -3,12 +3,6 @@ body {
     font-family: 'Open Sans', sans-serif;
 }
 
-/*.navbar {
-    background-color: rgba(255,93,177,1);
-    color: #0047b3;
-    border: #0047b3;
-}*/
-
 .navbar {
     background-color: black;
     color: black;
@@ -17,7 +11,6 @@ body {
  .navbar a {
     color: #0047b3;
 }
-
 
 
 .header-image {
@@ -167,6 +160,10 @@ footer {
 a.svg:after {
     content: "";
     position: absolute;
+}
+
+.text-center {
+    text-align: center;
 }
 
 #linkedin {
