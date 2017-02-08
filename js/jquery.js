@@ -20,10 +20,10 @@ jQuery(document).ready(function($){
     });
 
   // Highlight the top nav as scrolling occurs
-    $('body').scrollspy({
-        target: '.navbar-fixed-top',
-        offset: 51
-    });
+  $('body').scrollspy({
+      target: '.navbar-fixed-top',
+      offset: 51
+  });
 
 
   $(document).ready(function(){
@@ -50,6 +50,22 @@ jQuery(document).ready(function($){
       } // End if
     });
   });
+
+
+  $("#contactForm").validate({
+  submitHandler: function(form) {
+    $.ajax({
+      url: "//formspree.io/myemail@gmail.com", 
+      method: "POST",
+      data: {
+        name: $(form).find("input[name='name']").val(),
+        _replyto: $(form).find("input[name='_replyto']").val(),
+        message: $(form).find("textarea[name='message']").val()
+      },
+      dataType: "json"
+    });
+  }
+});
 
 });
 
