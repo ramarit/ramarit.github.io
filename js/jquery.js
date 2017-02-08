@@ -74,7 +74,7 @@ jQuery(document).ready(function($){
   $("#contactForm").validate({
     submitHandler: function(form) {
       $.ajax({
-        url: "//formspree.io/myemail@gmail.com", 
+        url: "//formspree.io/ramarit@gmail.com", 
         method: "POST",
         data: {
           name: $(form).find("input[name='name']").val(),
