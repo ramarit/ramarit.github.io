@@ -280,6 +280,10 @@ a.svg:after {
     padding-right: 20px;
 }
 
+#email a {
+  color: black;
+}
+
 @media(max-width:1200px) {
     .headline h1 {
         font-size: 125px;

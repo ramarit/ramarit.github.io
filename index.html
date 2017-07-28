@@ -105,7 +105,8 @@
         <!-- First Featurette -->
         <div class="featurette">
             <img class="featurette-image img-circle img-responsive pull-right" src="images/profile.jpg">
-            <p class="lead">Hello! I'm Ryan. I'm a Web Developer and UX/UI designer living in Seattle. I studied Art at the <a id="unt" href="http://www.unt.edu" target="_blank">University of North Texas</a> and Computer Science and Web Development at <a id="su" href="http://www.seattleu.edu" target="_blank">Seattle University</a>. Want to work together? I'd love to hear from you!</p>
+            <p class="lead">Hello! I'm Ryan. I'm a Web Developer and UX/UI designer living in Seattle. I studied Art at the <a id="unt" href="http://www.unt.edu" target="_blank">University of North Texas</a> and Computer Science and Web Development at <a id="su" href="http://www.seattleu.edu" target="_blank">Seattle University</a>. Want to work together?</p>
+            <button type="button" class="btn btn-default"><a href="mailto:hello@ryanamarit.com">Contact Me!</a></button>
         </div>
 
         <hr class="featurette-divider" id="work">
@@ -211,26 +212,33 @@
 
         <!-- Contact Section -->
 
+
         <hr class="featurette-divider">
         <section id="contact">
             <div class="container">
                 <div class="row">
                     <div class="col-lg-12">
-                        <h2 class="text-center">Contact</h2>
+                        <!--<h2 class="text-center">Contact</h2>-->
+                        <div class="text-center" id="email">
+                            <h2><a href="mailto:hello@ryanamarit.com">hello@ryanamarit.com</a></h2>
+                        </div>
                     </div>
                 </div>
+
+
                 <!-- Hidden message to show if contact is successful. -->
+                <!--
                 <div id="submit-success" class="alert alert-success alert-dismissible collapse" role="alert">
                     <button type="button" class="close" data-dismiss="alert" aria-label="Close"><span aria-hidden="true">&times;</span></button>
                     Message received! I'll be in touch.
-                </div>
+                </div>-->
 
                 <!-- Hidden message to show if user encounters errors. -->
+                <!--
                 <div id="submit-errors" class="alert alert-danger alert-dismissible collapse" role="alert">
                     <button type="button" class="close" data-dismiss="alert" aria-label="Close"><span aria-hidden="true">&times;</span></button>
                     It looks like there was an error submitting the form. Please try again later.
                 </div>
-                <a href= "mailto:hello@ryanamarit.com" >hello@ryanamarit.com</a>
                 <div class="row">
                     <div class="col-lg-8 col-lg-offset-2">
                         <form id="contactForm" class="form" action="/">
@@ -253,7 +261,7 @@
                             $("#contactForm").validate();
                         </script>
                     </div>
-                </div>
+                </div>-->
             </div>
         </section>
 
