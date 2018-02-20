@@ -48,6 +48,13 @@ body {
     transform: translate(-50%, -60%);
 }
 
+.fa {
+    padding: 20px;
+    font-size: 30px;
+    width: 50px;
+    text-align: center;
+    text-decoration: none;
+}
 
 .arrow-down {
     width: 20%;
@@ -280,8 +287,12 @@ a.svg:after {
     padding-right: 20px;
 }
 
-#email a {
+#email a, #icons a{
   color: black;
+}
+
+#icons a{
+  padding: 20px;
 }
 
 @media(max-width:1200px) {
