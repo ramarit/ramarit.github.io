@@ -6,10 +6,10 @@
 	 overflow: hidden;
 	 font-family: 'Roboto', sans-serif;
 }
- .wrap {
+ /* .wrap {
 	 height: 100vh;
 	 margin-bottom: 100px;
-}
+} */
  .box {
 	 position: absolute;
 	 top: 0;
