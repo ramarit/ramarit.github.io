@@ -15,7 +15,7 @@ html {
 	--card-size: 300px;
 }
 body {
-	height: 100vh;
+	height: 100%;
 	margin: 0;
 	display: grid;
 	place-items: center;
@@ -25,11 +25,7 @@ body {
 	text-rendering: optimizelegibility;
 	-webkit-font-smoothing: antialiased;
 	-moz-osx-font-smoothing: grayscale;
-	/* background: black; */
 }
-
-
-
 
 .card {
 	/* width: 100%; */
