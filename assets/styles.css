@@ -1,5 +1,4 @@
 @import url('https://fonts.googleapis.com/css?family=Source+Code+Pro:400,500&display=swap');
-/* @import url('https://fonts.googleapis.com/css2?family=Roboto:ital,wght@0,700;1,300&display=swap'); */
 
 html,
 body {
@@ -40,18 +39,9 @@ body {
   color: white;
   align-items: center;
   position: relative;
-  /* max-width: calc(100% - 2rem);
-  min-height: var(--card-size);
-  box-shadow: 0 22px 70px 4px rgba(0, 0, 0, 0.56), 0 0 0 1px rgba(0, 0, 0, 0.3);
-  will-change: transform;
-  transition: transform 0.25s cubic-bezier(0.4, 0, 0.2, 1), box-shadow 0.25s cubic-bezier(0.4, 0, 0.2, 1);
-  top: 50%;
-  left: 50%;
-  transform: translate(-50%, -50%); */
 }
 
 .card:hover {
-  /* transform: scale(1.1); */
   box-shadow: 0 32px 80px 14px rgba(0, 0, 0, 0.36), 0 0 0 1px rgba(0, 0, 0, 0.3);
 }
 
@@ -133,6 +123,7 @@ svg {
 .box {
   max-width: 1500px;
   z-index: 1;
+  width: 100%;
   /* position: absolute;
   top: 0;
   bottom: 0;
@@ -177,12 +168,6 @@ svg {
 
 @media only screen and (min-width: 640px) {
   .card {
-    max-width: calc(var(--card-size) * 1.586);
     grid-template-columns: 50% auto;
-    /* height: var(--card-size); */
   }
-
-  /* .card-avatar {
-    place-items: center;
-  } */
 }
