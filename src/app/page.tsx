@@ -11,17 +11,10 @@ import {
   LinkedInIcon,
   XIcon,
 } from '@/components/SocialIcons'
-import logoAirbnb from '@/images/logos/airbnb.svg'
-import logoFacebook from '@/images/logos/facebook.svg'
-import logoPlanetaria from '@/images/logos/planetaria.svg'
-import logoStarbucks from '@/images/logos/starbucks.svg'
-import image1 from '@/images/photos/image-1.jpg'
-import image2 from '@/images/photos/image-2.jpg'
-import image3 from '@/images/photos/image-3.jpg'
-import image4 from '@/images/photos/image-4.jpg'
-import image5 from '@/images/photos/image-5.jpg'
-import { type ArticleWithSlug, getAllArticles } from '@/lib/articles'
-import { formatDate } from '@/lib/formatDate'
+import logo8am from '@/images/logos/8am.svg'
+import logoConsulting from '@/images/logos/consulting.svg'
+import logoBalcom from '@/images/logos/balcom.svg'
+import logoFluke from '@/images/logos/Fluke_Corporation_logo.png'
 
 function MailIcon(props: React.ComponentPropsWithoutRef<'svg'>) {
   return (
@@ -69,6 +62,25 @@ function BriefcaseIcon(props: React.ComponentPropsWithoutRef<'svg'>) {
   )
 }
 
+function TrophyIcon(props: React.ComponentPropsWithoutRef<'svg'>) {
+  return (
+    <svg
+      viewBox="0 0 24 24"
+      fill="none"
+      strokeWidth="1.5"
+      strokeLinecap="round"
+      strokeLinejoin="round"
+      aria-hidden="true"
+      {...props}
+    >
+      <path
+        d="M6 9H4.5a2.5 2.5 0 0 1 0-5H6M18 9h1.5a2.5 2.5 0 0 0 0-5H18M4 22h16M10 14.66V17c0 .55.47.98 1.05.98h1.9c.58 0 1.05-.43 1.05-.98v-2.34M12 14.66V9M8 9h8"
+        className="fill-none stroke-zinc-400 dark:stroke-zinc-500"
+      />
+    </svg>
+  )
+}
+
 function ArrowDownIcon(props: React.ComponentPropsWithoutRef<'svg'>) {
   return (
     <svg viewBox="0 0 16 16" fill="none" aria-hidden="true" {...props}>
@@ -82,20 +94,6 @@ function ArrowDownIcon(props: React.ComponentPropsWithoutRef<'svg'>) {
   )
 }
 
-function Article({ article }: { article: ArticleWithSlug }) {
-  return (
-    <Card as="article">
-      <Card.Title href={`/articles/${article.slug}`}>
-        {article.title}
-      </Card.Title>
-      <Card.Eyebrow as="time" dateTime={article.date} decorate>
-        {formatDate(article.date)}
-      </Card.Eyebrow>
-      <Card.Description>{article.description}</Card.Description>
-      <Card.Cta>Read article</Card.Cta>
-    </Card>
-  )
-}
 
 function SocialLink({
   icon: Icon,
@@ -110,211 +108,211 @@ function SocialLink({
   )
 }
 
-function Newsletter() {
-  return (
-    <form
-      action="/thank-you"
-      className="rounded-2xl border border-zinc-100 p-6 dark:border-zinc-700/40"
-    >
-      <h2 className="flex text-sm font-semibold text-zinc-900 dark:text-zinc-100">
-        <MailIcon className="h-6 w-6 flex-none" />
-        <span className="ml-3">Stay up to date</span>
-      </h2>
-      <p className="mt-2 text-sm text-zinc-600 dark:text-zinc-400">
-        Get notified when I publish something new, and unsubscribe at any time.
-      </p>
-      <div className="mt-6 flex items-center">
-        <span className="flex min-w-0 flex-auto p-px">
-          <input
-            type="email"
-            placeholder="Email address"
-            aria-label="Email address"
-            required
-            className="w-full appearance-none rounded-[calc(var(--radius-md)-1px)] bg-white px-3 py-[calc(--spacing(2)-1px)] shadow-md shadow-zinc-800/5 outline outline-zinc-900/10 placeholder:text-zinc-400 focus:ring-4 focus:ring-teal-500/10 focus:outline-teal-500 sm:text-sm dark:bg-zinc-700/15 dark:text-zinc-200 dark:outline-zinc-700 dark:placeholder:text-zinc-500 dark:focus:ring-teal-400/10 dark:focus:outline-teal-400"
-          />
-        </span>
-        <Button type="submit" className="ml-4 flex-none">
-          Join
-        </Button>
-      </div>
-    </form>
-  )
-}
 
-interface Role {
-  company: string
-  title: string
-  logo: ImageProps['src']
-  start: string | { label: string; dateTime: string }
-  end: string | { label: string; dateTime: string }
-}
-
-function Role({ role }: { role: Role }) {
-  let startLabel =
-    typeof role.start === 'string' ? role.start : role.start.label
-  let startDate =
-    typeof role.start === 'string' ? role.start : role.start.dateTime
-
-  let endLabel = typeof role.end === 'string' ? role.end : role.end.label
-  let endDate = typeof role.end === 'string' ? role.end : role.end.dateTime
-
-  return (
-    <li className="flex gap-4">
-      <div className="relative mt-1 flex h-10 w-10 flex-none items-center justify-center rounded-full shadow-md ring-1 shadow-zinc-800/5 ring-zinc-900/5 dark:border dark:border-zinc-700/50 dark:bg-zinc-800 dark:ring-0">
-        <Image src={role.logo} alt="" className="h-7 w-7" unoptimized />
-      </div>
-      <dl className="flex flex-auto flex-wrap gap-x-2">
-        <dt className="sr-only">Company</dt>
-        <dd className="w-full flex-none text-sm font-medium text-zinc-900 dark:text-zinc-100">
-          {role.company}
-        </dd>
-        <dt className="sr-only">Role</dt>
-        <dd className="text-xs text-zinc-500 dark:text-zinc-400">
-          {role.title}
-        </dd>
-        <dt className="sr-only">Date</dt>
-        <dd
-          className="ml-auto text-xs text-zinc-400 dark:text-zinc-500"
-          aria-label={`${startLabel} until ${endLabel}`}
-        >
-          <time dateTime={startDate}>{startLabel}</time>{' '}
-          <span aria-hidden="true">—</span>{' '}
-          <time dateTime={endDate}>{endLabel}</time>
-        </dd>
-      </dl>
-    </li>
-  )
-}
 
 function Resume() {
-  let resume: Array<Role> = [
-    {
-      company: 'Planetaria',
-      title: 'CEO',
-      logo: logoPlanetaria,
-      start: '2019',
-      end: {
-        label: 'Present',
-        dateTime: new Date().getFullYear().toString(),
-      },
-    },
-    {
-      company: 'Airbnb',
-      title: 'Product Designer',
-      logo: logoAirbnb,
-      start: '2014',
-      end: '2019',
-    },
-    {
-      company: 'Facebook',
-      title: 'iOS Software Engineer',
-      logo: logoFacebook,
-      start: '2011',
-      end: '2014',
-    },
-    {
-      company: 'Starbucks',
-      title: 'Shift Supervisor',
-      logo: logoStarbucks,
-      start: '2008',
-      end: '2011',
-    },
-  ]
-
   return (
     <div className="rounded-2xl border border-zinc-100 p-6 dark:border-zinc-700/40">
       <h2 className="flex text-sm font-semibold text-zinc-900 dark:text-zinc-100">
         <BriefcaseIcon className="h-6 w-6 flex-none" />
-        <span className="ml-3">Work</span>
+        <span className="ml-3">Work Experience</span>
       </h2>
-      <ol className="mt-6 space-y-4">
-        {resume.map((role, roleIndex) => (
-          <Role key={roleIndex} role={role} />
-        ))}
-      </ol>
-      <Button href="#" variant="secondary" className="group mt-6 w-full">
-        Download CV
-        <ArrowDownIcon className="h-4 w-4 stroke-zinc-400 transition group-active:stroke-zinc-600 dark:group-hover:stroke-zinc-50 dark:group-active:stroke-zinc-50" />
-      </Button>
-    </div>
-  )
-}
-
-function Photos() {
-  let rotations = ['rotate-2', '-rotate-2', 'rotate-2', 'rotate-2', '-rotate-2']
-
-  return (
-    <div className="mt-16 sm:mt-20">
-      <div className="-my-4 flex justify-center gap-5 overflow-hidden py-4 sm:gap-8">
-        {[image1, image2, image3, image4, image5].map((image, imageIndex) => (
-          <div
-            key={image.src}
-            className={clsx(
-              'relative aspect-9/10 w-44 flex-none overflow-hidden rounded-xl bg-zinc-100 sm:w-72 sm:rounded-2xl dark:bg-zinc-800',
-              rotations[imageIndex % rotations.length],
-            )}
-          >
-            <Image
-              src={image}
-              alt=""
-              sizes="(min-width: 640px) 18rem, 11rem"
-              className="absolute inset-0 h-full w-full object-cover"
-            />
+      <div className="mt-6 space-y-8">
+        {/* 8am */}
+        <div className="flex gap-4">
+          <div className="relative mt-1 flex h-10 w-10 flex-none items-center justify-center rounded-full shadow-md ring-1 shadow-zinc-800/5 ring-zinc-900/5 dark:border dark:border-zinc-700/50 dark:bg-zinc-800 dark:ring-0">
+            <Image src={logo8am} alt="" className="h-7 w-7 object-contain" unoptimized />
           </div>
-        ))}
+          <div className="flex flex-auto flex-col">
+            <div className="flex flex-wrap gap-x-2">
+              <dt className="sr-only">Company</dt>
+              <dd className="w-full flex-none text-sm font-medium text-zinc-900 dark:text-zinc-100">
+                8am (formerly AffiniPay)
+              </dd>
+              <dt className="sr-only">Role</dt>
+              <dd className="text-xs text-zinc-500 dark:text-zinc-400">
+                Senior Web Developer
+              </dd>
+              <dt className="sr-only">Date</dt>
+              <dd className="ml-auto text-xs text-zinc-400 dark:text-zinc-500">
+                2021 - Present
+              </dd>
+            </div>
+            <ul className="mt-3 space-y-2 text-xs text-zinc-600 dark:text-zinc-400">
+              <li>• Delivered faster, more responsive client-facing applications by leading frontend development with Vue.js and AstroJS, contributing to improved user engagement and reduced support requests.</li>
+              <li>• Architected Contentful CMS integrations that cut content publishing time by 60%, enabling marketing teams to launch campaigns without developer support.</li>
+              <li>• Built and maintained a Tailwind/Storybook design system that reduced design-to-dev handoff time by 40% and ensured brand consistency across multiple sites.</li>
+              <li>• Directed the migration of legacy WordPress, HubSpot, and Gridsome sites into a modern Astro.js monorepo, resulting in 30–50% faster load times and lower long-term maintenance costs.</li>
+              <li>• Partnered with design and product stakeholders to optimize user journeys, which increased trial sign-ups and conversions on core marketing pages.</li>
+              <li>• Instituted code quality and accessibility standards, achieving WCAG 2.1 compliance and reducing regression bugs by 25% through structured reviews and CI/CD practices.</li>
+            </ul>
+          </div>
+        </div>
+
+        {/* Digital Strategy Consultant */}
+        <div className="flex gap-4">
+          <div className="relative mt-1 flex h-10 w-10 flex-none items-center justify-center rounded-full shadow-md ring-1 shadow-zinc-800/5 ring-zinc-900/5 dark:border dark:border-zinc-700/50 dark:bg-zinc-800 dark:ring-0">
+            <Image src={logoConsulting} alt="" className="h-7 w-7 object-contain" unoptimized />
+          </div>
+          <div className="flex flex-auto flex-col">
+            <div className="flex flex-wrap gap-x-2">
+              <dt className="sr-only">Company</dt>
+              <dd className="w-full flex-none text-sm font-medium text-zinc-900 dark:text-zinc-100">
+                Digital Strategy Consultant
+              </dd>
+              <dt className="sr-only">Role</dt>
+              <dd className="text-xs text-zinc-500 dark:text-zinc-400">
+                Self-Employed
+              </dd>
+              <dt className="sr-only">Date</dt>
+              <dd className="ml-auto text-xs text-zinc-400 dark:text-zinc-500">
+                2019 - Present
+              </dd>
+            </div>
+            <ul className="mt-3 space-y-2 text-xs text-zinc-600 dark:text-zinc-400">
+              <li>• Advise clients on web strategy, content management, and SEO optimization, helping them align digital initiatives with business goals.</li>
+              <li>• Lead full project lifecycles, including planning, design, and deployment, ensuring scalable and maintainable web solutions.</li>
+              <li>• Provide technical guidance on modern front-end architectures, CMS workflows, and performance optimization, enabling teams to manage websites efficiently and independently.</li>
+              <li>• Collaborate with clients to define digital priorities, optimize user experience, and track measurable outcomes, supporting growth and engagement objectives.</li>
+            </ul>
+          </div>
+        </div>
+
+        {/* Balcom Agency */}
+        <div className="flex gap-4">
+          <div className="relative mt-1 flex h-10 w-10 flex-none items-center justify-center rounded-full shadow-md ring-1 shadow-zinc-800/5 ring-zinc-900/5 dark:border dark:border-zinc-700/50 dark:bg-zinc-800 dark:ring-0">
+            <Image src={logoBalcom} alt="" className="h-7 w-7 object-contain" unoptimized />
+          </div>
+          <div className="flex flex-auto flex-col">
+            <div className="flex flex-wrap gap-x-2">
+              <dt className="sr-only">Company</dt>
+              <dd className="w-full flex-none text-sm font-medium text-zinc-900 dark:text-zinc-100">
+                Balcom Agency
+              </dd>
+              <dt className="sr-only">Role</dt>
+              <dd className="text-xs text-zinc-500 dark:text-zinc-400">
+                Web Developer
+              </dd>
+              <dt className="sr-only">Date</dt>
+              <dd className="ml-auto text-xs text-zinc-400 dark:text-zinc-500">
+                2018 - 2021
+              </dd>
+            </div>
+            <ul className="mt-3 space-y-2 text-xs text-zinc-600 dark:text-zinc-400">
+              <li>• Delivered 3–4 new client websites per year in Drupal 8, creating custom themes and responsive designs that improved usability and client satisfaction scores.</li>
+              <li>• Managed a portfolio of 55+ Drupal and WordPress sites, providing proactive maintenance and training that reduced client support requests and increased CMS adoption by non-technical staff.</li>
+              <li>• Partnered with design, account, and strategy teams to enhance UI/UX on client projects, resulting in higher engagement metrics and stronger alignment with brand goals.</li>
+            </ul>
+          </div>
+        </div>
+
+        {/* Fluke Corporation */}
+        <div className="flex gap-4">
+          <div className="relative mt-1 flex h-10 w-10 flex-none items-center justify-center rounded-full shadow-md ring-1 shadow-zinc-800/5 ring-zinc-900/5 dark:border dark:border-zinc-700/50 dark:bg-zinc-800 dark:ring-0">
+            <Image src={logoFluke} alt="" className="h-7 w-7 object-contain" unoptimized />
+          </div>
+          <div className="flex flex-auto flex-col">
+            <div className="flex flex-wrap gap-x-2">
+              <dt className="sr-only">Company</dt>
+              <dd className="w-full flex-none text-sm font-medium text-zinc-900 dark:text-zinc-100">
+                Fluke Corporation
+              </dd>
+              <dt className="sr-only">Role</dt>
+              <dd className="text-xs text-zinc-500 dark:text-zinc-400">
+                Front End Web Developer
+              </dd>
+              <dt className="sr-only">Date</dt>
+              <dd className="ml-auto text-xs text-zinc-400 dark:text-zinc-500">
+                2017 - 2018
+              </dd>
+            </div>
+            <ul className="mt-3 space-y-2 text-xs text-zinc-600 dark:text-zinc-400">
+              <li>• Developed landing pages, forms, emails, and micro-sites that supported marketing campaigns, increased lead capture, and ensured consistent cross-platform performance.</li>
+              <li>• Automated content migration from multiple CMS sites to a new Drupal 7 instance using Python, improving data accuracy by 90% and reducing manual migration time by several days per project.</li>
+              <li>• Assisted in creating automated test scripts with Selenium and Python, boosting testing efficiency and reducing release defects, contributing to higher product quality.</li>
+              <li>• Trained content managers on Git workflows, enabling faster, error-free content updates and reducing developer intervention for routine changes.</li>
+            </ul>
+          </div>
+        </div>
       </div>
     </div>
   )
 }
 
-export default async function Home() {
-  let articles = (await getAllArticles()).slice(0, 4)
+function Awards() {
+  return (
+    <div className="rounded-2xl border border-zinc-100 p-6 dark:border-zinc-700/40">
+      <h2 className="flex text-sm font-semibold text-zinc-900 dark:text-zinc-100">
+        <TrophyIcon className="h-6 w-6 flex-none" />
+        <span className="ml-3">Awards & Achievements</span>
+      </h2>
+      <div className="mt-6 space-y-6">
+        <div className="flex gap-4">
+          <div className="relative mt-1 flex h-10 w-10 flex-none items-center justify-center rounded-full shadow-md ring-1 shadow-zinc-800/5 ring-zinc-900/5 dark:border dark:border-zinc-700/50 dark:bg-zinc-800 dark:ring-0">
+            <div className="h-2 w-2 rounded-full bg-teal-500"></div>
+          </div>
+          <div className="flex flex-auto flex-col">
+            <div className="flex flex-wrap gap-x-2">
+              <dt className="sr-only">Award</dt>
+              <dd className="w-full flex-none text-sm font-medium text-zinc-900 dark:text-zinc-100">
+                2022 Best of Interactive
+              </dd>
+              <dt className="sr-only">Organization</dt>
+              <dd className="text-xs text-zinc-500 dark:text-zinc-400">
+                Local American Advertising Awards
+              </dd>
+              <dt className="sr-only">Location</dt>
+              <dd className="ml-auto text-xs text-zinc-400 dark:text-zinc-500">
+                Fort Worth, TX
+              </dd>
+            </div>
+            <div className="mt-2">
+              <p className="text-xs text-zinc-600 dark:text-zinc-400">
+                <a href="https://www.renfrofoods.com/" className="text-teal-500 hover:text-teal-600 transition-colors" target="_blank" rel="noopener noreferrer">
+                  www.renfrofoods.com
+                </a>
+              </p>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  )
+}
 
+export default function Home() {
   return (
     <>
       <Container className="mt-9">
         <div className="max-w-2xl">
           <h1 className="text-4xl font-bold tracking-tight text-zinc-800 sm:text-5xl dark:text-zinc-100">
-            Software designer, founder, and amateur astronaut.
+            Digital Strategy Consultant & Front-End Developer
           </h1>
           <p className="mt-6 text-base text-zinc-600 dark:text-zinc-400">
-            I’m Spencer, a software designer and entrepreneur based in New York
-            City. I’m the founder and CEO of Planetaria, where we develop
-            technologies that empower regular people to explore space on their
-            own terms.
+          I’m Ryan Amarit. I help businesses align digital strategy with measurable outcomes through strategic consulting, modern web development, and performance optimization.
           </p>
           <div className="mt-6 flex gap-6">
-            <SocialLink href="#" aria-label="Follow on X" icon={XIcon} />
             <SocialLink
-              href="#"
-              aria-label="Follow on Instagram"
-              icon={InstagramIcon}
-            />
-            <SocialLink
-              href="#"
-              aria-label="Follow on GitHub"
-              icon={GitHubIcon}
-            />
-            <SocialLink
-              href="#"
+              href="https://www.linkedin.com/in/ryanamarit/"
               aria-label="Follow on LinkedIn"
               icon={LinkedInIcon}
+            />
+            <SocialLink
+              href="mailto:ramarit@gmail.com"
+              aria-label="Email"
+              icon={MailIcon}
             />
           </div>
         </div>
       </Container>
-      <Photos />
       <Container className="mt-24 md:mt-28">
-        <div className="mx-auto grid max-w-xl grid-cols-1 gap-y-20 lg:max-w-none lg:grid-cols-2">
-          <div className="flex flex-col gap-16">
-            {articles.map((article) => (
-              <Article key={article.slug} article={article} />
-            ))}
-          </div>
-          <div className="space-y-10 lg:pl-16 xl:pl-24">
-            <Newsletter />
-            <Resume />
-          </div>
+        <div className="mx-auto max-w-4xl">
+          <Resume />
+        </div>
+      </Container>
+      <Container className="mt-24 md:mt-28">
+        <div className="mx-auto max-w-4xl">
+          <Awards />
         </div>
       </Container>
     </>

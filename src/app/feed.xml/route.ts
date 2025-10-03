@@ -1,22 +1,18 @@
-import assert from 'assert'
-import * as cheerio from 'cheerio'
 import { Feed } from 'feed'
 
-export async function GET(req: Request) {
-  let siteUrl = process.env.NEXT_PUBLIC_SITE_URL
+export const dynamic = 'force-static'
 
-  if (!siteUrl) {
-    throw Error('Missing NEXT_PUBLIC_SITE_URL environment variable')
-  }
+export async function GET(req: Request) {
+  let siteUrl = process.env.NEXT_PUBLIC_SITE_URL || 'https://ryanamarit.com'
 
   let author = {
-    name: 'Spencer Sharp',
-    email: 'spencer@planetaria.tech',
+    name: 'Ryan Amarit',
+    email: 'ramarit@gmail.com',
   }
 
   let feed = new Feed({
     title: author.name,
-    description: 'Your blog description',
+    description: 'Digital Strategy Consultant & Front-End Developer - Portfolio and professional insights',
     author,
     id: siteUrl,
     link: siteUrl,
@@ -28,37 +24,26 @@ export async function GET(req: Request) {
     },
   })
 
-  let articleIds = require
-    .context('../articles', true, /\/page\.mdx$/)
-    .keys()
-    .filter((key) => key.startsWith('./'))
-    .map((key) => key.slice(2).replace(/\/page\.mdx$/, ''))
+  // Add main pages as feed items
+  feed.addItem({
+    title: 'About - Ryan Amarit',
+    id: `${siteUrl}/about/`,
+    link: `${siteUrl}/about/`,
+    content: 'Learn about Ryan Amarit, a Digital Strategy Consultant and Senior Web Developer with 8+ years of experience helping businesses turn digital strategy into measurable results.',
+    author: [author],
+    contributor: [author],
+    date: new Date(),
+  })
 
-  for (let id of articleIds) {
-    let url = String(new URL(`/articles/${id}`, req.url))
-    let html = await (await fetch(url)).text()
-    let $ = cheerio.load(html)
-
-    let publicUrl = `${siteUrl}/articles/${id}`
-    let article = $('article').first()
-    let title = article.find('h1').first().text()
-    let date = article.find('time').first().attr('datetime')
-    let content = article.find('[data-mdx-content]').first().html()
-
-    assert(typeof title === 'string')
-    assert(typeof date === 'string')
-    assert(typeof content === 'string')
-
-    feed.addItem({
-      title,
-      id: publicUrl,
-      link: publicUrl,
-      content,
-      author: [author],
-      contributor: [author],
-      date: new Date(date),
-    })
-  }
+  feed.addItem({
+    title: 'Projects - Ryan Amarit',
+    id: `${siteUrl}/projects/`,
+    link: `${siteUrl}/projects/`,
+    content: 'Key projects and achievements showcasing expertise in digital strategy, front-end development, and technical leadership across various industries.',
+    author: [author],
+    contributor: [author],
+    date: new Date(),
+  })
 
   return new Response(feed.rss2(), {
     status: 200,

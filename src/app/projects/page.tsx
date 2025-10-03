@@ -3,47 +3,65 @@ import Image from 'next/image'
 
 import { Card } from '@/components/Card'
 import { SimpleLayout } from '@/components/SimpleLayout'
-import logoAnimaginary from '@/images/logos/animaginary.svg'
-import logoCosmos from '@/images/logos/cosmos.svg'
-import logoHelioStream from '@/images/logos/helio-stream.svg'
-import logoOpenShuttle from '@/images/logos/open-shuttle.svg'
-import logoPlanetaria from '@/images/logos/planetaria.svg'
+
+export const metadata: Metadata = {
+  title: 'Projects',
+  description: 'Key projects and achievements showcasing my expertise in digital strategy, front-end development, and technical leadership across various industries.',
+  openGraph: {
+    title: 'Projects - Ryan Amarit',
+    description: 'Key projects and achievements showcasing my expertise in digital strategy, front-end development, and technical leadership across various industries.',
+    images: [
+      {
+        url: 'https://ryanamarit.com/og-image.jpg',
+        width: 1200,
+        height: 630,
+        alt: 'Ryan Amarit - Digital Strategy Consultant & Front-End Developer',
+      },
+    ],
+  },
+  twitter: {
+    card: 'summary_large_image',
+    title: 'Projects - Ryan Amarit',
+    description: 'Key projects and achievements showcasing my expertise in digital strategy, front-end development, and technical leadership across various industries.',
+    images: ['https://ryanamarit.com/og-image.jpg'],
+  },
+}
 
 const projects = [
   {
-    name: 'Planetaria',
+    name: 'Legal Tech Marketing Sites',
     description:
-      'Creating technology to empower civilians to explore space on their own terms.',
-    link: { href: 'http://planetaria.tech', label: 'planetaria.tech' },
-    logo: logoPlanetaria,
+      'Comprehensive marketing website development and migration project for 8am (formerly AffiniPay) and its legal technology brands. Led frontend development and content management system integration across multiple high-traffic marketing sites.',
+    link: { href: 'https://www.8am.com/', label: '8am.com, MyCase.com, LawPay.com, Casepeer.com, Docketwise.com' },
+    stack: 'Astro.js, Vue, Contentful, Tailwind',
+    contributions: [
+      'Migrated multiple high-traffic marketing sites from WordPress, HubSpot, Webflow, and Gridsome into a unified Astro.js + Vue monorepo.',
+      'Built reusable components and marketing forms for consistency and speed across brands.',
+      'Defined Contentful content models and migrated site content for scalable management.',
+      'Improved site performance, SEO, accessibility, and maintainability.',
+      'Partnered with internal teams and agencies to deliver on aggressive deadlines.'
+    ]
   },
   {
-    name: 'Animaginary',
+    name: 'The Modern Art Museum',
     description:
-      'High performance web animation library, hand-written in optimized WASM.',
-    link: { href: '#', label: 'github.com' },
-    logo: logoAnimaginary,
+      'Developed a fully custom Drupal 8 front-end theme with responsive layout components and flexible content editing capabilities.',
+    link: { href: 'https://www.themodern.org/', label: 'themodern.org' },
+    stack: 'Drupal 8, SCSS, JavaScript'
   },
   {
-    name: 'HelioStream',
+    name: 'Sinclair Oil',
     description:
-      'Real-time video streaming library, optimized for interstellar transmission.',
-    link: { href: '#', label: 'github.com' },
-    logo: logoHelioStream,
+      'Corporate website development with custom Drupal theming, content management system integration, and interactive "Find a Station" locator tool.',
+    link: { href: '#', label: 'sinclairoil.com' },
+    stack: 'Drupal 8, SCSS, JavaScript'
   },
   {
-    name: 'cosmOS',
+    name: 'Renfro Foods E-commerce',
     description:
-      'The operating system that powers our Planetaria space shuttles.',
-    link: { href: '#', label: 'github.com' },
-    logo: logoCosmos,
-  },
-  {
-    name: 'OpenShuttle',
-    description:
-      'The schematics for the first rocket I designed that successfully made it to orbit.',
-    link: { href: '#', label: 'github.com' },
-    logo: logoOpenShuttle,
+      'Customized Shopify theme for e-commerce site with enhanced navigation, product filtering, and mobile responsiveness.',
+    link: { href: 'https://www.renfrofoods.com/', label: 'renfrofoods.com' },
+    stack: 'Shopify (Liquid), HTML, SCSS, JavaScript'
   },
 ]
 
@@ -58,42 +76,92 @@ function LinkIcon(props: React.ComponentPropsWithoutRef<'svg'>) {
   )
 }
 
-export const metadata: Metadata = {
-  title: 'Projects',
-  description: 'Things I’ve made trying to put my dent in the universe.',
-}
-
 export default function Projects() {
   return (
     <SimpleLayout
-      title="Things I’ve made trying to put my dent in the universe."
-      intro="I’ve worked on tons of little projects over the years but these are the ones that I’m most proud of. Many of them are open-source, so if you see something that piques your interest, check out the code and contribute if you have ideas for how it can be improved."
+      title="Key Projects & Achievements"
+      intro="Here are some of the most impactful projects I've worked on throughout my career. Each project showcases different aspects of my expertise in digital strategy, front-end development, and technical leadership."
     >
-      <ul
-        role="list"
-        className="grid grid-cols-1 gap-x-12 gap-y-16 sm:grid-cols-2 lg:grid-cols-3"
-      >
-        {projects.map((project) => (
-          <Card as="li" key={project.name}>
-            <div className="relative z-10 flex h-12 w-12 items-center justify-center rounded-full bg-white shadow-md ring-1 shadow-zinc-800/5 ring-zinc-900/5 dark:border dark:border-zinc-700/50 dark:bg-zinc-800 dark:ring-0">
-              <Image
-                src={project.logo}
-                alt=""
-                className="h-8 w-8"
-                unoptimized
-              />
-            </div>
-            <h2 className="mt-6 text-base font-semibold text-zinc-800 dark:text-zinc-100">
-              <Card.Link href={project.link.href}>{project.name}</Card.Link>
-            </h2>
-            <Card.Description>{project.description}</Card.Description>
-            <p className="relative z-10 mt-6 flex text-sm font-medium text-zinc-400 transition group-hover:text-teal-500 dark:text-zinc-200">
-              <LinkIcon className="h-6 w-6 flex-none" />
-              <span className="ml-2">{project.link.label}</span>
+      <div className="space-y-16">
+        {/* Featured Legal Tech Marketing Sites */}
+        <Card as="div" className="lg:col-span-3">
+          <h2 className="text-base font-semibold text-zinc-800 dark:text-zinc-100">
+            Legal Tech Marketing Sites
+          </h2>
+          <Card.Description>
+            Comprehensive marketing website development and migration project for 8am (formerly AffiniPay) and its legal technology brands. Led frontend development and content management system integration across multiple high-traffic marketing sites.
+          </Card.Description>
+          <div className="mt-4">
+            <ul className="space-y-2 text-sm text-zinc-600 dark:text-zinc-400">
+              <li className="flex items-start">
+                <span className="mr-2 text-teal-500">•</span>
+                <span>Migrated multiple high-traffic marketing sites from WordPress, HubSpot, Webflow, and Gridsome into a unified Astro.js + Vue monorepo.</span>
+              </li>
+              <li className="flex items-start">
+                <span className="mr-2 text-teal-500">•</span>
+                <span>Built reusable components and marketing forms for consistency and speed across brands.</span>
+              </li>
+              <li className="flex items-start">
+                <span className="mr-2 text-teal-500">•</span>
+                <span>Defined Contentful content models and migrated site content for scalable management.</span>
+              </li>
+              <li className="flex items-start">
+                <span className="mr-2 text-teal-500">•</span>
+                <span>Improved site performance, SEO, accessibility, and maintainability.</span>
+              </li>
+              <li className="flex items-start">
+                <span className="mr-2 text-teal-500">•</span>
+                <span>Partnered with internal teams and agencies to deliver on aggressive deadlines.</span>
+              </li>
+            </ul>
+          </div>
+          <div className="mt-4">
+            <p className="text-sm font-medium text-zinc-600 dark:text-zinc-400">
+              <strong>Tech Stack:</strong> Astro.js, Vue, Contentful, Tailwind
             </p>
-          </Card>
-        ))}
-      </ul>
+          </div>
+          <div className="mt-6">
+            <p className="text-sm font-medium text-zinc-600 dark:text-zinc-400">
+              <strong>Sites:</strong> 
+              <a href="https://www.8am.com/" className="ml-1 text-teal-500 hover:text-teal-600">8am.com</a>
+              <span className="mx-1">•</span>
+              <a href="https://www.mycase.com/" className="text-teal-500 hover:text-teal-600">MyCase.com</a>
+              <span className="mx-1">•</span>
+              <a href="https://www.lawpay.com/" className="text-teal-500 hover:text-teal-600">LawPay.com</a>
+              <span className="mx-1">•</span>
+              <a href="https://www.casepeer.com/" className="text-teal-500 hover:text-teal-600">Casepeer.com</a>
+              <span className="mx-1">•</span>
+              <a href="https://www.docketwise.com/" className="text-teal-500 hover:text-teal-600">Docketwise.com</a>
+            </p>
+          </div>
+        </Card>
+
+        {/* Other Projects Grid */}
+        <ul
+          role="list"
+          className="grid grid-cols-1 gap-x-12 gap-y-16 sm:grid-cols-2 lg:grid-cols-3"
+        >
+          {projects.slice(1).map((project) => (
+            <Card as="li" key={project.name}>
+              <h2 className="text-base font-semibold text-zinc-800 dark:text-zinc-100">
+                {project.name}
+              </h2>
+              <Card.Description>{project.description}</Card.Description>
+              <div className="mt-4">
+                <p className="text-sm font-medium text-zinc-600 dark:text-zinc-400">
+                  <strong>Tech Stack:</strong> {project.stack}
+                </p>
+              </div>
+              <p className="relative z-10 mt-6 flex text-sm font-medium text-zinc-400 dark:text-zinc-200">
+                <LinkIcon className="h-6 w-6 flex-none" />
+                <a href={project.link.href} className="ml-2 text-teal-500 hover:text-teal-600 transition-colors" target="_blank" rel="noopener noreferrer">
+                  {project.link.label}
+                </a>
+              </p>
+            </Card>
+          ))}
+        </ul>
+      </div>
     </SimpleLayout>
   )
 }
