@@ -53,7 +53,7 @@ const projects = [
     name: 'Sinclair Oil',
     description:
       'Corporate website development with custom Drupal theming, content management system integration, and interactive "Find a Station" locator tool.',
-    link: { href: '#', label: 'sinclairoil.com' },
+    link: { href: 'https://www.sinclairoil.com/', label: 'sinclairoil.com' },
     stack: 'Drupal 8, SCSS, JavaScript'
   },
   {
