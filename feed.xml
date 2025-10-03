@@ -1,0 +1,33 @@
+<?xml version="1.0" encoding="utf-8"?>
+<rss version="2.0" xmlns:dc="http://purl.org/dc/elements/1.1/" xmlns:content="http://purl.org/rss/1.0/modules/content/">
+    <channel>
+        <title>Ryan Amarit</title>
+        <link>https://ryanamarit.com</link>
+        <description>Digital Strategy Consultant &amp; Front-End Developer - Portfolio and professional insights</description>
+        <lastBuildDate>Fri, 03 Oct 2025 20:04:26 GMT</lastBuildDate>
+        <docs>https://validator.w3.org/feed/docs/rss2.html</docs>
+        <generator>https://github.com/jpmonette/feed</generator>
+        <image>
+            <title>Ryan Amarit</title>
+            <url>https://ryanamarit.com/favicon.ico</url>
+            <link>https://ryanamarit.com</link>
+        </image>
+        <copyright>All rights reserved 2025</copyright>
+        <item>
+            <title><![CDATA[About - Ryan Amarit]]></title>
+            <link>https://ryanamarit.com/about/</link>
+            <guid isPermaLink="false">https://ryanamarit.com/about/</guid>
+            <pubDate>Fri, 03 Oct 2025 20:04:26 GMT</pubDate>
+            <content:encoded><![CDATA[Learn about Ryan Amarit, a Digital Strategy Consultant and Senior Web Developer with 8+ years of experience helping businesses turn digital strategy into measurable results.]]></content:encoded>
+            <author>ramarit@gmail.com (Ryan Amarit)</author>
+        </item>
+        <item>
+            <title><![CDATA[Projects - Ryan Amarit]]></title>
+            <link>https://ryanamarit.com/projects/</link>
+            <guid isPermaLink="false">https://ryanamarit.com/projects/</guid>
+            <pubDate>Fri, 03 Oct 2025 20:04:26 GMT</pubDate>
+            <content:encoded><![CDATA[Key projects and achievements showcasing expertise in digital strategy, front-end development, and technical leadership across various industries.]]></content:encoded>
+            <author>ramarit@gmail.com (Ryan Amarit)</author>
+        </item>
+    </channel>
+</rss>
