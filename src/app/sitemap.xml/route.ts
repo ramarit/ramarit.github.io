@@ -24,12 +24,6 @@ export async function GET(): Promise<Response> {
       changeFrequency: 'monthly',
       priority: 0.8,
     },
-    {
-      url: `${baseUrl}/thank-you/`,
-      lastModified: new Date(),
-      changeFrequency: 'yearly',
-      priority: 0.3,
-    },
   ]
 
   const sitemapXml = `<?xml version="1.0" encoding="UTF-8"?>
