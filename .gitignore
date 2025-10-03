@@ -9,6 +9,10 @@ yarn-error.log*
 out/
 build/
 
+# Build artifacts
+.next/
+out/
+
 # Environment variables
 .env
 .env.local
