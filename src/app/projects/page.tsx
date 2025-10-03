@@ -122,17 +122,19 @@ export default function Projects() {
           </div>
           <div className="mt-6">
             <p className="text-sm font-medium text-zinc-600 dark:text-zinc-400">
-              <strong>Sites:</strong> 
-              <a href="https://www.8am.com/" className="ml-1 text-teal-500 hover:text-teal-600">8am.com</a>
-              <span className="mx-1">•</span>
-              <a href="https://www.mycase.com/" className="text-teal-500 hover:text-teal-600">MyCase.com</a>
-              <span className="mx-1">•</span>
-              <a href="https://www.lawpay.com/" className="text-teal-500 hover:text-teal-600">LawPay.com</a>
-              <span className="mx-1">•</span>
-              <a href="https://www.casepeer.com/" className="text-teal-500 hover:text-teal-600">Casepeer.com</a>
-              <span className="mx-1">•</span>
-              <a href="https://www.docketwise.com/" className="text-teal-500 hover:text-teal-600">Docketwise.com</a>
+              <strong>Sites:</strong>
             </p>
+            <div className="mt-2 flex flex-wrap gap-x-2 gap-y-1">
+              <a href="https://www.8am.com/" className="text-teal-500 hover:text-teal-600">8am.com</a>
+              <span className="text-zinc-400">•</span>
+              <a href="https://www.mycase.com/" className="text-teal-500 hover:text-teal-600">MyCase.com</a>
+              <span className="text-zinc-400">•</span>
+              <a href="https://www.lawpay.com/" className="text-teal-500 hover:text-teal-600">LawPay.com</a>
+              <span className="text-zinc-400">•</span>
+              <a href="https://www.casepeer.com/" className="text-teal-500 hover:text-teal-600">Casepeer.com</a>
+              <span className="text-zinc-400">•</span>
+              <a href="https://www.docketwise.com/" className="text-teal-500 hover:text-teal-600">Docketwise.com</a>
+            </div>
           </div>
         </Card>
 
