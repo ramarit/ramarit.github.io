@@ -52,7 +52,7 @@ export const metadata: Metadata = {
     description: 'I help businesses turn digital strategy into measurable results. 8+ years of experience in front-end development, CMS strategy, and SEO optimization.',
     images: [
       {
-        url: 'https://ryanamarit.com/og-image.jpg',
+        url: 'https://ryanamarit.com/opengraph.png',
         width: 1200,
         height: 630,
         alt: 'Ryan Amarit - Digital Strategy Consultant & Front-End Developer',
@@ -63,7 +63,7 @@ export const metadata: Metadata = {
     card: 'summary_large_image',
     title: 'Ryan Amarit - Digital Strategy Consultant & Front-End Developer',
     description: 'I help businesses turn digital strategy into measurable results. 8+ years of experience in front-end development, CMS strategy, and SEO optimization.',
-    images: ['https://ryanamarit.com/og-image.jpg'],
+    images: ['https://ryanamarit.com/opengraph.png'],
   },
   alternates: {
     types: {
@@ -84,7 +84,7 @@ export default function RootLayout({
     jobTitle: 'Digital Strategy Consultant & Senior Web Developer',
     description: 'I help businesses turn digital strategy into measurable results. 8+ years of experience in front-end development, CMS strategy, and SEO optimization.',
     url: 'https://ryanamarit.com',
-    image: 'https://ryanamarit.com/og-image.jpg',
+    image: 'https://ryanamarit.com/opengraph.png',
     sameAs: [
       'https://www.linkedin.com/in/ryanamarit/',
       'mailto:ramarit@gmail.com'

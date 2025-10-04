@@ -12,7 +12,7 @@ export const metadata: Metadata = {
     description: 'Key projects and achievements showcasing my expertise in digital strategy, front-end development, and technical leadership across various industries.',
     images: [
       {
-        url: 'https://ryanamarit.com/og-image.jpg',
+        url: 'https://ryanamarit.com/opengraph.png',
         width: 1200,
         height: 630,
         alt: 'Ryan Amarit - Digital Strategy Consultant & Front-End Developer',
@@ -23,7 +23,7 @@ export const metadata: Metadata = {
     card: 'summary_large_image',
     title: 'Projects - Ryan Amarit',
     description: 'Key projects and achievements showcasing my expertise in digital strategy, front-end development, and technical leadership across various industries.',
-    images: ['https://ryanamarit.com/og-image.jpg'],
+    images: ['https://ryanamarit.com/opengraph.png'],
   },
 }
 

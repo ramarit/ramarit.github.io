@@ -20,7 +20,7 @@ export const metadata: Metadata = {
     description: 'I am Ryan Amarit, a Digital Strategy Consultant and Senior Web Developer with 8+ years of experience helping businesses turn digital strategy into measurable results.',
     images: [
       {
-        url: 'https://ryanamarit.com/og-image.jpg',
+        url: 'https://ryanamarit.com/opengraph.png',
         width: 1200,
         height: 630,
         alt: 'Ryan Amarit - Digital Strategy Consultant & Front-End Developer',
@@ -31,7 +31,7 @@ export const metadata: Metadata = {
     card: 'summary_large_image',
     title: 'About - Ryan Amarit',
     description: 'I am Ryan Amarit, a Digital Strategy Consultant and Senior Web Developer with 8+ years of experience helping businesses turn digital strategy into measurable results.',
-    images: ['https://ryanamarit.com/og-image.jpg'],
+    images: ['https://ryanamarit.com/opengraph.png'],
   },
 }
 
