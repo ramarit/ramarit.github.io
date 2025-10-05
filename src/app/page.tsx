@@ -5,6 +5,7 @@ import Link from 'next/link'
 import clsx from 'clsx'
 import { useEffect } from 'react'
 import { usePostHog } from 'posthog-js/react'
+import { useScrollDepth } from '@/hooks/useScrollDepth'
 
 import { Button } from '@/components/Button'
 import { Card } from '@/components/Card'
@@ -334,6 +335,12 @@ function Awards() {
 }
 
 export default function Home() {
+  // Track scroll depth with custom milestones
+  useScrollDepth({ 
+    milestones: [25, 50, 75, 100],
+    throttleMs: 200 
+  })
+
   return (
     <>
       <Container className="mt-9">

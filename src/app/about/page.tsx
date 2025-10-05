@@ -4,6 +4,7 @@ import Link from 'next/link'
 import clsx from 'clsx'
 
 import { Container } from '@/components/Container'
+import { AboutClient } from './AboutClient'
 import {
   GitHubIcon,
   InstagramIcon,
@@ -72,7 +73,8 @@ function MailIcon(props: React.ComponentPropsWithoutRef<'svg'>) {
 
 export default function About() {
   return (
-    <Container className="mt-16 sm:mt-32">
+    <AboutClient>
+      <Container className="mt-16 sm:mt-32">
       <div className="grid grid-cols-1 gap-y-16 lg:grid-cols-2 lg:grid-rows-[auto_1fr] lg:gap-y-12">
         <div className="lg:pl-20">
           <div className="max-w-xs px-2.5 lg:max-w-none">
@@ -125,5 +127,6 @@ export default function About() {
         </div>
       </div>
     </Container>
+    </AboutClient>
   )
 }

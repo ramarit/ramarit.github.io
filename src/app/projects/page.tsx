@@ -3,6 +3,7 @@
 import Image from 'next/image'
 import { useEffect } from 'react'
 import { usePostHog } from 'posthog-js/react'
+import { useScrollDepth } from '@/hooks/useScrollDepth'
 
 import { Card } from '@/components/Card'
 import { SimpleLayout } from '@/components/SimpleLayout'
@@ -65,6 +66,12 @@ export default function Projects() {
       section: 'projects_portfolio',
     })
   }, [posthog])
+
+  // Track scroll depth for projects page
+  useScrollDepth({ 
+    milestones: [25, 50, 75, 100],
+    throttleMs: 200 
+  })
 
   return (
     <SimpleLayout
