@@ -1,6 +1,10 @@
+'use client'
+
 import Image, { type ImageProps } from 'next/image'
 import Link from 'next/link'
 import clsx from 'clsx'
+import { useEffect } from 'react'
+import { usePostHog } from 'posthog-js/react'
 
 import { Button } from '@/components/Button'
 import { Card } from '@/components/Card'
@@ -124,8 +128,18 @@ function SocialLink({
 }: React.ComponentPropsWithoutRef<typeof Link> & {
   icon: React.ComponentType<{ className?: string }>
 }) {
+  const posthog = usePostHog()
+  
+  const handleClick = () => {
+    const hrefString = typeof props.href === 'string' ? props.href : props.href?.toString() || ''
+    posthog?.capture('social_link_clicked', {
+      platform: hrefString.includes('linkedin') ? 'linkedin' : 'email',
+      url: hrefString,
+    })
+  }
+
   return (
-    <Link className="group -m-1 p-1" {...props}>
+    <Link className="group -m-1 p-1" {...props} onClick={handleClick}>
       <Icon className="h-6 w-6 fill-zinc-500 transition group-hover:fill-zinc-600 dark:fill-zinc-400 dark:group-hover:fill-zinc-300" />
     </Link>
   )
@@ -134,6 +148,14 @@ function SocialLink({
 
 
 function Resume() {
+  const posthog = usePostHog()
+  
+  useEffect(() => {
+    posthog?.capture('section_viewed', {
+      section: 'work_experience',
+    })
+  }, [posthog])
+
   return (
     <div className="rounded-2xl border border-zinc-100 p-6 dark:border-zinc-700/40">
       <h2 className="flex text-sm font-semibold text-zinc-900 dark:text-zinc-100">
@@ -263,6 +285,14 @@ function Resume() {
 }
 
 function Awards() {
+  const posthog = usePostHog()
+  
+  useEffect(() => {
+    posthog?.capture('section_viewed', {
+      section: 'awards_achievements',
+    })
+  }, [posthog])
+
   return (
     <div className="rounded-2xl border border-zinc-100 p-6 dark:border-zinc-700/40">
           <h2 className="flex text-sm font-semibold text-zinc-900 dark:text-zinc-100">

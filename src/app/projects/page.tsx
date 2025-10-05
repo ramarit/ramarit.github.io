@@ -1,31 +1,11 @@
-import { type Metadata } from 'next'
+'use client'
+
 import Image from 'next/image'
+import { useEffect } from 'react'
+import { usePostHog } from 'posthog-js/react'
 
 import { Card } from '@/components/Card'
 import { SimpleLayout } from '@/components/SimpleLayout'
-
-export const metadata: Metadata = {
-  title: 'Projects',
-  description: 'Key projects and achievements showcasing my expertise in digital strategy, front-end development, and technical leadership across various industries.',
-  openGraph: {
-    title: 'Projects - Ryan Amarit',
-    description: 'Key projects and achievements showcasing my expertise in digital strategy, front-end development, and technical leadership across various industries.',
-    images: [
-      {
-        url: 'https://ryanamarit.com/opengraph.png',
-        width: 1200,
-        height: 630,
-        alt: 'Ryan Amarit - Digital Strategy Consultant & Front-End Developer',
-      },
-    ],
-  },
-  twitter: {
-    card: 'summary_large_image',
-    title: 'Projects - Ryan Amarit',
-    description: 'Key projects and achievements showcasing my expertise in digital strategy, front-end development, and technical leadership across various industries.',
-    images: ['https://ryanamarit.com/opengraph.png'],
-  },
-}
 
 const projects = [
   {
@@ -77,6 +57,15 @@ function LinkIcon(props: React.ComponentPropsWithoutRef<'svg'>) {
 }
 
 export default function Projects() {
+  const posthog = usePostHog()
+  
+  useEffect(() => {
+    posthog?.capture('page_viewed', {
+      page: 'projects',
+      section: 'projects_portfolio',
+    })
+  }, [posthog])
+
   return (
     <SimpleLayout
       title="Key Projects & Achievements"
@@ -156,7 +145,19 @@ export default function Projects() {
               </div>
               <p className="relative z-10 mt-6 flex text-sm font-medium text-zinc-400 dark:text-zinc-200">
                 <LinkIcon className="h-6 w-6 flex-none" />
-                <a href={project.link.href} className="ml-2 text-teal-500 hover:text-teal-600 transition-colors" target="_blank" rel="noopener noreferrer">
+                <a 
+                  href={project.link.href} 
+                  className="ml-2 text-teal-500 hover:text-teal-600 transition-colors" 
+                  target="_blank" 
+                  rel="noopener noreferrer"
+                  onClick={() => {
+                    posthog?.capture('project_link_clicked', {
+                      project_name: project.name,
+                      project_url: project.link.href,
+                      tech_stack: project.stack,
+                    })
+                  }}
+                >
                   {project.link.label}
                 </a>
               </p>

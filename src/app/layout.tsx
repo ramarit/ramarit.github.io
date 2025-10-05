@@ -8,8 +8,7 @@ import '@/styles/tailwind.css'
 export const metadata: Metadata = {
   title: {
     template: '%s - Ryan Amarit',
-    default:
-      'Ryan Amarit - Digital Strategy Consultant & Front-End Developer',
+    default: 'Ryan Amarit - Digital Strategy Consultant & Front-End Developer',
   },
   description:
     'I am Ryan Amarit, a Digital Strategy Consultant and Senior Web Developer at 8am (formerly AffiniPay) focused on aligning digital initiatives with business goals through strategic consulting and modern web development.',
@@ -27,7 +26,7 @@ export const metadata: Metadata = {
     'SEO Optimization',
     'Ryan Amarit',
     '8am',
-    'AffiniPay'
+    'AffiniPay',
   ],
   authors: [{ name: 'Ryan Amarit' }],
   creator: 'Ryan Amarit',
@@ -49,7 +48,8 @@ export const metadata: Metadata = {
     url: 'https://ryanamarit.com',
     siteName: 'Ryan Amarit - Digital Strategy Consultant & Front-End Developer',
     title: 'Ryan Amarit - Digital Strategy Consultant & Front-End Developer',
-    description: 'I help businesses turn digital strategy into measurable results. 8+ years of experience in front-end development, CMS strategy, and SEO optimization.',
+    description:
+      'I help businesses turn digital strategy into measurable results. 8+ years of experience in front-end development, CMS strategy, and SEO optimization.',
     images: [
       {
         url: 'https://ryanamarit.com/opengraph.png',
@@ -62,7 +62,8 @@ export const metadata: Metadata = {
   twitter: {
     card: 'summary_large_image',
     title: 'Ryan Amarit - Digital Strategy Consultant & Front-End Developer',
-    description: 'I help businesses turn digital strategy into measurable results. 8+ years of experience in front-end development, CMS strategy, and SEO optimization.',
+    description:
+      'I help businesses turn digital strategy into measurable results. 8+ years of experience in front-end development, CMS strategy, and SEO optimization.',
     images: ['https://ryanamarit.com/opengraph.png'],
   },
   alternates: {
@@ -82,17 +83,18 @@ export default function RootLayout({
     '@type': 'Person',
     name: 'Ryan Amarit',
     jobTitle: 'Digital Strategy Consultant & Senior Web Developer',
-    description: 'I help businesses turn digital strategy into measurable results. 8+ years of experience in front-end development, CMS strategy, and SEO optimization.',
+    description:
+      'I help businesses turn digital strategy into measurable results. 8+ years of experience in front-end development, CMS strategy, and SEO optimization.',
     url: 'https://ryanamarit.com',
     image: 'https://ryanamarit.com/opengraph.png',
     sameAs: [
       'https://www.linkedin.com/in/ryanamarit/',
-      'mailto:ramarit@gmail.com'
+      'mailto:ramarit@gmail.com',
     ],
     worksFor: {
       '@type': 'Organization',
       name: '8am (formerly AffiniPay)',
-      url: 'https://www.8am.com/'
+      url: 'https://www.8am.com/',
     },
     knowsAbout: [
       'Digital Strategy',
@@ -106,14 +108,14 @@ export default function RootLayout({
       'Webflow',
       'SEO Optimization',
       'Web Development',
-      'CMS Strategy'
+      'CMS Strategy',
     ],
     award: {
       '@type': 'Award',
       name: '2022 Best of Interactive',
       description: 'Local American Advertising Awards - Fort Worth, TX',
-      dateAwarded: '2022'
-    }
+      dateAwarded: '2022',
+    },
   }
 
   return (
