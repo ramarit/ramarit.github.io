@@ -27,8 +27,10 @@
     "next-themes": "^0.4.6",
     "posthog-js": "^1.270.1",
     "posthog-node": "^5.9.2",
+    "prismjs": "^1.30.0",
     "react": "^19",
     "react-dom": "^19",
+    "refractor": "^5.0.0",
     "remark-gfm": "^4.0.1",
     "tailwindcss": "^4.1.11",
     "typescript": "^5.8.3"
@@ -42,5 +44,8 @@
     "prettier": "^3.6.2",
     "prettier-plugin-tailwindcss": "^0.6.14",
     "sharp": "0.34.3"
+  },
+  "overrides": {
+    "prismjs": "^1.30.0"
   }
 }
