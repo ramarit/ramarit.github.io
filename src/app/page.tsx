@@ -185,12 +185,12 @@ function Resume() {
               </dd>
             </div>
             <ul className="mt-3 space-y-2 text-xs text-zinc-600 dark:text-zinc-400">
-              <li>• Delivered faster, more responsive client-facing applications by leading frontend development with Vue.js and AstroJS, contributing to improved user engagement and reduced support requests.</li>
-              <li>• Architected Contentful CMS integrations that cut content publishing time by 60%, enabling marketing teams to launch campaigns without developer support.</li>
-              <li>• Built and maintained a Tailwind/Storybook design system that reduced design-to-dev handoff time by 40% and ensured brand consistency across multiple sites.</li>
-              <li>• Directed the migration of legacy WordPress, HubSpot, and Gridsome sites into a modern Astro.js monorepo, resulting in 30–50% faster load times and lower long-term maintenance costs.</li>
-              <li>• Partnered with design and product stakeholders to optimize user journeys, which increased trial sign-ups and conversions on core marketing pages.</li>
-              <li>• Instituted code quality and accessibility standards, achieving WCAG 2.1 compliance and reducing regression bugs by 25% through structured reviews and CI/CD practices.</li>
+              <li>• Lead front-end development of high-performance marketing websites using Vue.js and React (Next.js, Gatsby), delivering faster load times and improved user engagement.</li>
+              <li>• Architected scalable component systems with Tailwind and Storybook, reducing design-to-dev handoff time by 40% and ensuring brand consistency across multiple sites.</li>
+              <li>• Integrated headless CMS solutions (Contentful) that cut content publishing time by 60%, enabling marketing teams to launch campaigns independently.</li>
+              <li>• Directed migration of legacy WordPress, HubSpot, and Gridsome sites into modern Astro.js monorepo, achieving 30–50% faster load times and lower maintenance costs.</li>
+              <li>• Implemented SEO and accessibility best practices, achieving WCAG 2.1 compliance and improving search rankings across all marketing properties.</li>
+              <li>• Led cross-functional projects from design to launch, integrating experimentation frameworks and A/B testing to optimize marketing performance and conversion rates.</li>
             </ul>
           </div>
         </div>
@@ -216,10 +216,10 @@ function Resume() {
               </dd>
             </div>
             <ul className="mt-3 space-y-2 text-xs text-zinc-600 dark:text-zinc-400">
-              <li>• Advise clients on web strategy, content management, and SEO optimization, helping them align digital initiatives with business goals.</li>
-              <li>• Lead full project lifecycles, including planning, design, and deployment, ensuring scalable and maintainable web solutions.</li>
-              <li>• Provide technical guidance on modern front-end architectures, CMS workflows, and performance optimization, enabling teams to manage websites efficiently and independently.</li>
-              <li>• Collaborate with clients to define digital priorities, optimize user experience, and track measurable outcomes, supporting growth and engagement objectives.</li>
+              <li>• Build high-performance marketing websites using Vue.js and React, focusing on component architecture, performance optimization, and SEO best practices.</li>
+              <li>• Lead full-stack front-end projects from design to launch, integrating headless CMSs and implementing accessibility standards for scalable solutions.</li>
+              <li>• Implement experimentation frameworks and A/B testing strategies to optimize marketing performance and conversion rates.</li>
+              <li>• Provide technical leadership on modern front-end architectures, component systems, and performance optimization, enabling teams to deliver measurable results.</li>
             </ul>
           </div>
         </div>
@@ -245,9 +245,9 @@ function Resume() {
               </dd>
             </div>
             <ul className="mt-3 space-y-2 text-xs text-zinc-600 dark:text-zinc-400">
-              <li>• Delivered 3–4 new client websites per year in Drupal 8, creating custom themes and responsive designs that improved usability and client satisfaction scores.</li>
-              <li>• Managed a portfolio of 55+ Drupal and WordPress sites, providing proactive maintenance and training that reduced client support requests and increased CMS adoption by non-technical staff.</li>
-              <li>• Partnered with design, account, and strategy teams to enhance UI/UX on client projects, resulting in higher engagement metrics and stronger alignment with brand goals.</li>
+              <li>• Built 3–4 high-performance client websites annually using Drupal 8, developing custom component-based themes and responsive designs that improved performance and user experience.</li>
+              <li>• Maintained a portfolio of 55+ Drupal and WordPress sites, implementing performance optimizations, SEO best practices, and accessibility improvements that reduced support requests.</li>
+              <li>• Collaborated with cross-functional teams to deliver scalable front-end solutions, ensuring consistent component architecture and brand alignment across all client projects.</li>
             </ul>
           </div>
         </div>
@@ -273,10 +273,10 @@ function Resume() {
               </dd>
             </div>
             <ul className="mt-3 space-y-2 text-xs text-zinc-600 dark:text-zinc-400">
-              <li>• Developed landing pages, forms, emails, and micro-sites that supported marketing campaigns, increased lead capture, and ensured consistent cross-platform performance.</li>
-              <li>• Automated content migration from multiple CMS sites to a new Drupal 7 instance using Python, improving data accuracy by 90% and reducing manual migration time by several days per project.</li>
-              <li>• Assisted in creating automated test scripts with Selenium and Python, boosting testing efficiency and reducing release defects, contributing to higher product quality.</li>
-              <li>• Trained content managers on Git workflows, enabling faster, error-free content updates and reducing developer intervention for routine changes.</li>
+              <li>• Developed high-performance landing pages, forms, and micro-sites using Drupal 7, implementing responsive designs and performance optimizations that increased lead capture rates.</li>
+              <li>• Automated content migration workflows using Python, improving data accuracy by 90% and reducing migration time from days to hours.</li>
+              <li>• Built reusable component libraries and established front-end development standards, improving code quality and reducing development time across marketing campaigns.</li>
+              <li>• Implemented SEO best practices and accessibility improvements across all marketing properties, contributing to improved search rankings and user experience.</li>
             </ul>
           </div>
         </div>
@@ -346,10 +346,10 @@ export default function Home() {
       <Container className="mt-9">
         <div className="max-w-2xl">
           <h1 className="text-4xl font-bold tracking-tight text-zinc-800 sm:text-5xl dark:text-zinc-100">
-            Digital Strategy Consultant & Front-End Developer
+            Senior Front-End Engineer
           </h1>
           <p className="mt-6 text-base text-zinc-600 dark:text-zinc-400">
-          I’m Ryan Amarit. I help businesses align digital strategy with measurable outcomes through strategic consulting, modern web development, and performance optimization.
+          I'm Ryan Amarit. I build high-performance, interactive marketing websites with 8+ years of experience. Expert in Vue.js and React, specializing in scalable component systems, headless CMS integration, SEO, accessibility, and experimentation frameworks.
           </p>
           <div className="mt-6 flex gap-6">
             <SocialLink
@@ -367,8 +367,8 @@ export default function Home() {
       </Container>
       <Container className="mt-24 md:mt-28">
         <div className="mx-auto max-w-4xl">
-          <Resume />
-        </div>
+            <Resume />
+          </div>
       </Container>
       <Container className="mt-24 md:mt-28">
         <div className="mx-auto max-w-4xl">

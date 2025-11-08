@@ -2,10 +2,10 @@ import { type Metadata } from 'next'
 
 export const metadata: Metadata = {
   title: 'Projects',
-  description: 'Key projects and achievements showcasing my expertise in digital strategy, front-end development, and technical leadership across various industries.',
+  description: 'Key projects and achievements showcasing my expertise in building high-performance marketing websites, scalable component systems, and front-end engineering solutions that drive measurable results.',
   openGraph: {
     title: 'Projects - Ryan Amarit',
-    description: 'Key projects and achievements showcasing my expertise in digital strategy, front-end development, and technical leadership across various industries.',
+    description: 'Key projects and achievements showcasing my expertise in building high-performance marketing websites, scalable component systems, and front-end engineering solutions that drive measurable results.',
     images: [
       {
         url: 'https://ryanamarit.com/opengraph.png',
@@ -18,8 +18,11 @@ export const metadata: Metadata = {
   twitter: {
     card: 'summary_large_image',
     title: 'Projects - Ryan Amarit',
-    description: 'Key projects and achievements showcasing my expertise in digital strategy, front-end development, and technical leadership across various industries.',
-    images: ['https://ryanamarit.com/opengraph.png'],
+    description: 'Key projects and achievements showcasing my expertise in building high-performance marketing websites, scalable component systems, and front-end engineering solutions that drive measurable results.',
+    images: ['https://www.ryanamarit.com/opengraph.png'],
+  },
+  alternates: {
+    canonical: 'https://www.ryanamarit.com/projects/',
   },
 }
 

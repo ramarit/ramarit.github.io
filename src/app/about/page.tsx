@@ -15,10 +15,10 @@ import portraitImage from '@/images/photos/Ryan_Amarit.webp'
 
 export const metadata: Metadata = {
   title: 'About',
-  description: 'I am Ryan Amarit, a Digital Strategy Consultant and Senior Web Developer with 8+ years of experience helping businesses turn digital strategy into measurable results.',
+  description: 'I am Ryan Amarit, a Senior Front-End Engineer with 8+ years of experience building high-performance, interactive marketing websites. Expert in Vue.js and React, specializing in component systems, SEO, accessibility, and experimentation.',
   openGraph: {
     title: 'About - Ryan Amarit',
-    description: 'I am Ryan Amarit, a Digital Strategy Consultant and Senior Web Developer with 8+ years of experience helping businesses turn digital strategy into measurable results.',
+    description: 'I am Ryan Amarit, a Senior Front-End Engineer with 8+ years of experience building high-performance, interactive marketing websites. Expert in Vue.js and React, specializing in component systems, SEO, accessibility, and experimentation.',
     images: [
       {
         url: 'https://ryanamarit.com/opengraph.png',
@@ -33,6 +33,9 @@ export const metadata: Metadata = {
     title: 'About - Ryan Amarit',
     description: 'I am Ryan Amarit, a Digital Strategy Consultant and Senior Web Developer with 8+ years of experience helping businesses turn digital strategy into measurable results.',
     images: ['https://ryanamarit.com/opengraph.png'],
+  },
+  alternates: {
+    canonical: 'https://www.ryanamarit.com/about/',
   },
 }
 
@@ -88,23 +91,26 @@ export default function About() {
         </div>
         <div className="lg:order-first lg:row-span-2">
             <h1 className="text-4xl font-bold tracking-tight text-zinc-800 sm:text-5xl dark:text-zinc-100">
-              I'm Ryan Amarit — I help businesses turn digital strategy into measurable results.
+              I'm Ryan Amarit — I build high-performance marketing websites that drive measurable results.
             </h1>
           <div className="mt-6 space-y-7 text-base text-zinc-600 dark:text-zinc-400">
             <p>
-              I bring 8+ years of experience as a Digital Strategy Consultant and Senior Web Developer, 
-              blending strategy and hands-on development to create websites that perform. My work spans 
-              front-end development (Vue.js, Astro, React), CMS strategy (Contentful, WordPress, Drupal, Webflow), 
-              and SEO optimization — always with the goal of aligning digital initiatives with business outcomes.
+              I'm a Senior Front-End Engineer with 8+ years of experience building interactive, high-performance 
+              marketing websites. I specialize in Vue.js with hands-on experience in React (Next.js, Gatsby), 
+              focusing on scalable component systems, headless CMS integration, SEO optimization, and accessibility 
+              best practices.
             </p>
             <p>
-              Over the years, I've helped teams cut publishing times in half, modernized legacy sites 
-              into faster and more flexible platforms, and improved conversion rates by making user 
-              journeys simpler and more effective.
+              My expertise includes leading cross-functional projects from design to launch, implementing 
+              experimentation frameworks and A/B testing for marketing optimization, and building component 
+              libraries that reduce development time while ensuring brand consistency. I've architected 
+              systems that cut content publishing time by 60%, improved site performance by 30–50%, and 
+              achieved WCAG 2.1 compliance across all projects.
             </p>
             <p>
-              At the core, I believe great digital strategy is about clarity: building solutions that 
-              are fast, accessible, and easy to maintain, while keeping the focus on results.
+              I believe great front-end engineering is about building fast, accessible, and maintainable 
+              solutions that deliver measurable impact — whether that's improved conversion rates, faster 
+              load times, or better user engagement.
             </p>
           </div>
         </div>

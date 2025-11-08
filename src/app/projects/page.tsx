@@ -12,35 +12,36 @@ const projects = [
   {
     name: 'Legal Tech Marketing Sites',
     description:
-      'Comprehensive marketing website development and migration project for 8am (formerly AffiniPay) and its legal technology brands. Led frontend development and content management system integration across multiple high-traffic marketing sites.',
+      'Led front-end engineering for 8am (formerly AffiniPay) and its legal technology brands. Built high-performance marketing websites using Vue.js and React, implementing scalable component systems, headless CMS integration, and experimentation frameworks across multiple high-traffic sites.',
     link: { href: 'https://www.8am.com/', label: '8am.com, MyCase.com, LawPay.com, Casepeer.com, Docketwise.com' },
     stack: 'Astro.js, Vue, Contentful, Tailwind',
     contributions: [
-      'Migrated multiple high-traffic marketing sites from WordPress, HubSpot, Webflow, and Gridsome into a unified Astro.js + Vue monorepo.',
-      'Built reusable components and marketing forms for consistency and speed across brands.',
-      'Defined Contentful content models and migrated site content for scalable management.',
-      'Improved site performance, SEO, accessibility, and maintainability.',
-      'Partnered with internal teams and agencies to deliver on aggressive deadlines.'
+      'Migrated multiple high-traffic marketing sites from WordPress, HubSpot, Webflow, and Gridsome into a unified Astro.js + Vue monorepo, achieving 30–50% faster load times.',
+      'Built scalable component systems with Tailwind and Storybook, reducing design-to-dev handoff time by 40% and ensuring brand consistency across brands.',
+      'Architected headless CMS integration with Contentful, cutting content publishing time by 60% and enabling marketing teams to launch campaigns independently.',
+      'Implemented SEO best practices and accessibility standards (WCAG 2.1), improving search rankings and user experience across all properties.',
+      'Integrated experimentation frameworks and A/B testing capabilities to optimize marketing performance and conversion rates.',
+      'Led cross-functional projects from design to launch, partnering with internal teams and agencies to deliver on aggressive deadlines.'
     ]
   },
   {
     name: 'The Modern Art Museum',
     description:
-      'Developed a fully custom Drupal 8 front-end theme with responsive layout components and flexible content editing capabilities.',
+      'Built a high-performance Drupal 8 website with custom component-based theme architecture, responsive design, and flexible content management capabilities.',
     link: { href: 'https://www.themodern.org/', label: 'themodern.org' },
     stack: 'Drupal 8, SCSS, JavaScript'
   },
   {
     name: 'Sinclair Oil',
     description:
-      'Corporate website development with custom Drupal theming, content management system integration, and interactive "Find a Station" locator tool.',
+      'Developed corporate website with custom Drupal component architecture, headless CMS integration, and interactive "Find a Station" locator tool with performance optimization.',
     link: { href: 'https://www.sinclairoil.com/', label: 'sinclairoil.com' },
     stack: 'Drupal 8, SCSS, JavaScript'
   },
   {
     name: 'Renfro Foods E-commerce',
     description:
-      'Customized Shopify theme for e-commerce site with enhanced navigation, product filtering, and mobile responsiveness.',
+      'Built high-performance e-commerce site with custom Shopify component architecture, enhanced navigation, product filtering, and mobile-first responsive design.',
     link: { href: 'https://www.renfrofoods.com/', label: 'renfrofoods.com' },
     stack: 'Shopify (Liquid), HTML, SCSS, JavaScript'
   },
@@ -76,7 +77,7 @@ export default function Projects() {
   return (
     <SimpleLayout
       title="Key Projects & Achievements"
-      intro="Here are some of the most impactful projects I've worked on throughout my career. Each project showcases different aspects of my expertise in digital strategy, front-end development, and technical leadership."
+      intro="Here are some of the most impactful projects I've worked on throughout my career. Each project demonstrates my expertise in building high-performance marketing websites, scalable component systems, and front-end engineering solutions that drive measurable results."
     >
       <div className="space-y-16">
         {/* Featured Legal Tech Marketing Sites */}
@@ -85,29 +86,33 @@ export default function Projects() {
             Legal Tech Marketing Sites
           </h2>
           <Card.Description>
-            Comprehensive marketing website development and migration project for 8am (formerly AffiniPay) and its legal technology brands. Led frontend development and content management system integration across multiple high-traffic marketing sites.
+            Led front-end engineering for 8am (formerly AffiniPay) and its legal technology brands. Built high-performance marketing websites using Vue.js and React, implementing scalable component systems, headless CMS integration, and experimentation frameworks across multiple high-traffic sites.
           </Card.Description>
           <div className="mt-4">
             <ul className="space-y-2 text-sm text-zinc-600 dark:text-zinc-400">
               <li className="flex items-start">
                 <span className="mr-2 text-teal-500">•</span>
-                <span>Migrated multiple high-traffic marketing sites from WordPress, HubSpot, Webflow, and Gridsome into a unified Astro.js + Vue monorepo.</span>
+                <span>Migrated multiple high-traffic marketing sites from WordPress, HubSpot, Webflow, and Gridsome into a unified Astro.js + Vue monorepo, achieving 30–50% faster load times.</span>
               </li>
               <li className="flex items-start">
                 <span className="mr-2 text-teal-500">•</span>
-                <span>Built reusable components and marketing forms for consistency and speed across brands.</span>
+                <span>Built scalable component systems with Tailwind and Storybook, reducing design-to-dev handoff time by 40% and ensuring brand consistency across brands.</span>
               </li>
               <li className="flex items-start">
                 <span className="mr-2 text-teal-500">•</span>
-                <span>Defined Contentful content models and migrated site content for scalable management.</span>
+                <span>Architected headless CMS integration with Contentful, cutting content publishing time by 60% and enabling marketing teams to launch campaigns independently.</span>
               </li>
               <li className="flex items-start">
                 <span className="mr-2 text-teal-500">•</span>
-                <span>Improved site performance, SEO, accessibility, and maintainability.</span>
+                <span>Implemented SEO best practices and accessibility standards (WCAG 2.1), improving search rankings and user experience across all properties.</span>
               </li>
               <li className="flex items-start">
                 <span className="mr-2 text-teal-500">•</span>
-                <span>Partnered with internal teams and agencies to deliver on aggressive deadlines.</span>
+                <span>Integrated experimentation frameworks and A/B testing capabilities to optimize marketing performance and conversion rates.</span>
+              </li>
+              <li className="flex items-start">
+                <span className="mr-2 text-teal-500">•</span>
+                <span>Led cross-functional projects from design to launch, partnering with internal teams and agencies to deliver on aggressive deadlines.</span>
               </li>
             </ul>
           </div>
