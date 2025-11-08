@@ -185,12 +185,12 @@ function Resume() {
               </dd>
             </div>
             <ul className="mt-3 space-y-2 text-xs text-zinc-600 dark:text-zinc-400">
-              <li>• Lead front-end development of high-performance marketing websites using Vue.js and React (Next.js, Gatsby), delivering faster load times and improved user engagement.</li>
-              <li>• Architected scalable component systems with Tailwind and Storybook, reducing design-to-dev handoff time by 40% and ensuring brand consistency across multiple sites.</li>
-              <li>• Integrated headless CMS solutions (Contentful) that cut content publishing time by 60%, enabling marketing teams to launch campaigns independently.</li>
-              <li>• Directed migration of legacy WordPress, HubSpot, and Gridsome sites into modern Astro.js monorepo, achieving 30–50% faster load times and lower maintenance costs.</li>
-              <li>• Implemented SEO and accessibility best practices, achieving WCAG 2.1 compliance and improving search rankings across all marketing properties.</li>
-              <li>• Led cross-functional projects from design to launch, integrating experimentation frameworks and A/B testing to optimize marketing performance and conversion rates.</li>
+              <li>• <strong>Led front-end architecture</strong> for a multi-brand Astro.js + Vue marketing platform, improving page performance and reducing time-to-launch for new pages by 40%.</li>
+              <li>• <strong>Built a Tailwind + Storybook component system</strong> used across 5 brands, improving code reuse, standardizing patterns and increasing design-to-dev consistency.</li>
+              <li>• <strong>Implemented accessibility and performance standards</strong> (WCAG 2.1 AA, Lighthouse 95+), reducing regressions and improving SEO across high-traffic surfaces.</li>
+              <li>• <strong>Partnered with design, brand, and content</strong> to ship interactive, story-driven experiences that improved trial sign-ups and increased engagement on core surfaces.</li>
+              <li>• <strong>Migrated the marketing stack</strong> into a modern Astro.js monorepo, enabling rapid <strong>A/B test implementation</strong> with CRO partners and experimentation that increased trial sign-ups and conversions.</li>
+              <li>• <strong>Defined front-end best practices</strong> across teams, improving code quality, documentation, and reusability.</li>
             </ul>
           </div>
         </div>
@@ -204,7 +204,7 @@ function Resume() {
             <div className="flex flex-wrap gap-x-2">
               <dt className="sr-only">Company</dt>
               <dd className="w-full flex-none text-sm font-medium text-zinc-900 dark:text-zinc-100">
-                Digital Strategy Consultant
+                Freelance Web Developer
               </dd>
               <dt className="sr-only">Role</dt>
               <dd className="text-xs text-zinc-500 dark:text-zinc-400">
@@ -216,10 +216,9 @@ function Resume() {
               </dd>
             </div>
             <ul className="mt-3 space-y-2 text-xs text-zinc-600 dark:text-zinc-400">
-              <li>• Build high-performance marketing websites using Vue.js and React, focusing on component architecture, performance optimization, and SEO best practices.</li>
-              <li>• Lead full-stack front-end projects from design to launch, integrating headless CMSs and implementing accessibility standards for scalable solutions.</li>
-              <li>• Implement experimentation frameworks and A/B testing strategies to optimize marketing performance and conversion rates.</li>
-              <li>• Provide technical leadership on modern front-end architectures, component systems, and performance optimization, enabling teams to deliver measurable results.</li>
+              <li>• <strong>Built custom marketing sites and landing</strong> pages using <strong>Vue.js, Gatsby</strong>, and other modern front-end frameworks, integrating with CMSs like <strong>Contentful and Webflow</strong>.</li>
+              <li>• <strong>Improved site performance and Core Web Vitals</strong> through <strong>Lighthouse audits</strong>, code cleanup, and optimized asset delivery.</li>
+              <li>• <strong>Implemented SEO best practices</strong>, including metadata, structured content, and accessibility improvements.</li>
             </ul>
           </div>
         </div>
@@ -245,9 +244,9 @@ function Resume() {
               </dd>
             </div>
             <ul className="mt-3 space-y-2 text-xs text-zinc-600 dark:text-zinc-400">
-              <li>• Built 3–4 high-performance client websites annually using Drupal 8, developing custom component-based themes and responsive designs that improved performance and user experience.</li>
-              <li>• Maintained a portfolio of 55+ Drupal and WordPress sites, implementing performance optimizations, SEO best practices, and accessibility improvements that reduced support requests.</li>
-              <li>• Collaborated with cross-functional teams to deliver scalable front-end solutions, ensuring consistent component architecture and brand alignment across all client projects.</li>
+              <li>• Delivered 3–4 new client websites per year in Drupal 8, building <strong>custom themes and responsive designs</strong> that improved usability and client satisfaction.</li>
+              <li>• <strong>Led project implementation</strong> for multiple clients, coordinating with design, account, and strategy teams to ensure timely delivery and alignment with brand goals.</li>
+              <li>• Managed a portfolio of 55+ Drupal and WordPress sites, providing proactive maintenance and training that <strong>reduced client support requests</strong> and <strong>increased CMS adoption</strong> by non-technical staff.</li>
             </ul>
           </div>
         </div>
@@ -273,10 +272,10 @@ function Resume() {
               </dd>
             </div>
             <ul className="mt-3 space-y-2 text-xs text-zinc-600 dark:text-zinc-400">
-              <li>• Developed high-performance landing pages, forms, and micro-sites using Drupal 7, implementing responsive designs and performance optimizations that increased lead capture rates.</li>
-              <li>• Automated content migration workflows using Python, improving data accuracy by 90% and reducing migration time from days to hours.</li>
-              <li>• Built reusable component libraries and established front-end development standards, improving code quality and reducing development time across marketing campaigns.</li>
-              <li>• Implemented SEO best practices and accessibility improvements across all marketing properties, contributing to improved search rankings and user experience.</li>
+              <li>• Developed landing pages, forms, emails, and micro-sites that <strong>supported marketing campaigns</strong>, <strong>increased lead capture</strong>, and <strong>ensured consistent cross-platform performance</strong>.</li>
+              <li>• Automated content migration from multiple CMS sites to a new Drupal 7 instance using Python, <strong>improving data accuracy by 90%</strong> and <strong>reducing manual migration time</strong> by <strong>several days per project</strong>.</li>
+              <li>• Assisted in creating automated test scripts with Selenium and Python, <strong>boosting testing efficiency</strong> and <strong>reducing release defects</strong>, contributing to <strong>higher product quality</strong>.</li>
+              <li>• Trained content managers on Git workflows, <strong>enabling faster, error-free content updates</strong> and <strong>reducing developer intervention for routine changes</strong>.</li>
             </ul>
           </div>
         </div>
