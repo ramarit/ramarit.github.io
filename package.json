@@ -46,6 +46,7 @@
     "sharp": "0.34.3"
   },
   "overrides": {
-    "prismjs": "^1.30.0"
+    "prismjs": "^1.30.0",
+    "preact": "^10.28.2"
   }
 }
