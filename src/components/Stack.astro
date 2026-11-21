@@ -1,0 +1,23 @@
+---
+import { stack } from '../content/site'
+---
+
+<section id="stack" class="wrap stack" data-section="stack" data-gl="stack">
+  <p class="eyebrow">Stack</p>
+  <h2 class="h-section" data-split>What I work with</h2>
+
+  <div class="stack-grid" data-stack-bounds>
+    {
+      stack.map((g) => (
+        <div class="stack-group">
+          <h3>{g.group}</h3>
+          <ul class="skill-pills">
+            {g.items.map((item) => (
+              <li>{item}</li>
+            ))}
+          </ul>
+        </div>
+      ))
+    }
+  </div>
+</section>

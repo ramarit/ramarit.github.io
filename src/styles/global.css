@@ -587,83 +587,65 @@ main {
   color: var(--accent);
 }
 
-/* ── Motion lab ─────────────────────────────────────────── */
-.lab {
+/* ── Stack ──────────────────────────────────────────────── */
+.stack {
   padding-block: clamp(5rem, 12vw, 10rem);
 }
-.lab-grid {
+.stack-grid {
   display: grid;
-  gap: 1.25rem;
+  gap: 2.5rem 2rem;
   margin-top: 3rem;
 }
-@media (min-width: 1000px) {
-  .lab-grid {
-    grid-template-columns: 1.4fr 1fr 1fr;
+@media (min-width: 700px) {
+  .stack-grid {
+    grid-template-columns: repeat(2, 1fr);
   }
 }
-.lab-cell {
-  position: relative;
-  display: grid;
-  grid-template-rows: auto 1fr auto;
-  gap: 1rem;
-  min-height: 26rem;
-  padding: 1.25rem;
-  border: 1px solid var(--line);
-  border-radius: 18px;
-  background: color-mix(in oklab, var(--bg-raised) 80%, transparent);
-  backdrop-filter: blur(6px);
+@media (min-width: 1100px) {
+  .stack-grid {
+    grid-template-columns: repeat(4, 1fr);
+  }
 }
-.lab-cell h3 {
-  font-family: var(--display);
-  font-weight: 650;
-  font-size: 1.35rem;
-  letter-spacing: -0.02em;
-}
-.lab-cell .hint {
-  font-size: 0.85rem;
+.stack-group h3 {
+  font-family: var(--mono);
+  font-size: 0.75rem;
+  font-weight: 500;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
   color: var(--ink-soft);
-}
-.lab-arena {
-  position: relative;
-  min-height: 14rem;
-  border-radius: 12px;
-  overflow: hidden;
-  background: color-mix(in oklab, var(--bg) 70%, transparent);
-  border: 1px dashed var(--line);
+  padding-bottom: 0.9rem;
+  margin-bottom: 1rem;
+  border-bottom: 1px solid var(--line);
 }
 .skill-pills {
   display: flex;
   flex-wrap: wrap;
   gap: 0.45rem;
-  padding: 0.9rem;
   list-style: none;
   margin: 0;
+  padding: 0;
 }
 .skill-pills li {
   font-family: var(--mono);
   font-size: 0.78rem;
   padding: 0.4rem 0.75rem;
   border-radius: 999px;
-  background: var(--ink);
-  color: var(--bg);
-  cursor: grab;
+  border: 1px solid var(--line);
+  color: var(--ink);
   user-select: none;
+}
+.stack.is-throwable .skill-pills li {
+  cursor: grab;
   touch-action: none;
   will-change: transform;
 }
-.skill-pills li:nth-child(5n + 1) {
+.stack.is-throwable .skill-pills li:active {
+  cursor: grabbing;
   background: var(--accent);
+  border-color: var(--accent);
   color: var(--accent-ink);
 }
-.skill-pills.is-list {
-  flex-direction: column;
-  align-items: flex-start;
-}
-.lab-actions {
-  display: flex;
-  flex-wrap: wrap;
-  gap: 0.5rem;
-}
+
 .btn {
   display: inline-flex;
   align-items: center;
@@ -687,80 +669,6 @@ main {
   border-color: var(--accent);
   color: var(--accent-ink);
 }
-.lab-code summary {
-  cursor: pointer;
-  font-family: var(--mono);
-  font-size: 0.75rem;
-  text-transform: uppercase;
-  letter-spacing: 0.06em;
-  color: var(--ink-soft);
-}
-.lab-code pre {
-  margin: 0.75rem 0 0;
-  padding: 0.85rem;
-  font-family: var(--mono);
-  font-size: 0.72rem;
-  line-height: 1.6;
-  white-space: pre-wrap;
-  border-radius: 10px;
-  background: var(--bg);
-  border: 1px solid var(--line);
-  color: var(--ink-soft);
-}
-.principles {
-  position: relative;
-  display: grid;
-  place-items: center;
-}
-.principle {
-  position: absolute;
-  inset: 1rem;
-  display: grid;
-  align-content: end;
-  gap: 0.5rem;
-  padding: 1.25rem;
-  border-radius: 12px;
-  background: var(--ink);
-  color: var(--bg);
-}
-.principle b {
-  font-family: var(--display);
-  font-weight: 700;
-  font-size: 1.6rem;
-  line-height: 1;
-  letter-spacing: -0.03em;
-}
-.principle span {
-  font-size: 0.85rem;
-  opacity: 0.72;
-}
-.no-js .principle,
-.principle:not(:first-child) {
-  /* Without JS the cards stack as a readable list (see .principles.is-static). */
-}
-.principles.is-static {
-  display: grid;
-  gap: 0.5rem;
-  padding: 0.75rem;
-  place-items: stretch;
-}
-.principles.is-static .principle {
-  position: relative;
-  inset: auto;
-}
-.morph-stage {
-  display: grid;
-  place-items: center;
-}
-.morph-stage svg {
-  width: 70%;
-  max-width: 14rem;
-  overflow: visible;
-}
-.morph-stage path {
-  fill: var(--accent);
-}
-
 /* ── Timeline ───────────────────────────────────────────── */
 .timeline {
   padding-block: clamp(5rem, 12vw, 10rem);

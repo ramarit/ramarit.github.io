@@ -5,8 +5,6 @@ import { SplitText } from 'gsap/SplitText'
 import { MorphSVGPlugin } from 'gsap/MorphSVGPlugin'
 import { DrawSVGPlugin } from 'gsap/DrawSVGPlugin'
 import { ScrambleTextPlugin } from 'gsap/ScrambleTextPlugin'
-import { Flip } from 'gsap/Flip'
-import { Observer } from 'gsap/Observer'
 import { Draggable } from 'gsap/Draggable'
 import { InertiaPlugin } from 'gsap/InertiaPlugin'
 import { CustomEase } from 'gsap/CustomEase'
@@ -18,8 +16,6 @@ gsap.registerPlugin(
   MorphSVGPlugin,
   DrawSVGPlugin,
   ScrambleTextPlugin,
-  Flip,
-  Observer,
   Draggable,
   InertiaPlugin,
   CustomEase,
@@ -34,7 +30,7 @@ export const reduceMotion = () => window.matchMedia('(prefers-reduced-motion: re
 export const finePointer = () => window.matchMedia('(hover: hover) and (pointer: fine)').matches
 export const isDesktop = () => window.matchMedia('(min-width: 1000px)').matches
 
-export { gsap, ScrollTrigger, ScrollSmoother, SplitText, Flip, Observer, Draggable }
+export { gsap, ScrollTrigger, ScrollSmoother, SplitText, Draggable }
 
 /** Media conditions every scene receives through gsap.matchMedia(). */
 export const conditions = {

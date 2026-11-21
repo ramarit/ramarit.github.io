@@ -90,7 +90,7 @@ Eight GSAP/GL scenes under `src/motion/scenes/`:
 | `hero` | Masked character intro, scramble-text roles, variable-font wght/wdth cursor proximity |
 | `process` | Four-step vertical stack; deferred WebGL field receives `structure` changes via local shader-state object |
 | `work` | Horizontal scroll pinch-zoom; CSS scoped to `.work .work-track` / `.work .work-card` so Projects index grid is unaffected |
-| `lab` | Interactive particle / grid playground |
+| `stack` | Grouped skills; pills can be flung and spring back (fine pointers only) |
 | `timeline` | Staggered reveal with scroll-linked scrub |
 | `contact` | Form + map area |
 | `split` | SplitText-powered heading reveals; play immediately when already in view |
@@ -125,8 +125,8 @@ Core orchestration: `src/motion/app.ts` — ScrollSmoother, matchMedia scenes, G
 - [x] ClientRouter navigation: `/` → `/projects/` → case study → `/about/` and back — no console errors beyond expected headless WebGL
 - [x] Hash links (`/#contact`, `/#process`) land at correct scroll positions
 - [x] `npx astro check` → 0 errors; `npm run build` → 7 pages built
-- [x] Desktop QA: hero, process (sketch/structure/code/ship), horizontal work, lab, timeline, contact, about, projects index, 8am case study
-- [x] Mobile QA: hero, work cards, lab
+- [x] Desktop QA: hero, process (sketch/structure/code/ship), horizontal work, stack, timeline, contact, about, projects index, 8am case study
+- [x] Mobile QA: hero, work cards, stack
 
 ---
 

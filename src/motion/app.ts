@@ -12,7 +12,7 @@ import { createField, getField } from './gl/field'
 import { hero } from './scenes/hero'
 import { process } from './scenes/process'
 import { work } from './scenes/work'
-import { lab } from './scenes/lab'
+import { stack } from './scenes/stack'
 import { timeline } from './scenes/timeline'
 import { contact } from './scenes/contact'
 import { split } from './scenes/split'
@@ -25,7 +25,7 @@ const pageScenes: PageScene[] = [
   { selector: '.hero', run: hero },
   { selector: '.process', run: process },
   { selector: '.work', run: work },
-  { selector: '.lab', run: lab },
+  { selector: '.stack', run: stack },
   { selector: '.timeline', run: timeline },
   { selector: '.contact', run: contact },
 ]
@@ -34,7 +34,7 @@ const glIntensity: Record<string, number> = {
   hero: 0.95,
   process: 0.8,
   work: 0.5,
-  lab: 0.45,
+  stack: 0.45,
   experience: 0.4,
   contact: 0.9,
   page: 0.55,

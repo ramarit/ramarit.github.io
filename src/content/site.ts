@@ -39,25 +39,21 @@ export const process = [
   },
 ]
 
-export const skills = [
-  'TypeScript',
-  'React',
-  'Astro',
-  'Vue',
-  'Next.js',
-  'Node.js',
-  'GSAP',
-  'WebGL',
-  'Tailwind',
-  'Storybook',
-  'Figma',
-  'Contentful',
-  'WCAG 2.1 AA',
-  'Core Web Vitals',
-  'Technical SEO',
-  'AEO',
-  'GA4 + GTM',
-  'A/B testing',
-  'Claude',
-  'MCP',
+export const stack = [
+  {
+    group: 'Strategy & growth',
+    items: ['Web strategy', 'Roadmaps', 'Technical SEO', 'AEO', 'GA4 + GTM', 'A/B testing', 'Core Web Vitals'],
+  },
+  {
+    group: 'Engineering',
+    items: ['TypeScript', 'React', 'Astro', 'Next.js', 'Vue', 'Node.js'],
+  },
+  {
+    group: 'Design systems & CMS',
+    items: ['Tailwind', 'Storybook', 'Figma', 'Contentful', 'WCAG 2.1 AA'],
+  },
+  {
+    group: 'Motion & AI',
+    items: ['GSAP', 'WebGL', 'Claude', 'MCP'],
+  },
 ]
