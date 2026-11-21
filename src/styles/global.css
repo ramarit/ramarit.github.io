@@ -6,7 +6,7 @@
   --bg-raised: #141416;
   --ink: #f2efe8;
   --ink-soft: #a9a59c;
-  --ink-faint: #5d5a55;
+  --ink-faint: #86827a;
   --line: rgb(242 239 232 / 0.12);
   --accent: #d4ff3a;
   --accent-ink: #0a0a0b;
@@ -23,7 +23,7 @@
   --bg-raised: #e7e3d9;
   --ink: #111110;
   --ink-soft: #55524c;
-  --ink-faint: #8d8981;
+  --ink-faint: #67645d;
   --line: rgb(17 17 16 / 0.14);
   --accent: #4a3cff;
   --accent-ink: #f1eee6;
@@ -197,6 +197,15 @@ img {
   font-weight: 800;
   letter-spacing: -0.04em !important;
   text-transform: none !important;
+  display: inline-flex;
+  align-items: center;
+}
+/* The mark is black on transparent. The header blends with mix-blend-mode: difference,
+   which only shows light content, so invert it to read on both themes. */
+.logo img {
+  display: block;
+  filter: invert(1);
+  image-rendering: -webkit-optimize-contrast;
 }
 .nav {
   display: flex;

@@ -10,11 +10,24 @@ interface Props {
   description?: string
   /** Per-page palette for the WebGL field: 'home' | 'work' | 'about'. */
   palette?: string
+  /** Keep utility pages (e.g. /thank-you/) out of search results. */
+  noindex?: boolean
 }
-const { title, description = site.description, palette = 'home' } = Astro.props
+const { title, description = site.description, palette = 'home', noindex = false } = Astro.props
 const fullTitle = title ? `${title} — ${site.name}` : site.title
 const canonical = new URL(Astro.url.pathname, site.url).href
-const og = new URL('/opengraph.png', site.url).href
+const og = new URL('/opengraph.jpg', site.url).href
+const isHome = Astro.url.pathname === '/'
+const personLd = {
+  '@context': 'https://schema.org',
+  '@type': 'Person',
+  name: site.name,
+  jobTitle: site.role,
+  url: site.url,
+  image: og,
+  sameAs: [site.linkedin],
+  address: { '@type': 'PostalAddress', addressLocality: 'Fort Worth', addressRegion: 'TX', addressCountry: 'US' },
+}
 ---
 
 <!doctype html>
@@ -25,14 +38,24 @@ const og = new URL('/opengraph.png', site.url).href
     <title>{fullTitle}</title>
     <meta name="description" content={description} />
     <link rel="canonical" href={canonical} />
+    {noindex && <meta name="robots" content="noindex" />}
     <link rel="icon" href="/favicon.ico" />
     <link rel="sitemap" href="/sitemap-index.xml" />
     <meta property="og:type" content="website" />
     <meta property="og:url" content={canonical} />
     <meta property="og:title" content={fullTitle} />
     <meta property="og:description" content={description} />
+    <meta property="og:site_name" content={site.name} />
+    <meta property="og:locale" content="en_US" />
     <meta property="og:image" content={og} />
+    <meta property="og:image:width" content="1200" />
+    <meta property="og:image:height" content="631" />
+    <meta property="og:image:alt" content={site.title} />
     <meta name="twitter:card" content="summary_large_image" />
+    <meta name="twitter:title" content={fullTitle} />
+    <meta name="twitter:description" content={description} />
+    <meta name="twitter:image" content={og} />
+    {isHome && <script type="application/ld+json" set:html={JSON.stringify(personLd)} />}
     <meta name="theme-color" content="#0a0a0b" />
     <link rel="preconnect" href="https://fonts.googleapis.com" />
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
