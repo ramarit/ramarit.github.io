@@ -18,7 +18,7 @@ export const split: Scene = (root, c) => {
     splits.push(s)
 
     const reveal = gsap.from(s.lines, {
-      yPercent: 110,
+      yPercent: 140,
       duration: 1.05,
       stagger: 0.08,
       ease: 'paint',

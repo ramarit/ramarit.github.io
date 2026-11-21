@@ -41,30 +41,32 @@ export const process = [
 
 export const stack = [
   {
-    group: 'Strategy & growth',
+    group: 'Web platforms',
+    outcome: 'Multi-brand sites on one codebase, with a content model marketers can publish on.',
+    items: ['Astro', 'Next.js', 'React', 'Vue', 'TypeScript', 'Node.js', 'Contentful'],
+  },
+  {
+    group: 'Design systems',
+    outcome: 'One component library shared across brands, accessible by default.',
+    items: ['Tailwind', 'Storybook', 'Figma', 'WCAG 2.1 AA', 'GSAP', 'WebGL'],
+  },
+  {
+    group: 'Growth & search',
+    outcome: 'Fast pages that rank and get cited by AI, measured and A/B tested.',
     items: ['Web strategy', 'Roadmaps', 'Technical SEO', 'AEO', 'GA4 + GTM', 'A/B testing', 'Core Web Vitals'],
   },
   {
-    group: 'Engineering',
-    items: ['TypeScript', 'React', 'Astro', 'Next.js', 'Vue', 'Node.js', 'GSAP', 'WebGL'],
-  },
-  {
-    group: 'Design systems & CMS',
-    items: ['Tailwind', 'Storybook', 'Figma', 'Contentful', 'WCAG 2.1 AA'],
-  },
-  {
     group: 'AI workflows',
+    outcome: 'Agent pipelines that let a small team ship like a big one.',
     items: [
       'Claude Code',
-      'Cursor',
       'Agent harnesses',
-      'Parallel agents',
       'MCP servers',
       'Custom skills',
-      'Spec-driven development',
+      'Spec-driven dev',
       'AI code review',
       'Bug-to-PR pipeline',
-      'LLM tracing',
     ],
   },
 ]
+

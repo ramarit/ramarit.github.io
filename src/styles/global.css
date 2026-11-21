@@ -183,6 +183,53 @@ img {
   padding-inline: var(--gutter);
   mix-blend-mode: difference;
   color: #f2efe8;
+  --header-ease: cubic-bezier(0.2, 0.7, 0.2, 1);
+  transition:
+    transform 0.45s var(--header-ease),
+    translate 0.45s var(--header-ease),
+    inset 0.45s var(--header-ease),
+    height 0.45s var(--header-ease),
+    padding 0.45s var(--header-ease),
+    border-radius 0.45s var(--header-ease),
+    background-color 0.3s,
+    box-shadow 0.3s;
+}
+.site-header.is-hidden {
+  transform: translateY(calc(-100% - 1.5rem));
+}
+/* Away from the top: drop the difference blend (a background can't blend that way) for a
+   frosted bar in theme colours. */
+/* …and it floats: a pill inset from the edges with a soft shadow. */
+.site-header.is-scrolled {
+  mix-blend-mode: normal;
+  color: var(--ink);
+  inset: 0.75rem var(--gutter) auto var(--gutter);
+  height: 3.25rem;
+  padding-inline: 1.1rem 1.25rem;
+  border-radius: 999px;
+  background-color: color-mix(in oklab, var(--bg) 70%, transparent);
+  backdrop-filter: blur(14px) saturate(1.2);
+  -webkit-backdrop-filter: blur(14px) saturate(1.2);
+  border: 1px solid var(--line);
+  box-shadow:
+    0 10px 30px -12px rgb(0 0 0 / 0.45),
+    0 2px 6px -2px rgb(0 0 0 / 0.2);
+}
+@media (min-width: 900px) {
+  .site-header.is-scrolled {
+    left: 50%;
+    right: auto;
+    width: min(56rem, calc(100% - 2 * var(--gutter)));
+    translate: -50% 0;
+  }
+}
+:root[data-theme='light'] .site-header.is-scrolled .logo img {
+  filter: none;
+}
+@media (prefers-reduced-motion: reduce) {
+  .site-header {
+    transition: none;
+  }
 }
 .site-header a,
 .site-header button {
@@ -261,10 +308,17 @@ main {
 .hero-name .char {
   font-variation-settings: 'wght' var(--wght, 800), 'wdth' var(--wdth, 85), 'opsz' 96;
 }
-/* SplitText wraps each char in an overflow: clip mask one line-height tall. With the tight
-   0.82 line-height that cuts off descenders (the "y" in Ryan), so let the mask reach lower
-   without changing the layout. hero.ts starts chars low enough to stay hidden in it. */
-.hero-name .char-mask {
+/* SplitText wraps each char/line in an overflow: clip mask one line-height tall. With our
+   tight display line-heights that cuts off descenders ("y", "g") and, on hover ripples, the
+   tops of capitals. Let every mask reach past the line box without changing the layout;
+   the reveal tweens start low enough to stay hidden inside the taller mask. */
+.char-mask {
+  padding-block: 0.15em 0.3em;
+  margin-block: -0.15em -0.3em;
+}
+/* Line masks are stacked blocks, where top and bottom negative margins would collapse into
+   each other and open up the line gap, so extend these downward only. */
+.split-line-mask {
   padding-bottom: 0.3em;
   margin-bottom: -0.3em;
 }
@@ -304,7 +358,7 @@ main {
   transform-origin: top;
 }
 
-/* ── Process (Canvas → Code) ────────────────────────────── */
+/* ── Process (Idea → Launch) ────────────────────────────── */
 .process {
   padding-block: clamp(5rem, 12vw, 10rem);
 }
@@ -332,10 +386,21 @@ main {
   gap: 0 1rem;
   padding-top: 1.25rem;
   border-top: 1px solid var(--line);
-  transition: opacity 0.4s;
+  transition: border-color 0.4s;
 }
-.js-motion .process-steps li:not(.is-active) {
-  opacity: 0.35;
+.process-steps h3,
+.process-steps p {
+  transition: color 0.4s;
+}
+/* Inactive steps dim by colour, not opacity, so every step stays readable (4.5:1+). */
+.js-motion .process-steps li:not(.is-active) h3 {
+  color: var(--ink-soft);
+}
+.js-motion .process-steps li:not(.is-active) p {
+  color: var(--ink-faint);
+}
+.js-motion .process-steps li.is-active {
+  border-top-color: var(--accent);
 }
 .process-steps h3 {
   font-family: var(--display);
@@ -374,20 +439,24 @@ main {
   stroke-linecap: round;
 }
 /* Static / reduced-motion end state: show the finished card and code, not the drawing. */
+/* Static / reduced-motion end state: just the finished card. */
 .process-stage .pc-stroke,
-.process-stage .pc-wire {
+.process-stage .pc-wire,
+.process-stage .pc-code {
   display: none;
 }
 .js-motion .process-stage .pc-stroke,
-.js-motion .process-stage .pc-wire {
+.js-motion .process-stage .pc-wire,
+.js-motion .process-stage .pc-code {
   display: block;
 }
+/* The code panel and the card each appear alone, centred inside the shared frame. */
 .pc-code {
   position: absolute;
-  right: 4%;
-  bottom: 6%;
-  width: 56%;
-  margin: 0;
+  inset: 0;
+  width: 68%;
+  height: fit-content;
+  margin: auto;
   padding: 1rem 1.1rem;
   font-family: var(--mono);
   font-size: clamp(0.6rem, 0.95vw, 0.8rem);
@@ -416,9 +485,10 @@ main {
 }
 .pc-card {
   position: absolute;
-  left: 10%;
-  top: 14%;
-  width: 46%;
+  inset: 0;
+  width: 40%;
+  height: fit-content;
+  margin: auto;
   padding: 1.1rem;
   border-radius: 14px;
   background: var(--ink);
@@ -639,6 +709,13 @@ main {
   margin-bottom: 1rem;
   border-bottom: 1px solid var(--line);
 }
+.stack-outcome {
+  font-size: 1.05rem;
+  line-height: 1.45;
+  color: var(--ink);
+  margin: 0 0 1.25rem;
+  max-width: 32ch;
+}
 .skill-pills {
   display: flex;
   flex-wrap: wrap;
@@ -801,8 +878,8 @@ main {
   font-family: var(--display);
   font-weight: 800;
   font-size: clamp(3.5rem, 13vw, 14rem);
-  line-height: 0.85;
-  letter-spacing: -0.055em;
+  line-height: 0.9;
+  letter-spacing: -0.03em;
 }
 .contact-big .char {
   display: inline-block;

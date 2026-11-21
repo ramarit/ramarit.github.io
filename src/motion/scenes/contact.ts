@@ -13,7 +13,7 @@ export const contact: Scene = (root, c) => {
   })
 
   gsap.from(split.chars, {
-    yPercent: 110,
+    yPercent: 150,
     rotate: 6,
     duration: 1.1,
     stagger: 0.02,

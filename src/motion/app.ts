@@ -111,6 +111,8 @@ function setupPage() {
     const splitCleanup = split(document.body, c)
     if (splitCleanup) cleanups.push(splitCleanup)
 
+    cleanups.push(setupHeaderHide())
+
     if (!c.reduce) {
       const magneticCleanup = magnetic(document.body, c)
       if (magneticCleanup) cleanups.push(magneticCleanup)
@@ -147,6 +149,38 @@ function teardownPage() {
   smoother = null
   ScrollTrigger.getAll().forEach((trigger) => trigger.kill())
   cleanupAnalytics()
+}
+
+/**
+ * Slide the header away while scrolling down; bring it back on any scroll up or keyboard focus.
+ * Away from the top it also gets a frosted backdrop (.is-scrolled).
+ */
+function setupHeaderHide() {
+  const header = document.querySelector<HTMLElement>('.site-header')
+  if (!header) return () => {}
+  const setHidden = (hidden: boolean) => header.classList.toggle('is-hidden', hidden)
+  // Past the top, the header gets a frosted backdrop so it reads over any content.
+  const setScrolled = (scrolled: boolean) => header.classList.toggle('is-scrolled', scrolled)
+
+  const trigger = ScrollTrigger.create({
+    start: 0,
+    end: 'max',
+    onUpdate: (self) => {
+      setScrolled(self.scroll() > 40)
+      if (header.contains(document.activeElement)) return setHidden(false)
+      if (self.scroll() < 120) return setHidden(false)
+      setHidden(self.direction === 1)
+    },
+  })
+  const onFocus = () => setHidden(false)
+  header.addEventListener('focusin', onFocus)
+
+  return () => {
+    trigger.kill()
+    header.removeEventListener('focusin', onFocus)
+    setHidden(false)
+    setScrolled(false)
+  }
 }
 
 function setupGlPresets() {
