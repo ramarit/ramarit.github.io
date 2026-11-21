@@ -308,8 +308,22 @@ function setupRouter() {
     }
   })
 
-  document.addEventListener('astro:before-swap', () => {
+  document.addEventListener('astro:before-swap', (event) => {
     teardownPage()
+    // The router replaces <html>'s attributes with the incoming page's, which never has the
+    // runtime state: the chosen theme (set by the inline head script on first load only),
+    // .has-gl (the persisted WebGL field) and .js-motion. Carry them over before the swap
+    // so light mode keeps its text colours and nothing flashes.
+    const { newDocument } = event as Event & { newDocument: Document }
+    const current = document.documentElement
+    const next = newDocument.documentElement
+    if (current.dataset.theme) next.dataset.theme = current.dataset.theme
+    else delete next.dataset.theme
+    for (const cls of ['has-gl', 'js-motion']) {
+      next.classList.toggle(cls, current.classList.contains(cls))
+    }
+    const meta = newDocument.querySelector('meta[name="theme-color"]')
+    if (meta) meta.setAttribute('content', current.dataset.theme === 'light' ? '#f1eee6' : '#0a0a0b')
   })
 
   document.addEventListener('astro:page-load', () => {
