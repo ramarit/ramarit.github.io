@@ -575,22 +575,29 @@ main {
     flex: none;
     margin-bottom: clamp(1rem, 3vh, 2rem);
   }
+  /* One grid across all cards: row 1 = covers, row 2 = text. Cards span both rows as a
+     subgrid, so every cover is the same height (and the big numbers line up) while the text
+     row takes the height of the longest card. */
   .js-motion .work .work-track {
     flex: 1 1 auto;
     min-height: 0;
-    display: flex;
-    align-items: center;
-    gap: 2rem;
+    max-height: 760px;
+    display: grid;
+    grid-auto-flow: column;
+    grid-auto-columns: min(62vw, 980px);
+    grid-template-rows: minmax(0, 1fr) auto;
+    column-gap: 2rem;
+    row-gap: 0;
     width: max-content;
     max-width: none;
     margin-inline: 0;
     padding-inline: var(--gutter);
   }
   .js-motion .work .work-card {
-    width: min(62vw, 980px);
-    height: 100%;
-    max-height: 760px;
-    grid-template-rows: minmax(0, 1fr) auto;
+    grid-row: span 2;
+    grid-template-rows: subgrid;
+    row-gap: 0;
+    min-height: 0;
   }
   .js-motion .work .work-cover {
     aspect-ratio: auto;
