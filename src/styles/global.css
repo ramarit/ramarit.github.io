@@ -1040,14 +1040,9 @@ main {
      contrast guard only promises 4.5:1 for --ink-soft and brighter. */
   color: var(--ink-soft);
 }
-/* Phones: © and location share a row; the long "Built with…" line gets its own row below. */
 @media (max-width: 640px) {
   .site-footer {
     gap: 0.5rem 1rem;
-  }
-  .site-footer span:nth-child(2) {
-    order: 3;
-    flex-basis: 100%;
   }
 }
 
