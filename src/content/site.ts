@@ -46,14 +46,24 @@ export const stack = [
   },
   {
     group: 'Engineering',
-    items: ['TypeScript', 'React', 'Astro', 'Next.js', 'Vue', 'Node.js'],
+    items: ['TypeScript', 'React', 'Astro', 'Next.js', 'Vue', 'Node.js', 'GSAP', 'WebGL'],
   },
   {
     group: 'Design systems & CMS',
     items: ['Tailwind', 'Storybook', 'Figma', 'Contentful', 'WCAG 2.1 AA'],
   },
   {
-    group: 'Motion & AI',
-    items: ['GSAP', 'WebGL', 'Claude', 'MCP'],
+    group: 'AI workflows',
+    items: [
+      'Claude Code',
+      'Cursor',
+      'Agent harnesses',
+      'Parallel agents',
+      'MCP servers',
+      'Spec-driven development',
+      'AI code review',
+      'Bug-to-PR pipeline',
+      'LLM tracing',
+    ],
   },
 ]
