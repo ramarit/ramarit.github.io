@@ -465,18 +465,26 @@ main {
   gap: 1.5rem;
 }
 @media (min-width: 1000px) {
+  /* The pin is exactly one screen tall. Size the cards from the height that's left after
+     the header and heading, so nothing is clipped: the text keeps its natural size and the
+     cover art absorbs the difference. */
   .js-motion .work .work-pin {
     height: 100vh;
+    height: 100svh;
     display: flex;
     flex-direction: column;
-    justify-content: center;
+    padding-block: calc(var(--header-h) + 0.5rem) clamp(1.25rem, 4vh, 3rem);
     overflow: hidden;
   }
   .js-motion .work .work-head {
-    margin-bottom: 2rem;
+    flex: none;
+    margin-bottom: clamp(1rem, 3vh, 2rem);
   }
   .js-motion .work .work-track {
+    flex: 1 1 auto;
+    min-height: 0;
     display: flex;
+    align-items: center;
     gap: 2rem;
     width: max-content;
     max-width: none;
@@ -485,6 +493,13 @@ main {
   }
   .js-motion .work .work-card {
     width: min(62vw, 980px);
+    height: 100%;
+    max-height: 760px;
+    grid-template-rows: minmax(0, 1fr) auto;
+  }
+  .js-motion .work .work-cover {
+    aspect-ratio: auto;
+    min-height: 0;
   }
 }
 .work-card {
