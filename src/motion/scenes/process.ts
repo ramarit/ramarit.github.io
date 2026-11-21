@@ -47,6 +47,7 @@ export const process: Scene = (root, c) => {
       onUpdate: (self) => {
         const step = Math.min(3, Math.floor(self.progress * 4))
         steps.forEach((li, i) => li.classList.toggle('is-active', i === step))
+        root.classList.toggle('is-framed', self.progress > 0.26)
         syncShader()
       },
     },
@@ -58,7 +59,9 @@ export const process: Scene = (root, c) => {
 
   // 2 — Structure: the stroke morphs into the frame (it stays from here on), the wireframe
   // draws in inside it, and the shader grids up.
-  tl.to(stroke, { morphSVG: frame, strokeWidth: 2, stroke: 'var(--ink-soft)', duration: 0.6, ease: 'power2.inOut' }, 1)
+  // Colour is not tweened here: GSAP would bake var(--ink-soft) into a fixed rgb() and the stroke
+  // would ignore later theme toggles. CSS switches it via .is-framed (set in onUpdate) instead.
+  tl.to(stroke, { morphSVG: frame, strokeWidth: 2, duration: 0.6, ease: 'power2.inOut' }, 1)
   tl.to(wires, { drawSVG: '100%', duration: 0.45, stagger: 0.07 }, 1.35)
   tl.to(shader, { structure: 1, duration: 0.8, ease: 'power2.inOut' }, 1.1)
 
@@ -84,6 +87,7 @@ export const process: Scene = (root, c) => {
   tl.to({}, { duration: 0.15 }, 3.85)
 
   return () => {
+    root.classList.remove('is-framed')
     const live = getField()
     if (live) live.state.structure = 0
   }

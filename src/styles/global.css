@@ -443,6 +443,12 @@ main {
   stroke-width: 22;
   stroke-linecap: round;
   stroke-linejoin: round;
+  transition: stroke 0.5s;
+}
+/* Once the sketch has become the frame. A class, not a GSAP colour tween, so the colour stays a
+   live CSS variable and follows theme toggles. */
+.process.is-framed .pc-stroke {
+  stroke: var(--ink-soft);
 }
 .pc-wire path {
   fill: none;
