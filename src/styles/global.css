@@ -912,7 +912,7 @@ main {
   font-family: var(--display);
   font-weight: 800;
   font-size: clamp(3rem, 11vw, 10rem);
-  line-height: 0.88;
+  line-height: 1.05;
   letter-spacing: -0.05em;
   font-variation-settings: 'wdth' 85, 'opsz' 96;
 }

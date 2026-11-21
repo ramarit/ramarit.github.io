@@ -15,11 +15,16 @@ export const magnetic: Scene = (root, c) => {
 
     const onMove = (event: PointerEvent) => {
       const r = el.getBoundingClientRect()
-      xTo((event.clientX - (r.left + r.width / 2)) * 0.35)
-      yTo((event.clientY - (r.top + r.height / 2)) * 0.35)
+      // Reduce magnetic strength for text elements to maintain readability
+      const strength = el.dataset.magnetic === 'text' ? 0.15 : 0.35
+      xTo((event.clientX - (r.left + r.width / 2)) * strength)
+      yTo((event.clientY - (r.top + r.height / 2)) * strength)
+      // Add subtle text-shadow for readability during movement
+      el.style.textShadow = `0 0 6px rgba(0, 0, 0, 0.4)`
     }
     const onLeave = () => {
       gsap.to(el, { x: 0, y: 0, duration: 1.1, ease: 'elastic.out(1, 0.35)', overwrite: true })
+      el.style.textShadow = ''
     }
 
     el.addEventListener('pointermove', onMove)
