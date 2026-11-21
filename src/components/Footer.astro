@@ -1,0 +1,10 @@
+---
+import { site } from '../content/site'
+const year = new Date().getFullYear()
+---
+
+<footer class="wrap site-footer">
+  <span>© {year} {site.name}</span>
+  <span>Built with Astro, GSAP and WebGL (OGL)</span>
+  <span>{site.location}</span>
+</footer>

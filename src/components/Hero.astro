@@ -1,0 +1,20 @@
+---
+import { site } from '../content/site'
+---
+
+<section class="wrap hero" data-section="hero" data-gl="hero">
+  <h1 class="hero-name" data-hero-name aria-label={site.name}>
+    <span class="line">Ryan</span>
+    <span class="line">Amarit</span>
+  </h1>
+  <div class="hero-foot" data-hero-foot>
+    <p class="hero-role">
+      Design engineer building <span class="craft" data-craft data-crafts={JSON.stringify(site.crafts)}>{site.crafts[0]}</span><br />
+      <span style="color: var(--ink-soft)">from canvas to code.</span>
+    </p>
+    <p class="lede" style="font-size: 1rem">{site.intro}</p>
+    <a class="scroll-cue eyebrow" href="#process" aria-label="Scroll to process">
+      Scroll <i aria-hidden="true"></i>
+    </a>
+  </div>
+</section>

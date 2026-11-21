@@ -1,0 +1,80 @@
+---
+import { ClientRouter } from 'astro:transitions'
+import '../styles/global.css'
+import { site } from '../content/site'
+import Header from '../components/Header.astro'
+import Footer from '../components/Footer.astro'
+
+interface Props {
+  title?: string
+  description?: string
+  /** Per-page palette for the WebGL field: 'home' | 'work' | 'about'. */
+  palette?: string
+}
+const { title, description = site.description, palette = 'home' } = Astro.props
+const fullTitle = title ? `${title} — ${site.name}` : site.title
+const canonical = new URL(Astro.url.pathname, site.url).href
+const og = new URL('/opengraph.png', site.url).href
+---
+
+<!doctype html>
+<html lang="en" data-palette={palette}>
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>{fullTitle}</title>
+    <meta name="description" content={description} />
+    <link rel="canonical" href={canonical} />
+    <link rel="icon" href="/favicon.ico" />
+    <link rel="sitemap" href="/sitemap-index.xml" />
+    <meta property="og:type" content="website" />
+    <meta property="og:url" content={canonical} />
+    <meta property="og:title" content={fullTitle} />
+    <meta property="og:description" content={description} />
+    <meta property="og:image" content={og} />
+    <meta name="twitter:card" content="summary_large_image" />
+    <meta name="theme-color" content="#0a0a0b" />
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      rel="stylesheet"
+      href="https://fonts.googleapis.com/css2?family=Bricolage+Grotesque:opsz,wdth,wght@12..96,75..100,200..800&family=Geist:wght@400;500;600&family=JetBrains+Mono:wght@400;500&display=swap"
+    />
+    <script is:inline>
+      // Theme and motion flags before first paint, so nothing flashes.
+      ;(function () {
+        var d = document.documentElement
+        try {
+          var t = localStorage.getItem('theme')
+          if (t === 'light' || t === 'dark') d.dataset.theme = t
+        } catch (e) {}
+        // TODO(motion): re-enable once src/motion/app.ts boots the scenes. While .js-motion is set,
+        // CSS hides the hero until GSAP reveals it (2.5s CSS fallback) and dims inactive process steps.
+        // var reduce = window.matchMedia('(prefers-reduced-motion: reduce)').matches
+        // if (!reduce) d.classList.add('js-motion')
+      })()
+    </script>
+    <ClientRouter fallback="none" />
+  </head>
+  <body>
+    <a class="skip-link" href="#main">Skip to content</a>
+    <div id="gl" aria-hidden="true" transition:persist="gl"></div>
+    <div id="transition" aria-hidden="true" transition:persist="transition">
+      <span></span><span></span><span></span><span></span><span></span>
+    </div>
+    <div class="cursor" aria-hidden="true" transition:persist="cursor"></div>
+    <Header />
+    <div id="smooth-wrapper">
+      <div id="smooth-content">
+        <main id="main" tabindex="-1" transition:animate="none">
+          <slot />
+        </main>
+        <Footer />
+      </div>
+    </div>
+    <script>
+      import { boot } from '../motion/app'
+      boot()
+    </script>
+  </body>
+</html>

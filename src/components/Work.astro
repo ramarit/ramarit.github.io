@@ -1,0 +1,19 @@
+---
+import { projects } from '../content/work'
+import WorkCard from './WorkCard.astro'
+---
+
+<section id="work" class="work" data-section="work" data-gl="work">
+  <div class="work-pin" data-work-pin>
+    <div class="wrap work-head">
+      <div>
+        <p class="eyebrow">Selected work</p>
+        <h2 class="h-section" data-split>Work</h2>
+      </div>
+      <p class="lede">Platforms, design systems and sites I've led, built and shipped.</p>
+    </div>
+    <div class="work-track wrap" data-work-track>
+      {projects.map((p, i) => <WorkCard project={p} index={i} />)}
+    </div>
+  </div>
+</section>

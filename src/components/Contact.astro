@@ -1,0 +1,24 @@
+---
+import { site } from '../content/site'
+---
+
+<section id="contact" class="wrap contact" data-section="contact" data-gl="contact">
+  <p class="eyebrow">Contact</p>
+  <a class="contact-big" href={`mailto:${site.email}`} data-contact-big data-track="social_link_clicked" data-track-name="email">
+    Let's build<br />something.
+  </a>
+  <div class="contact-links">
+    <a class="magnet primary" href={`mailto:${site.email}`} data-magnetic data-track="social_link_clicked" data-track-name="email"
+      >{site.email}</a
+    >
+    <a
+      class="magnet"
+      href={site.linkedin}
+      target="_blank"
+      rel="noopener noreferrer"
+      data-magnetic
+      data-track="social_link_clicked"
+      data-track-name="linkedin">LinkedIn ↗</a
+    >
+  </div>
+</section>

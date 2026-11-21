@@ -1,0 +1,111 @@
+---
+import { skills } from '../content/site'
+const principles = [
+  { t: 'Content first', d: 'Motion should help people read, never get in the way.' },
+  { t: 'Systems over pages', d: 'Build the component once; every brand gets it.' },
+  { t: 'Fast is a feature', d: 'Performance budgets are design constraints.' },
+  { t: 'Accessible by default', d: 'Keyboard, screen readers, reduced motion.' },
+  { t: 'Ship, then measure', d: 'Analytics and A/B tests decide what stays.' },
+]
+---
+
+<section id="lab" class="wrap lab" data-section="lab" data-gl="lab">
+  <p class="eyebrow">Motion lab</p>
+  <h2 class="h-section" data-split>Play with it</h2>
+  <p class="lede" style="margin-top:1.25rem">Three small GSAP experiments. Every one works with a keyboard, and each shows its code.</p>
+
+  <div class="lab-grid">
+    <div class="lab-cell" data-lab="throw">
+      <div>
+        <h3>Throw the stack</h3>
+        <p class="hint">Drag and fling the skills. Draggable + Inertia, kept in bounds.</p>
+      </div>
+      <div class="lab-arena" data-throw-arena>
+        <ul class="skill-pills" data-throw-list>
+          {skills.map((s) => <li>{s}</li>)}
+        </ul>
+      </div>
+      <div>
+        <div class="lab-actions">
+          <button class="btn btn-accent" type="button" data-throw-shuffle>Shuffle</button>
+          <button class="btn" type="button" data-throw-layout aria-pressed="false">List view (Flip)</button>
+        </div>
+        <details class="lab-code" style="margin-top:.75rem">
+          <summary>View the code</summary>
+          <pre data-code>{`Draggable.create(pills, {
+  bounds: arena,
+  inertia: true,      // fling with momentum
+  edgeResistance: 0.8,
+})
+// List view: Flip animates between layouts
+const state = Flip.getState(pills)
+list.classList.toggle('is-list')
+Flip.from(state, { ease: 'paint', stagger: 0.02 })`}</pre>
+        </details>
+      </div>
+    </div>
+
+    <div class="lab-cell" data-lab="principles">
+      <div>
+        <h3>Principles</h3>
+        <p class="hint">Swipe or drag the deck. Observer turns gestures into steps.</p>
+      </div>
+      <div class="lab-arena principles is-static" data-principles>
+        {
+          principles.map((p, i) => (
+            <div class="principle" data-principle>
+              <span class="mono">0{i + 1}</span>
+              <b>{p.t}</b>
+              <span>{p.d}</span>
+            </div>
+          ))
+        }
+      </div>
+      <div>
+        <div class="lab-actions">
+          <button class="btn" type="button" data-principle-prev aria-label="Previous principle">←</button>
+          <button class="btn" type="button" data-principle-next aria-label="Next principle">→</button>
+        </div>
+        <details class="lab-code" style="margin-top:.75rem">
+          <summary>View the code</summary>
+          <pre data-code>{`Observer.create({
+  target: deck,
+  type: 'touch,pointer',
+  onLeft: () => go(+1),
+  onRight: () => go(-1),
+  tolerance: 40,
+})`}</pre>
+        </details>
+      </div>
+    </div>
+
+    <div class="lab-cell" data-lab="morph">
+      <div>
+        <h3>Morph</h3>
+        <p class="hint">One path, four shapes. MorphSVG on click.</p>
+      </div>
+      <div class="lab-arena morph-stage">
+        <svg viewBox="0 0 200 200" aria-hidden="true">
+          <path
+            data-morph
+            d="M100,20 C144,20 180,56 180,100 C180,144 144,180 100,180 C56,180 20,144 20,100 C20,56 56,20 100,20 Z"
+          ></path>
+        </svg>
+      </div>
+      <div>
+        <div class="lab-actions">
+          <button class="btn btn-accent" type="button" data-morph-next>Next shape</button>
+          <span class="mono" style="font-size:.75rem;color:var(--ink-soft);align-self:center" data-morph-label aria-live="polite">circle</span>
+        </div>
+        <details class="lab-code" style="margin-top:.75rem">
+          <summary>View the code</summary>
+          <pre data-code>{`gsap.to(path, {
+  morphSVG: shapes[next],
+  duration: 0.9,
+  ease: 'elastic.out(1, 0.5)',
+})`}</pre>
+        </details>
+      </div>
+    </div>
+  </div>
+</section>

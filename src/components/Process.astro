@@ -1,0 +1,59 @@
+---
+import { process } from '../content/site'
+---
+
+<section id="process" class="wrap process" data-section="process" data-gl="process">
+  <div class="process-pin" data-process-pin>
+    <div>
+      <p class="eyebrow">Process</p>
+      <h2 class="h-section" data-split>From canvas<br />to code</h2>
+      <ol class="process-steps">
+        {
+          process.map((step, i) => (
+            <li data-step={i} class={i === 0 ? 'is-active' : undefined}>
+              <span class="mono" style="color: var(--accent)">0{i + 1}</span>
+              <h3>{step.title}</h3>
+              <p>{step.body}</p>
+            </li>
+          ))
+        }
+      </ol>
+    </div>
+
+    <div class="process-stage" aria-hidden="true">
+      <svg viewBox="0 0 600 420" data-pc-svg>
+        <path
+          class="pc-stroke"
+          data-pc-stroke
+          d="M70,310 C110,170 190,90 280,150 C350,196 360,300 440,280 C500,265 520,170 540,110"
+        ></path>
+        <path
+          data-pc-frame
+          style="display:none"
+          d="M90,50 L510,50 C526,50 540,64 540,80 L540,340 C540,356 526,370 510,370 L90,370 C74,370 60,356 60,340 L60,80 C60,64 74,50 90,50 Z"
+        ></path>
+        <g class="pc-wire" data-pc-wire>
+          <path d="M90,80 L300,80 L300,215 L90,215 Z"></path>
+          <path d="M90,245 L270,245"></path>
+          <path d="M90,270 L230,270"></path>
+          <path d="M90,295 L200,295"></path>
+          <path d="M90,330 L170,330 L170,350 L90,350 Z"></path>
+        </g>
+      </svg>
+      <pre class="pc-code" data-pc-code><code><span data-line><span class="k">export const</span> Card = (&#123; project &#125;) =&gt; (</span>
+<span data-line>  &lt;article class="card"&gt;</span>
+<span data-line>    &lt;Cover hue=&#123;project.hue&#125; /&gt;</span>
+<span data-line>    &lt;h4&gt;&#123;project.title&#125;&lt;/h4&gt;</span>
+<span data-line>    &lt;p&gt;&#123;project.summary&#125;&lt;/p&gt;</span>
+<span data-line>    &lt;Button&gt;View case study&lt;/Button&gt;</span>
+<span data-line>  &lt;/article&gt;</span>
+<span data-line>)  <span class="c">// tokens · a11y · tested</span></span></code></pre>
+      <div class="pc-card" data-pc-card>
+        <div class="pc-thumb"></div>
+        <h4>Canvas → Code</h4>
+        <p>A gesture, a system, a component, a page.</p>
+        <span class="pc-btn">Shipped</span>
+      </div>
+    </div>
+  </div>
+</section>

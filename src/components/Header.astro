@@ -1,0 +1,17 @@
+---
+const path = Astro.url.pathname
+const isWork = path.startsWith('/projects')
+const isAbout = path.startsWith('/about')
+---
+
+<header class="site-header">
+  <a href="/" class="logo" aria-label="Ryan Amarit, home" data-magnetic>RA</a>
+  <nav class="nav" aria-label="Main">
+    <a href="/projects/" aria-current={isWork ? 'page' : undefined}>Work</a>
+    <a href="/about/" aria-current={isAbout ? 'page' : undefined}>About</a>
+    <a href="/#contact">Contact</a>
+    <button class="theme-toggle" type="button" data-theme-toggle aria-label="Switch color theme">
+      <span aria-hidden="true">◐</span>
+    </button>
+  </nav>
+</header>
