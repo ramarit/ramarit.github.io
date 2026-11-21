@@ -39,7 +39,7 @@ export const experience: Role[] = [
     place: 'Part-time',
     dates: '2019 — now',
     titles: [],
-    headline: 'Brought in to fix sites other agencies left behind, plus small landing pages.',
+    headline: 'Brought in to fix sites other agencies left behind.',
     points: [],
   },
   {
