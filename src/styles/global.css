@@ -729,8 +729,9 @@ main {
   font-size: 0.78rem;
   padding: 0.4rem 0.75rem;
   border-radius: 999px;
-  border: 1px solid var(--line);
-  color: var(--ink);
+  border: 1px solid var(--accent);
+  background: var(--accent);
+  color: var(--accent-ink);
   user-select: none;
 }
 .stack.is-throwable .skill-pills li {
@@ -740,9 +741,9 @@ main {
 }
 .stack.is-throwable .skill-pills li:active {
   cursor: grabbing;
-  background: var(--accent);
-  border-color: var(--accent);
-  color: var(--accent-ink);
+  background: var(--ink);
+  border-color: var(--ink);
+  color: var(--bg);
 }
 
 .btn {
