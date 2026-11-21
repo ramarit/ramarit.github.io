@@ -60,6 +60,7 @@ export const stack = [
       'Agent harnesses',
       'Parallel agents',
       'MCP servers',
+      'Custom skills',
       'Spec-driven development',
       'AI code review',
       'Bug-to-PR pipeline',
