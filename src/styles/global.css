@@ -322,8 +322,10 @@ main {
    tops of capitals. Let every mask reach past the line box without changing the layout;
    the reveal tweens start low enough to stay hidden inside the taller mask. */
 .char-mask {
-  padding-block: 0.15em 0.3em;
-  margin-block: -0.15em -0.3em;
+  /* Sideways too: negative tracking makes each mask narrower than its glyph, which clipped
+     the edge of the last character (the period in "something."). */
+  padding: 0.15em 0.12em 0.3em;
+  margin: -0.15em -0.12em -0.3em;
 }
 /* Line masks are stacked blocks, where top and bottom negative margins would collapse into
    each other and open up the line gap, so extend these downward only. */
@@ -891,13 +893,25 @@ main {
   align-content: center;
   padding-block: clamp(5rem, 12vw, 10rem);
 }
+.contact-heading {
+  margin: 0;
+  font: inherit;
+}
+.contact-page {
+  min-height: 100vh;
+  min-height: 100svh;
+  padding-top: calc(var(--header-h) + clamp(3rem, 8vw, 6rem));
+}
+.contact-note {
+  margin-top: 2rem;
+}
 .contact-big {
   display: inline-block;
   font-family: var(--display);
   font-weight: 800;
   font-size: clamp(3.5rem, 13vw, 14rem);
   line-height: 0.9;
-  letter-spacing: -0.03em;
+  letter-spacing: -0.02em;
 }
 .contact-big .char {
   display: inline-block;

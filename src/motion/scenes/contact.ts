@@ -32,7 +32,10 @@ export const contact: Scene = (root, c) => {
         yoyo: true,
         repeat: 1,
         ease: 'power2.out',
-        overwrite: true,
+        // 'auto', not true: true kills every tween on these chars, including the reveal
+        // (yPercent) when the text scrolls under a resting cursor mid-intro, leaving the
+        // line stuck hidden. 'auto' only replaces overlapping `y` tweens.
+        overwrite: 'auto',
       },
     )
   }
