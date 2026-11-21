@@ -134,7 +134,7 @@ img {
 .h-section {
   font-family: var(--display);
   font-weight: 650;
-  font-size: clamp(2.5rem, 7vw, 6.5rem);
+  font-size: clamp(2.1rem, 7vw, 6.5rem);
   line-height: 0.95;
   letter-spacing: -0.035em;
   font-variation-settings: 'wdth' 88, 'opsz' 96;
@@ -347,7 +347,14 @@ main {
 }
 .hero-role {
   font-family: var(--display);
-  font-size: clamp(1.4rem, 2.4vw, 2.25rem);
+  font-size: clamp(1.15rem, 2.4vw, 2.25rem);
+  text-wrap: pretty;
+}
+/* The second line wraps on its own, evenly, so it never leaves "end." as an orphan. The first
+   line holds the rotating word, whose changing width would make balancing jump around. */
+.hero-role .hero-sub {
+  display: block;
+  text-wrap: balance;
   font-weight: 500;
   line-height: 1.15;
   letter-spacing: -0.02em;
@@ -886,6 +893,8 @@ main {
   color: var(--accent);
 }
 .tl-titles span:last-child {
+  flex: none;
+  white-space: nowrap;
   font-family: var(--mono);
   font-size: 0.8rem;
   color: var(--ink-soft);
@@ -922,7 +931,7 @@ main {
   display: inline-block;
   font-family: var(--display);
   font-weight: 800;
-  font-size: clamp(3.5rem, 13vw, 14rem);
+  font-size: clamp(2.6rem, 13vw, 14rem);
   line-height: 0.9;
   letter-spacing: -0.02em;
 }
@@ -966,6 +975,16 @@ main {
      contrast guard only promises 4.5:1 for --ink-soft and brighter. */
   color: var(--ink-soft);
 }
+/* Phones: © and location share a row; the long "Built with…" line gets its own row below. */
+@media (max-width: 640px) {
+  .site-footer {
+    gap: 0.5rem 1rem;
+  }
+  .site-footer span:nth-child(2) {
+    order: 3;
+    flex-basis: 100%;
+  }
+}
 
 /* ── Inner pages ────────────────────────────────────────── */
 .page-hero {
@@ -975,7 +994,7 @@ main {
 .page-title {
   font-family: var(--display);
   font-weight: 800;
-  font-size: clamp(3rem, 11vw, 10rem);
+  font-size: clamp(2.4rem, 11vw, 10rem);
   line-height: 1.05;
   letter-spacing: -0.025em;
   font-variation-settings: 'wdth' 85, 'opsz' 96;
