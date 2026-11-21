@@ -6,7 +6,8 @@ export type Role = {
   /** Oldest first, so the promotion path reads left to right. */
   titles: { title: string; dates: string }[]
   /** The big number. `count` animates 0 → count; omit it for non-numeric values like "8 → 1". */
-  stat: { value: string; count?: number; prefix?: string; suffix?: string; label: string }
+  /** Omit for a compact entry (meta line + headline only). */
+  stat?: { value: string; count?: number; prefix?: string; suffix?: string; label: string }
   /** What changed, in one line. */
   headline: string
   /** The proof behind it. */
@@ -32,6 +33,14 @@ export const experience: Role[] = [
       'Contentful tools that let content teams publish without waiting on a developer.',
       'AI workflows for the team: grilling reviews, a bug-to-PR pipeline and spec-driven development.',
     ],
+  },
+  {
+    company: 'Freelance',
+    place: 'Part-time',
+    dates: '2019 — now',
+    titles: [],
+    headline: 'Brought in to fix sites other agencies left behind, plus small landing pages.',
+    points: [],
   },
   {
     company: 'Balcom Agency',

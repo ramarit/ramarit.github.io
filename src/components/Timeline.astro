@@ -9,7 +9,7 @@ import { experience, education } from '../content/experience'
     <li class="tl-line" aria-hidden="true"><i data-tl-draw></i></li>
     {
       experience.map((role) => (
-        <li class="tl-item" data-tl-item>
+        <li class:list={['tl-item', { 'tl-compact': !role.stat }]} data-tl-item>
           <p class="tl-meta">
             <b>{role.company}</b>
             <span>
@@ -17,32 +17,40 @@ import { experience, education } from '../content/experience'
               {role.place} · {role.dates}
             </span>
           </p>
-          <div class="tl-grid">
-            <p class="tl-stat">
-              <span
-                class="tl-num"
-                data-count={role.stat.count}
-                data-prefix={role.stat.prefix}
-                data-suffix={role.stat.suffix}>{role.stat.value}</span
-              >
-              <span class="tl-stat-label">{role.stat.label}</span>
-            </p>
-            <div class="tl-body">
-              <h3 class="tl-headline">{role.headline}</h3>
-              <ul class="tl-points">
-                {role.points.map((p) => (
-                  <li>{p}</li>
-                ))}
-              </ul>
-              <ol class="tl-path" aria-label="Roles">
-                {role.titles.map((t) => (
-                  <li>
-                    {t.title} <span>{t.dates}</span>
-                  </li>
-                ))}
-              </ol>
+          {role.stat ? (
+            <div class="tl-grid">
+              <p class="tl-stat">
+                <span
+                  class="tl-num"
+                  data-count={role.stat.count}
+                  data-prefix={role.stat.prefix}
+                  data-suffix={role.stat.suffix}>{role.stat.value}</span
+                >
+                <span class="tl-stat-label">{role.stat.label}</span>
+              </p>
+              <div class="tl-body">
+                <h3 class="tl-headline">{role.headline}</h3>
+                {role.points.length > 0 && (
+                  <ul class="tl-points">
+                    {role.points.map((p) => (
+                      <li>{p}</li>
+                    ))}
+                  </ul>
+                )}
+                {role.titles.length > 0 && (
+                  <ol class="tl-path" aria-label="Roles">
+                    {role.titles.map((t) => (
+                      <li>
+                        {t.title} <span>{t.dates}</span>
+                      </li>
+                    ))}
+                  </ol>
+                )}
+              </div>
             </div>
-          </div>
+          ) : (
+            <h3 class="tl-note">{role.headline}</h3>
+          )}
         </li>
       ))
     }

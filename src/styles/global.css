@@ -919,6 +919,20 @@ main {
   display: grid;
   gap: 0.4rem;
 }
+/* Compact entries (no stat): a meta line and one sentence, so a minor role doesn't compete
+   with the main ones. */
+.tl-compact .tl-meta {
+  margin-bottom: 0.5rem;
+}
+.tl-note {
+  margin: 0;
+  max-width: 60ch;
+  font-family: var(--body);
+  font-size: 1rem;
+  font-weight: 400;
+  line-height: 1.5;
+  color: var(--ink-soft);
+}
 .tl-education .tl-points {
   list-style: none;
   padding: 0;
