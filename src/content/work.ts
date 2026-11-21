@@ -159,7 +159,7 @@ export const projects: Project[] = [
   {
     slug: 'renfro-foods',
     title: 'Renfro Foods',
-    client: 'Client work',
+    client: 'Agency work',
     year: 'Shopify',
     role: 'Web developer',
     summary:

@@ -42,8 +42,22 @@ export const process = [
 export const stack = [
   {
     group: 'Web platforms',
-    outcome: 'Multi-brand sites on one codebase, with a content model marketers can publish on.',
-    items: ['Astro', 'Next.js', 'React', 'Vue', 'TypeScript', 'Node.js', 'Contentful'],
+    outcome: 'Multi-brand sites on one codebase, on a headless CMS marketers can publish on.',
+    items: [
+      'Astro',
+      'Next.js',
+      'React',
+      'Vue',
+      'TypeScript',
+      'Node.js',
+      'Headless CMS',
+      'Contentful',
+      'Sanity',
+      'Webflow',
+      'WordPress',
+      'Drupal',
+      'Shopify',
+    ],
   },
   {
     group: 'Design systems',

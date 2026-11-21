@@ -4,38 +4,51 @@ import { experience, education } from '../content/experience'
 
 <section id="experience" class="wrap timeline" data-section="experience" data-gl="experience">
   <p class="eyebrow">Experience</p>
-  <h2 class="h-section" data-split>Where I’ve<br />worked</h2>
+  <h2 class="h-section" data-split>Track record</h2>
   <ol class="tl" data-tl>
     <li class="tl-line" aria-hidden="true"><i data-tl-draw></i></li>
     {
       experience.map((role) => (
         <li class="tl-item" data-tl-item>
-          <h3 class="tl-company">
-            {role.company}
-            <small>
+          <p class="tl-meta">
+            <b>{role.company}</b>
+            <span>
               {role.note ? `${role.note} · ` : ''}
               {role.place} · {role.dates}
-            </small>
-          </h3>
-          <ul class="tl-titles">
-            {role.titles.map((t) => (
-              <li>
-                <span>{t.title}</span>
-                <span>{t.dates}</span>
-              </li>
-            ))}
-          </ul>
-          <ul class="tl-points">
-            {role.points.map((p) => (
-              <li>{p}</li>
-            ))}
-          </ul>
+            </span>
+          </p>
+          <div class="tl-grid">
+            <p class="tl-stat">
+              <span
+                class="tl-num"
+                data-count={role.stat.count}
+                data-prefix={role.stat.prefix}
+                data-suffix={role.stat.suffix}>{role.stat.value}</span
+              >
+              <span class="tl-stat-label">{role.stat.label}</span>
+            </p>
+            <div class="tl-body">
+              <h3 class="tl-headline">{role.headline}</h3>
+              <ul class="tl-points">
+                {role.points.map((p) => (
+                  <li>{p}</li>
+                ))}
+              </ul>
+              <ol class="tl-path" aria-label="Roles">
+                {role.titles.map((t) => (
+                  <li>
+                    {t.title} <span>{t.dates}</span>
+                  </li>
+                ))}
+              </ol>
+            </div>
+          </div>
         </li>
       ))
     }
-    <li class="tl-item" data-tl-item>
-      <h3 class="tl-company">Education</h3>
-      <ul class="tl-points" style="list-style:none;padding:0">
+    <li class="tl-item tl-education" data-tl-item>
+      <p class="tl-meta"><b>Education</b></p>
+      <ul class="tl-points">
         {education.map((e) => <li>{e}</li>)}
       </ul>
     </li>
