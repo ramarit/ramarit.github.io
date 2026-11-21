@@ -1,2 +1,308 @@
-// Entry point. Filled in as the motion system is built.
-export function boot() {}
+import {
+  gsap,
+  ScrollTrigger,
+  ScrollSmoother,
+  conditions,
+  reduceMotion,
+  finePointer,
+  type Conditions,
+  type Scene,
+} from './core'
+import { createField, getField } from './gl/field'
+import { hero } from './scenes/hero'
+import { process } from './scenes/process'
+import { work } from './scenes/work'
+import { lab } from './scenes/lab'
+import { timeline } from './scenes/timeline'
+import { contact } from './scenes/contact'
+import { split } from './scenes/split'
+import { magnetic } from './scenes/magnetic'
+import { initAnalytics, pageview, trackPage, cleanupAnalytics, track } from '../lib/analytics'
+
+type PageScene = { selector: string; run: Scene }
+
+const pageScenes: PageScene[] = [
+  { selector: '.hero', run: hero },
+  { selector: '.process', run: process },
+  { selector: '.work', run: work },
+  { selector: '.lab', run: lab },
+  { selector: '.timeline', run: timeline },
+  { selector: '.contact', run: contact },
+]
+
+const glIntensity: Record<string, number> = {
+  hero: 0.95,
+  process: 0.8,
+  work: 0.5,
+  lab: 0.45,
+  experience: 0.4,
+  contact: 0.9,
+  page: 0.55,
+}
+
+let booted = false
+let mm: ReturnType<typeof gsap.matchMedia> | null = null
+let smoother: ScrollSmoother | null = null
+let pendingEnter = false
+
+/** Runs once for the life of the document (the layout persists across page swaps). */
+export function boot() {
+  if (booted) return
+  booted = true
+
+  initAnalytics()
+  setupThemeToggle()
+  setupCursor()
+  setupRouter()
+
+  if (document.fonts?.ready) {
+    document.fonts.ready.then(() => ScrollTrigger.refresh())
+  }
+
+  // WebGL is the expensive part: create it after first paint, never under reduced motion.
+  const startField = () => {
+    if (reduceMotion()) return
+    const host = document.getElementById('gl')
+    if (!host) return
+    const field = createField(host)
+    if (!field) return
+    const theme = document.documentElement.dataset.theme === 'light' ? 'light' : 'dark'
+    field.setTheme(theme)
+    field.state.intensity = document.querySelector('.hero') ? 0.95 : 0.55
+  }
+  if ('requestIdleCallback' in window) {
+    requestIdleCallback(startField, { timeout: 1800 })
+  } else {
+    setTimeout(startField, 350)
+  }
+}
+
+function setupPage() {
+  mm = gsap.matchMedia()
+
+  mm.add(conditions, (ctx) => {
+    const c = ctx.conditions as unknown as Conditions
+    const cleanups: (() => void)[] = []
+
+    if (c.reduce) {
+      document.documentElement.classList.remove('js-motion')
+    } else {
+      document.documentElement.classList.add('js-motion')
+      smoother = ScrollSmoother.create({
+        wrapper: '#smooth-wrapper',
+        content: '#smooth-content',
+        smooth: 1.1,
+        effects: true,
+        smoothTouch: 0.1,
+      })
+      cleanups.push(() => {
+        smoother?.kill()
+        smoother = null
+      })
+    }
+
+    for (const { selector, run } of pageScenes) {
+      const root = document.querySelector<HTMLElement>(selector)
+      if (!root) continue
+      const cleanup = run(root, c)
+      if (cleanup) cleanups.push(cleanup)
+    }
+
+    const splitCleanup = split(document.body, c)
+    if (splitCleanup) cleanups.push(splitCleanup)
+
+    if (!c.reduce) {
+      const magneticCleanup = magnetic(document.body, c)
+      if (magneticCleanup) cleanups.push(magneticCleanup)
+
+      cleanups.push(setupGlPresets())
+      cleanups.push(setupVelocity())
+      cleanups.push(setupHashLinks())
+    }
+
+    return () => {
+      for (const fn of cleanups) fn()
+    }
+  })
+
+  pageview()
+  trackPage()
+  ScrollTrigger.refresh()
+
+  const hash = decodeURIComponent(window.location.hash.slice(1))
+  if (hash) {
+    requestAnimationFrame(() => {
+      const target = document.getElementById(hash)
+      if (!target) return
+      ScrollTrigger.refresh()
+      if (smoother) smoother.scrollTo(target, false, 'top top')
+      else target.scrollIntoView()
+    })
+  }
+}
+
+function teardownPage() {
+  mm?.revert()
+  mm = null
+  smoother = null
+  ScrollTrigger.getAll().forEach((trigger) => trigger.kill())
+  cleanupAnalytics()
+}
+
+function setupGlPresets() {
+  const triggers: ScrollTrigger[] = []
+  for (const el of document.querySelectorAll<HTMLElement>('[data-gl]')) {
+    triggers.push(
+      ScrollTrigger.create({
+        trigger: el,
+        start: 'top 55%',
+        end: 'bottom 45%',
+        onToggle: (self) => {
+          if (!self.isActive) return
+          const field = getField()
+          if (!field) return
+          gsap.to(field.state, {
+            intensity: glIntensity[el.dataset.gl || ''] ?? 0.55,
+            duration: 0.9,
+            ease: 'power2.out',
+            overwrite: true,
+          })
+        },
+      }),
+    )
+  }
+  return () => triggers.forEach((trigger) => trigger.kill())
+}
+
+function setupVelocity() {
+  const trigger = ScrollTrigger.create({
+    onUpdate: (self) => {
+      const field = getField()
+      if (!field) return
+      field.state.vel = gsap.utils.clamp(-1.5, 1.5, self.getVelocity() / 2500)
+    },
+  })
+  const decay = () => {
+    const field = getField()
+    if (field) field.state.vel *= 0.92
+  }
+  gsap.ticker.add(decay)
+  return () => {
+    trigger.kill()
+    gsap.ticker.remove(decay)
+  }
+}
+
+function setupHashLinks() {
+  const onClick = (event: MouseEvent) => {
+    const anchor = (event.target as Element | null)?.closest<HTMLAnchorElement>('a[href*="#"]')
+    if (!anchor || anchor.classList.contains('skip-link')) return
+    const url = new URL(anchor.href, window.location.href)
+    if (url.pathname !== window.location.pathname || url.search !== window.location.search) return
+    if (!url.hash || url.hash === '#') return
+    const target = document.getElementById(decodeURIComponent(url.hash.slice(1)))
+    if (!target) return
+    event.preventDefault()
+    if (smoother) smoother.scrollTo(target, true, 'top top')
+    else target.scrollIntoView()
+    history.pushState(null, '', url.hash)
+  }
+  document.addEventListener('click', onClick)
+  return () => document.removeEventListener('click', onClick)
+}
+
+function setupThemeToggle() {
+  document.addEventListener('click', (event) => {
+    const button = (event.target as Element | null)?.closest('[data-theme-toggle]')
+    if (!button) return
+    const root = document.documentElement
+    const next = root.dataset.theme === 'light' ? 'dark' : 'light'
+    root.dataset.theme = next
+    try {
+      localStorage.setItem('theme', next)
+    } catch {
+      // Storage can be blocked; the theme still changes for this page.
+    }
+    getField()?.setTheme(next)
+    const meta = document.querySelector('meta[name="theme-color"]')
+    if (meta) meta.setAttribute('content', next === 'light' ? '#f1eee6' : '#0a0a0b')
+    track('theme_toggled', { theme: next })
+  })
+}
+
+function setupCursor() {
+  const cursor = document.querySelector<HTMLElement>('.cursor')
+  if (!cursor || !finePointer() || reduceMotion()) return
+
+  const xTo = gsap.quickTo(cursor, 'x', { duration: 0.35, ease: 'power3.out' })
+  const yTo = gsap.quickTo(cursor, 'y', { duration: 0.35, ease: 'power3.out' })
+  let shown = false
+
+  const onMove = (event: PointerEvent) => {
+    if (!shown) {
+      shown = true
+      gsap.to(cursor, { opacity: 1, duration: 0.3 })
+    }
+    xTo(event.clientX)
+    yTo(event.clientY)
+  }
+  const onOver = (event: PointerEvent) => {
+    const target = event.target as Element | null
+    const active = !!target?.closest('a, button, [data-magnetic], [data-throw-list] li')
+    gsap.to(cursor, { scale: active ? 2.8 : 1, duration: 0.35, ease: 'power3.out' })
+  }
+  const onLeave = () => {
+    shown = false
+    gsap.to(cursor, { opacity: 0, duration: 0.3 })
+  }
+
+  window.addEventListener('pointermove', onMove, { passive: true })
+  document.addEventListener('pointerover', onOver, { passive: true })
+  document.documentElement.addEventListener('pointerleave', onLeave)
+}
+
+function setupRouter() {
+  document.addEventListener('astro:before-preparation', (event) => {
+    if (reduceMotion()) return
+    const withLoader = event as Event & { loader?: () => Promise<void> }
+    if (!withLoader.loader) return
+    pendingEnter = true
+    const original = withLoader.loader
+    withLoader.loader = async () => {
+      await exitTransition()
+      await original()
+    }
+  })
+
+  document.addEventListener('astro:before-swap', () => {
+    teardownPage()
+  })
+
+  document.addEventListener('astro:page-load', () => {
+    setupPage()
+    if (pendingEnter) {
+      pendingEnter = false
+      enterTransition()
+    }
+  })
+}
+
+function transitionSpans() {
+  return gsap.utils.toArray<HTMLElement>('#transition span')
+}
+
+async function exitTransition() {
+  const spans = transitionSpans()
+  if (!spans.length) return
+  gsap.killTweensOf(spans)
+  gsap.set(spans, { transformOrigin: 'bottom' })
+  await gsap.to(spans, { scaleY: 1, duration: 0.55, stagger: 0.05, ease: 'snap' })
+}
+
+function enterTransition() {
+  const spans = transitionSpans()
+  if (!spans.length) return
+  gsap.killTweensOf(spans)
+  gsap.set(spans, { transformOrigin: 'top', scaleY: 1 })
+  gsap.to(spans, { scaleY: 0, duration: 0.7, stagger: 0.05, ease: 'snap', delay: 0.05 })
+}

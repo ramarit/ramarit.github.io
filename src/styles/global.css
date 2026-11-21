@@ -238,7 +238,7 @@ main {
   font-weight: 800;
   font-size: clamp(4.5rem, 19vw, 22rem);
   line-height: 0.82;
-  letter-spacing: -0.055em;
+  letter-spacing: -0.035em;
   --wght: 800;
   --wdth: 85;
   font-variation-settings: 'wght' var(--wght), 'wdth' var(--wdth), 'opsz' 96;
@@ -357,6 +357,15 @@ main {
   stroke-width: 2;
   stroke-linecap: round;
 }
+/* Static / reduced-motion end state: show the finished card and code, not the drawing. */
+.process-stage .pc-stroke,
+.process-stage .pc-wire {
+  display: none;
+}
+.js-motion .process-stage .pc-stroke,
+.js-motion .process-stage .pc-wire {
+  display: block;
+}
 .pc-code {
   position: absolute;
   right: 4%;
@@ -447,23 +456,25 @@ main {
   gap: 1.5rem;
 }
 @media (min-width: 1000px) {
-  .js-motion .work-pin {
+  .js-motion .work .work-pin {
     height: 100vh;
     display: flex;
     flex-direction: column;
     justify-content: center;
     overflow: hidden;
   }
-  .js-motion .work-head {
+  .js-motion .work .work-head {
     margin-bottom: 2rem;
   }
-  .js-motion .work-track {
+  .js-motion .work .work-track {
     display: flex;
     gap: 2rem;
     width: max-content;
+    max-width: none;
+    margin-inline: 0;
     padding-inline: var(--gutter);
   }
-  .js-motion .work-card {
+  .js-motion .work .work-card {
     width: min(62vw, 980px);
   }
 }
@@ -818,6 +829,13 @@ main {
 .tl-titles li:first-child {
   color: var(--accent);
 }
+.js-motion .tl-titles li:first-child {
+  color: var(--ink-soft);
+  transition: color 0.5s ease;
+}
+.js-motion .tl-titles li:first-child.is-reached {
+  color: var(--accent);
+}
 .tl-titles span:last-child {
   font-family: var(--mono);
   font-size: 0.8rem;
@@ -916,6 +934,13 @@ main {
 .cs-meta dd {
   margin: 0.25rem 0 0;
 }
+.cs-meta a {
+  color: var(--accent);
+}
+.cs-meta a + a::before {
+  content: ' · ';
+  color: var(--ink-faint);
+}
 .cs-body {
   display: grid;
   gap: clamp(3rem, 7vw, 5rem);
@@ -964,6 +989,15 @@ main {
 }
 .next-project:hover .h-section {
   color: var(--accent);
+}
+.project-grid {
+  display: grid;
+  gap: clamp(1.5rem, 3vw, 2.5rem);
+  grid-template-columns: repeat(auto-fit, minmax(min(100%, 22rem), 1fr));
+  padding-bottom: clamp(5rem, 12vw, 10rem);
+}
+.project-grid .work-card {
+  height: 100%;
 }
 .about-grid {
   display: grid;

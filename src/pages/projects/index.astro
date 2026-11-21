@@ -1,0 +1,24 @@
+---
+import Base from '../../layouts/Base.astro'
+import WorkCard from '../../components/WorkCard.astro'
+import { projects } from '../../content/work'
+---
+
+<Base
+  title="Work"
+  description="Case studies and client work from Ryan Amarit: a multi-brand web platform, RulerIQ, and agency and client sites."
+  palette="work"
+>
+  <section class="wrap page-hero" data-section="work-index" data-gl="page">
+    <p class="eyebrow">Selected work</p>
+    <h1 class="page-title" data-split>Work</h1>
+    <p class="lede" style="margin-top:2rem">
+      Platforms, design systems and sites I've led, built and shipped. Two case studies, plus agency
+      and client work.
+    </p>
+  </section>
+
+  <section class="wrap project-grid" data-section="work-list">
+    {projects.map((project, i) => <WorkCard project={project} index={i} />)}
+  </section>
+</Base>

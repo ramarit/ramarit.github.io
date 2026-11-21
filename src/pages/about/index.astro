@@ -1,0 +1,65 @@
+---
+import Base from '../../layouts/Base.astro'
+import { site } from '../../content/site'
+import portrait from '../../assets/photos/ryan-amarit.webp'
+---
+
+<Base
+  title="About"
+  description="Ryan Amarit is a painter turned design engineer and web tech lead in Fort Worth, Texas."
+  palette="about"
+>
+  <section class="wrap page-hero" data-section="about" data-gl="page">
+    <p class="eyebrow">About</p>
+    <h1 class="page-title" data-split>Painter,<br />then engineer.</h1>
+    <p class="lede" style="margin-top:2rem">{site.intro}</p>
+  </section>
+
+  <section class="wrap about-grid" data-section="about-body">
+    <div class="portrait">
+      <img
+        src={portrait.src}
+        width={portrait.width}
+        height={portrait.height}
+        alt="Ryan Amarit"
+        loading="eager"
+      />
+    </div>
+
+    <div class="prose-lg">
+      <p>
+        I started in the studio. I earned a B.F.A. in Visual Art from the University of North Texas,
+        then a graduate certificate in computer science from Seattle University, and I have been
+        building for the web for nine years.
+      </p>
+      <p>
+        Today I am the Web Development Tech Lead at 8am (formerly AffiniPay). I lead the platform
+        behind eight brand websites, the Tailwind and Storybook design system they share, and the
+        Contentful tools content teams publish with. I set the web team's priorities with Marketing,
+        Growth, Design, Brand and Content, and I lead one other developer.
+      </p>
+      <p>
+        The through-line is the same as it was in the studio: composition, rhythm, where the eye lands
+        first. I care about the moment a page becomes legible, the code underneath it, and whether it
+        still works for someone on a phone with a screen reader and reduced motion on.
+      </p>
+      <p>
+        Away from work I build side projects, including RulerIQ, a pre-launch SaaS that shows brands
+        which pages AI assistants cite.
+      </p>
+
+      <dl class="facts">
+        {site.facts.map((fact) => (
+          <div>
+            <dt>{fact.label}</dt>
+            <dd>{fact.value}</dd>
+          </div>
+        ))}
+      </dl>
+
+      <p style="margin-top:2.5rem">
+        <a class="btn btn-accent" href="/projects/">See the work</a>
+      </p>
+    </div>
+  </section>
+</Base>

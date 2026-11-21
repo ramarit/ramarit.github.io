@@ -1,0 +1,95 @@
+---
+import Base from '../../layouts/Base.astro'
+import { caseStudies, projects, type Project } from '../../content/work'
+
+export function getStaticPaths() {
+  return caseStudies.map((project, i) => ({
+    params: { slug: project.slug },
+    props: {
+      project,
+      next: caseStudies[(i + 1) % caseStudies.length],
+    },
+  }))
+}
+
+interface Props {
+  project: Project
+  next: Project
+}
+
+const { project, next } = Astro.props
+const index = String(projects.findIndex((p) => p.slug === project.slug) + 1).padStart(2, '0')
+---
+
+<Base title={project.title} description={project.summary} palette="work">
+  <section class="wrap page-hero" data-section="case-study" data-gl="page">
+    <p class="eyebrow">Case study · {project.client}</p>
+    <h1 class="page-title" data-split>{project.title}</h1>
+    <p class="lede" style="margin-top:2rem">{project.summary}</p>
+
+    <dl class="cs-meta">
+      <div>
+        <dt>Client</dt>
+        <dd>{project.client}</dd>
+      </div>
+      <div>
+        <dt>Year</dt>
+        <dd>{project.year}</dd>
+      </div>
+      <div>
+        <dt>Role</dt>
+        <dd>{project.role}</dd>
+      </div>
+      {
+        project.links && (
+          <div>
+            <dt>Links</dt>
+            <dd>
+              {project.links.map((link) => (
+                <a
+                  href={link.href}
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  data-track="project_link_clicked"
+                  data-track-name={`${project.title} — ${link.label}`}
+                >
+                  {link.label} ↗
+                </a>
+              ))}
+            </dd>
+          </div>
+        )
+      }
+    </dl>
+  </section>
+
+  <div class="wrap cs-cover">
+    <div class="work-cover" style={`--h:${project.hue}`} aria-hidden="true">
+      <div class="art"></div>
+      <div class="grid-dots"></div>
+      <span class="index">{index}</span>
+    </div>
+  </div>
+
+  <div class="wrap cs-body" data-section="case-study-body">
+    {
+      project.sections?.map((section) => (
+        <div class="cs-section">
+          <h2 data-split>{section.heading}</h2>
+          <div>
+            {section.body.map((paragraph) => (
+              <p>{paragraph}</p>
+            ))}
+          </div>
+        </div>
+      ))
+    }
+  </div>
+
+  <div class="wrap">
+    <a class="next-project" href={`/projects/${next.slug}/`}>
+      <p class="eyebrow">Next case study</p>
+      <h2 class="h-section">{next.title}</h2>
+    </a>
+  </div>
+</Base>
