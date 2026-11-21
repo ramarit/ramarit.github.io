@@ -261,6 +261,13 @@ main {
 .hero-name .char {
   font-variation-settings: 'wght' var(--wght, 800), 'wdth' var(--wdth, 85), 'opsz' 96;
 }
+/* SplitText wraps each char in an overflow: clip mask one line-height tall. With the tight
+   0.82 line-height that cuts off descenders (the "y" in Ryan), so let the mask reach lower
+   without changing the layout. hero.ts starts chars low enough to stay hidden in it. */
+.hero-name .char-mask {
+  padding-bottom: 0.3em;
+  margin-bottom: -0.3em;
+}
 .hero-foot {
   display: grid;
   gap: 1.5rem;

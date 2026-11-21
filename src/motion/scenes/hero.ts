@@ -24,7 +24,7 @@ export const hero: Scene = (root, c) => {
 
   const intro = gsap.timeline({ delay: 0.15 })
   intro
-    .from(split.chars, { yPercent: 115, rotate: 8, duration: 1.3, stagger: 0.045, ease: 'paint' })
+    .from(split.chars, { yPercent: 150, rotate: 8, duration: 1.3, stagger: 0.045, ease: 'paint' })
     .from(foot.children, { y: 26, autoAlpha: 0, duration: 1, stagger: 0.09, ease: 'paint' }, 0.55)
 
   gsap.to(name, {
