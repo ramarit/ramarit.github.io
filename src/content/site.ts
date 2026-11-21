@@ -1,15 +1,15 @@
 export const site = {
   name: 'Ryan Amarit',
-  role: 'Design Engineer',
-  title: 'Ryan Amarit — Design Engineer',
+  role: 'Web Lead & Product Engineer',
+  title: 'Ryan Amarit — Web Lead & Product Engineer',
   location: 'Fort Worth, TX',
   email: 'ramarit@gmail.com',
   linkedin: 'https://www.linkedin.com/in/ryanamarit/',
   url: 'https://www.ryanamarit.com',
   description:
-    'Ryan Amarit is a design engineer and web tech lead in Fort Worth, TX: a B.F.A. painter turned engineer who builds fast, accessible, animated websites, design systems and content platforms.',
+    'Ryan Amarit is a web lead and product engineer in Fort Worth, TX: a B.F.A. painter turned engineer who sets web strategy and builds fast, accessible websites, design systems, content platforms and products.',
   // The words the hero subtitle cycles through.
-  crafts: ['design systems', 'motion & interaction', 'web platforms', 'headless CMS', 'AI workflows'],
+  crafts: ['web platforms', 'product features', 'design systems', 'web strategy', 'motion & interaction', 'AI workflows'],
   intro:
     'I trained as a painter and became an engineer. For nine years I have built the websites, design systems and content platforms that marketing teams ship on, and the motion that makes them feel finished.',
   facts: [

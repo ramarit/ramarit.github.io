@@ -1,6 +1,6 @@
 # Ryan Amarit — Portfolio
 
-A personal design engineer portfolio built with **Astro 7**, **GSAP 3.15**, and **WebGL**. The site features immersive scene-based motion, horizontal scrolling project grids, and smooth ClientRouter page transitions with progressive enhancement at its core.
+A personal portfolio built with **Astro 7**, **GSAP 3.15**, and **WebGL**. The site features immersive scene-based motion, horizontal scrolling project grids, and smooth ClientRouter page transitions with progressive enhancement at its core.
 
 ## Live
 
