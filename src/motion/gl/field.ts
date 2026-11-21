@@ -28,6 +28,7 @@ uniform vec3 uBg;
 uniform vec3 uC1;
 uniform vec3 uC2;
 uniform vec3 uC3;
+uniform vec2 uLum; // contrast guard: [min, max] relative luminance the field may reach
 varying vec2 vUv;
 
 vec2 hash(vec2 p) {
@@ -93,14 +94,30 @@ void main() {
 
   float g = fract(sin(dot(gl_FragCoord.xy, vec2(12.9898, 78.233)) + uTime) * 43758.5453);
   col += (g - 0.5) * 0.04;
+
+  // Contrast guard: text sits on top of this field everywhere, and the cursor trail can push
+  // any pixel bright (dark theme) or dark (light theme). Keep luminance inside uLum so body
+  // copy always holds 4.5:1, by pulling out-of-range pixels back toward the page colour.
+  vec3 lin = pow(max(col, 0.0), vec3(2.2));
+  vec3 bgLin = pow(uBg, vec3(2.2));
+  vec3 Yw = vec3(0.2126, 0.7152, 0.0722);
+  float Y = dot(lin, Yw);
+  float Yb = dot(bgLin, Yw);
+  if (Y > uLum.y && Y > Yb) lin = mix(lin, bgLin, clamp((Y - uLum.y) / (Y - Yb), 0.0, 1.0));
+  if (Y < uLum.x && Y < Yb) lin = mix(lin, bgLin, clamp((uLum.x - Y) / (Yb - Y), 0.0, 1.0));
+  col = pow(lin, vec3(1.0 / 2.2));
+
   gl_FragColor = vec4(col, 1.0);
 }
 `
 
-type Palette = { bg: string; c1: string; c2: string; c3: string }
+type Palette = { bg: string; c1: string; c2: string; c3: string; lum: [number, number] }
+// `lum` is the contrast guard: the [min, max] relative luminance the field may reach, chosen so
+// --ink-soft body copy keeps 4.5:1 on any pixel. Dark: #a9a59c (Y≈0.37) needs Y ≤ 0.043.
+// Light: #55524c (Y≈0.085) needs Y ≥ 0.56. Revisit these if --ink-soft changes.
 const palettes: Record<'dark' | 'light', Palette> = {
-  dark: { bg: '#0a0a0b', c1: '#1c1f2b', c2: '#3b4a1a', c3: '#d4ff3a' },
-  light: { bg: '#f1eee6', c1: '#d9d3c4', c2: '#b9b1ff', c3: '#4a3cff' },
+  dark: { bg: '#0a0a0b', c1: '#1c1f2b', c2: '#3b4a1a', c3: '#d4ff3a', lum: [0, 0.043] },
+  light: { bg: '#f1eee6', c1: '#d9d3c4', c2: '#b9b1ff', c3: '#4a3cff', lum: [0.56, 1] },
 }
 
 function hex(h: string) {
@@ -153,6 +170,7 @@ export function createField(host: HTMLElement): Field | null {
     uC1: { value: hex(p.c1) },
     uC2: { value: hex(p.c2) },
     uC3: { value: hex(p.c3) },
+    uLum: { value: [...p.lum] },
   }
   const program = new Program(gl, { vertex, fragment, uniforms })
   const mesh = new Mesh(gl, { geometry: new Triangle(gl), program })
@@ -209,6 +227,7 @@ export function createField(host: HTMLElement): Field | null {
       const target = hex(val)
       gsap.to(uniforms[key].value, { x: target.x, y: target.y, z: target.z, duration: 0.8, ease: 'snap' })
     }
+    gsap.to(uniforms.uLum.value, { 0: next.lum[0], 1: next.lum[1], duration: 0.8, ease: 'snap' })
   }
 
   instance = {
