@@ -34,7 +34,9 @@ export const projects: Project[] = [
       { label: 'LawPay', href: 'https://www.lawpay.com/' },
       { label: 'CASEpeer', href: 'https://www.casepeer.com/' },
       { label: 'Docketwise', href: 'https://www.docketwise.com/' },
+      { label: 'Awwwards Honorable Mention', href: 'https://www.awwwards.com/sites/8am-showcase-26-fall-release' },
     ],
+    award: 'Awwwards Honorable Mention — 2026 Fall Release',
     sections: [
       {
         heading: 'The problem',
