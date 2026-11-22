@@ -89,7 +89,7 @@ export const projects: Project[] = [
       {
         heading: 'The team',
         body: [
-          'Promoted twice in five years, from Web Developer to Senior Web Developer to Web Development Tech Lead. I set the web team’s priorities with Marketing, Growth, Design, Brand and Content, and lead and mentor a second developer.',
+          'Promoted twice in five years, from Web Developer to Senior Web Developer to Web Development Tech Lead. I set the web team’s priorities with Marketing, Growth, Design, Brand and Content, and mentor the other developers on the team.',
         ],
       },
     ],
