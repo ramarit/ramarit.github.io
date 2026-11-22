@@ -11,12 +11,12 @@ export const work: Scene = (root, c) => {
   if (!pin || !track || !cards.length) return
 
   if (c.mobile) {
-    gsap.set(cards, { autoAlpha: 0, y: 60 })
+    gsap.set(cards, { opacity: 0, y: 60 }) // opacity, not autoAlpha: keep cards in the a11y tree
     ScrollTrigger.batch(cards, {
       start: 'top 88%',
       once: true,
       onEnter: (batch) =>
-        gsap.to(batch, { autoAlpha: 1, y: 0, duration: 1, stagger: 0.12, ease: 'paint' }),
+        gsap.to(batch, { opacity: 1, y: 0, duration: 1, stagger: 0.12, ease: 'paint' }),
     })
     return
   }

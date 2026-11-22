@@ -39,7 +39,7 @@ export const process: Scene = (root, c) => {
     scrollTrigger: {
       trigger: pin,
       start: 'top top',
-      end: () => (c.desktop ? '+=250%' : '+=180%'),
+      end: () => (c.desktop ? '+=250%' : '+=110%'), // shorter on phones
       scrub: 1,
       pin: true,
       anticipatePin: 1,

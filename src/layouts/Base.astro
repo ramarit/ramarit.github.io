@@ -18,6 +18,7 @@ const fullTitle = title ? `${title} — ${site.name}` : site.title
 const canonical = new URL(Astro.url.pathname, site.url).href
 const og = new URL('/opengraph.jpg', site.url).href
 const isHome = Astro.url.pathname === '/'
+const withPerson = isHome || Astro.url.pathname.startsWith('/about')
 const personLd = {
   '@context': 'https://schema.org',
   '@type': 'Person',
@@ -25,7 +26,24 @@ const personLd = {
   jobTitle: site.role,
   url: site.url,
   image: og,
-  sameAs: [site.linkedin],
+  email: `mailto:${site.email}`,
+  worksFor: { '@type': 'Organization', name: '8am', url: 'https://www.8am.com/' },
+  alumniOf: [
+    { '@type': 'CollegeOrUniversity', name: 'University of North Texas' },
+    { '@type': 'CollegeOrUniversity', name: 'Seattle University' },
+  ],
+  sameAs: [site.linkedin, site.github],
+  knowsAbout: [
+    'Web platforms',
+    'Design systems',
+    'Headless CMS',
+    'Astro',
+    'TypeScript',
+    'Technical SEO',
+    'Answer engine optimization (AEO)',
+    'Web accessibility (WCAG 2.1 AA)',
+    'AI-assisted software development',
+  ],
 }
 ---
 
@@ -54,7 +72,7 @@ const personLd = {
     <meta name="twitter:title" content={fullTitle} />
     <meta name="twitter:description" content={description} />
     <meta name="twitter:image" content={og} />
-    {isHome && <script type="application/ld+json" set:html={JSON.stringify(personLd)} />}
+    {withPerson && <script type="application/ld+json" set:html={JSON.stringify(personLd)} />}
     <meta name="theme-color" content="#0a0a0b" />
     <link rel="preconnect" href="https://fonts.googleapis.com" />
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />

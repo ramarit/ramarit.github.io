@@ -5,8 +5,9 @@ import { experience, education } from '../content/experience'
 <section id="experience" class="wrap timeline" data-section="experience" data-gl="experience">
   <p class="eyebrow">Experience</p>
   <h2 class="h-section" data-split>Track record</h2>
-  <ol class="tl" data-tl>
-    <li class="tl-line" aria-hidden="true"><i data-tl-draw></i></li>
+  <div class="tl" data-tl>
+    <div class="tl-line" aria-hidden="true"><i data-tl-draw></i></div>
+    <ol class="tl-list">
     {
       experience.map((role) => (
         <li class:list={['tl-item', { 'tl-compact': !role.stat }]} data-tl-item>
@@ -60,5 +61,6 @@ import { experience, education } from '../content/experience'
         {education.map((e) => <li>{e}</li>)}
       </ul>
     </li>
-  </ol>
+    </ol>
+  </div>
 </section>

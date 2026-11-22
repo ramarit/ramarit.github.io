@@ -1,5 +1,6 @@
 ---
 import { site } from '../content/site'
+const craftList = new Intl.ListFormat('en', { type: 'conjunction' }).format(site.crafts)
 ---
 
 <section class="wrap hero" data-section="hero" data-gl="hero">
@@ -8,10 +9,13 @@ import { site } from '../content/site'
     <span class="line">Amarit</span>
   </h1>
   <div class="hero-foot" data-hero-foot>
-    <p class="hero-role">
-      I plan, build and ship <span class="craft" data-craft data-crafts={JSON.stringify(site.crafts)}>{site.crafts[0]}</span>
-      <span class="hero-sub" style="color: var(--ink-soft)">Strategy, design and code, end to end.</span>
-    </p>
+    <div class="hero-role">
+      <p class="sr-only">I plan, build and ship {craftList}.</p>
+      <p aria-hidden="true">
+        I plan, build and ship <span class="craft" data-craft data-crafts={JSON.stringify(site.crafts)}>{site.crafts[0]}</span>
+      </p>
+      <p class="hero-sub" style="color: var(--ink-soft)">Strategy, design and code, end to end.</p>
+    </div>
     <p class="lede" style="font-size: 1rem">{site.intro}</p>
     <a class="scroll-cue eyebrow" href="#process" aria-label="Scroll to process">
       Scroll <i aria-hidden="true"></i>

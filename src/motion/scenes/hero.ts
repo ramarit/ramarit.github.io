@@ -11,7 +11,7 @@ export const hero: Scene = (root, c) => {
   if (!name || !foot) return
 
   // CSS keeps these hidden under .js-motion until we are ready to reveal them.
-  gsap.set([name, foot], { visibility: 'visible' })
+  gsap.set([name, foot], { opacity: 1 })
 
   if (c.reduce) return
 
@@ -21,11 +21,13 @@ export const hero: Scene = (root, c) => {
     charsClass: 'char',
     aria: 'none',
   })
+  // The h1 carries aria-label; hide the per-letter spans so it isn't read letter by letter.
+  split.chars.forEach((ch) => ch.setAttribute('aria-hidden', 'true'))
 
   const intro = gsap.timeline({ delay: 0.15 })
   intro
     .from(split.chars, { yPercent: 150, rotate: 8, duration: 1.3, stagger: 0.045, ease: 'paint' })
-    .from(foot.children, { y: 26, autoAlpha: 0, duration: 1, stagger: 0.09, ease: 'paint' }, 0.55)
+    .from(foot.children, { y: 26, opacity: 0, duration: 1, stagger: 0.09, ease: 'paint' }, 0.55)
 
   gsap.to(name, {
     yPercent: -12,

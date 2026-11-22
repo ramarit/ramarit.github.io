@@ -25,13 +25,13 @@ export const experience: Role[] = [
       { title: 'Senior Web Developer', dates: '2022' },
       { title: 'Web Development Tech Lead', dates: '2026' },
     ],
-    stat: { value: '8 → 1', label: 'brand sites, one platform' },
+    stat: { value: '8 → 1', label: '8 brand sites on 1 platform' },
     headline: 'Moved eight brand websites onto one Astro platform and the design system they share.',
     points: [
       'New pages launch 40% faster on the multi-brand page system.',
       'Awwwards Honorable Mention and CSSDA Special Kudos for the 2026 Fall Release.',
       'Contentful tools that let content teams publish without waiting on a developer.',
-      'AI workflows for the team: grilling reviews, a bug-to-PR pipeline and spec-driven development.',
+      'AI workflows for the team: adversarial AI code reviews, a bug-to-PR pipeline and spec-driven development.',
     ],
   },
   {
@@ -60,9 +60,9 @@ export const experience: Role[] = [
     place: 'Everett, WA',
     dates: '2017 — 2018',
     titles: [{ title: 'Front-End Web Developer', dates: '2017' }],
-    stat: { value: '90%', count: 90, suffix: '%', label: 'better migration accuracy' },
+    stat: { value: '90%', count: 90, suffix: '%', label: 'better data accuracy' },
     headline: 'Automated CMS content migration in Python.',
-    points: ['Saved days of manual work on every migration project.'],
+    points: ['Improved data accuracy by 90% and saved days of manual work on every migration project.'],
   },
 ]
 

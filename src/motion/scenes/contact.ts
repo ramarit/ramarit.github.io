@@ -11,6 +11,9 @@ export const contact: Scene = (root, c) => {
     charsClass: 'char',
     aria: 'none',
   })
+  // Name the link once and hide the letter spans, so it isn't announced letter by letter.
+  big.setAttribute('aria-label', (big.textContent || '').replace(/\s+/g, ' ').trim())
+  split.chars.forEach((ch) => ch.setAttribute('aria-hidden', 'true'))
 
   gsap.from(split.chars, {
     yPercent: 150,

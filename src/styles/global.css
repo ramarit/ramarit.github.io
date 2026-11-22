@@ -352,6 +352,9 @@ main {
 }
 /* The second line wraps on its own, evenly, so it never leaves "end." as an orphan. The first
    line holds the rotating word, whose changing width would make balancing jump around. */
+.hero-role p {
+  margin: 0;
+}
 .hero-role .hero-sub {
   display: block;
   text-wrap: balance;
@@ -818,6 +821,11 @@ main {
   margin: 3.5rem 0 0;
   padding: 0 0 0 clamp(2rem, 5vw, 4rem);
 }
+.tl-list {
+  list-style: none;
+  margin: 0;
+  padding: 0;
+}
 .tl-line {
   position: absolute;
   left: 0.5rem;
@@ -1209,15 +1217,16 @@ main {
   opacity: 0;
 }
 
-/* ── JS-dependent pre-states (never hide content without JS) ── */
+/* ── JS-dependent pre-states (never hide content without JS) ──
+   Opacity, not visibility: visibility: hidden drops content from the accessibility tree. */
 .js-motion [data-hero-name],
 .js-motion [data-hero-foot] {
-  visibility: hidden;
+  opacity: 0;
   animation: reveal-fallback 0s 2.5s forwards;
 }
 @keyframes reveal-fallback {
   to {
-    visibility: visible;
+    opacity: 1;
   }
 }
 

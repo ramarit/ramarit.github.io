@@ -40,14 +40,15 @@ import { process } from '../content/site'
           <path d="M90,330 L170,330 L170,350 L90,350 Z"></path>
         </g>
       </svg>
-      <pre class="pc-code" data-pc-code><code><span data-line><span class="k">export const</span> Card = (&#123; project &#125;) =&gt; (</span>
-<span data-line>  &lt;article class="card"&gt;</span>
-<span data-line>    &lt;Cover hue=&#123;project.hue&#125; /&gt;</span>
-<span data-line>    &lt;h4&gt;&#123;project.title&#125;&lt;/h4&gt;</span>
-<span data-line>    &lt;p&gt;&#123;project.summary&#125;&lt;/p&gt;</span>
-<span data-line>    &lt;Button&gt;View case study&lt;/Button&gt;</span>
-<span data-line>  &lt;/article&gt;</span>
-<span data-line>)  <span class="c">// tokens · a11y · tested</span></span></code></pre>
+      <pre class="pc-code" data-pc-code><code><span data-line><span class="c">---</span></span>
+<span data-line><span class="k">const</span> &#123; project &#125; = Astro.props</span>
+<span data-line><span class="c">---</span></span>
+<span data-line>&lt;article class="card"&gt;</span>
+<span data-line>  &lt;Cover hue=&#123;project.hue&#125; /&gt;</span>
+<span data-line>  &lt;h4&gt;&#123;project.title&#125;&lt;/h4&gt;</span>
+<span data-line>  &lt;Button&gt;View case study&lt;/Button&gt;</span>
+<span data-line>&lt;/article&gt;</span>
+<span data-line><span class="c">&lt;!-- tokens · a11y · tested --&gt;</span></span></code></pre>
       <div class="pc-card" data-pc-card>
         <div class="pc-thumb"></div>
         <h4>Idea → Launch</h4>

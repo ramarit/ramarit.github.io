@@ -27,7 +27,7 @@ export const timeline: Scene = (root, c) => {
   for (const item of items) {
     gsap.from(item, {
       y: 40,
-      autoAlpha: 0,
+      opacity: 0, // not autoAlpha: visibility: hidden would hide the role from screen readers
       duration: 1,
       ease: 'paint',
       scrollTrigger: { trigger: item, start: 'top 88%', once: true },

@@ -73,7 +73,7 @@ export const projects: Project[] = [
       {
         heading: 'Working with AI',
         body: [
-          'I set up the team’s internal AI workflows: automated “grilling” reviews, a bug-to-pull-request pipeline and spec-driven development with Claude, Claude Skills and OpenSpec, with human review before anything ships.',
+          'I set up the team’s internal AI workflows: automated adversarial AI code reviews, a bug-to-pull-request pipeline and spec-driven development with Claude, Claude Skills and OpenSpec, with human review before anything ships.',
         ],
       },
       {

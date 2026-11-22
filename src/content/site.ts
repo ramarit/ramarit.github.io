@@ -4,6 +4,7 @@ export const site = {
   title: 'Ryan Amarit — Web Lead & Product Engineer',
   email: 'ramarit@gmail.com',
   linkedin: 'https://www.linkedin.com/in/ryanamarit/',
+  github: 'https://github.com/ramarit',
   url: 'https://www.ryanamarit.com',
   description:
     'Ryan Amarit is a web lead and product engineer who plans, builds and ships fast, accessible websites, design systems, content platforms and products.',
