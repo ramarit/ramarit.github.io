@@ -1293,7 +1293,7 @@ main {
 
 /* ── Readable on hover ─────────────────────────────────────
    Body copy sits straight on the WebGL field, and the cursor trail glows right under whatever
-   you're reading. Hovering a block fades in a frosted panel behind it. It's a pseudo-element,
+   you're reading. When the glow is near a block (or it's hovered) a frosted panel fades in. It's a pseudo-element,
    so nothing reflows; fine pointers only (touch has no hover). */
 @media (hover: hover) and (pointer: fine) {
   .lede,
@@ -1324,12 +1324,14 @@ main {
     transition: opacity 0.35s ease;
     pointer-events: none;
   }
+  /* :hover, plus .is-shielded from app.ts whenever the cursor glow is near the block. */
   .lede:hover::before,
   .prose-lg:hover::before,
   .cs-section:hover::before,
   .tl-body:hover::before,
   .tl-note:hover::before,
-  .stack-group:hover::before {
+  .stack-group:hover::before,
+  .is-shielded::before {
     opacity: 1;
   }
 }

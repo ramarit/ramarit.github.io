@@ -53,6 +53,7 @@ export function boot() {
   initAnalytics()
   setupThemeToggle()
   setupCursor()
+  setupGlowShield()
   setupRouter()
 
   if (document.fonts?.ready) {
@@ -262,6 +263,59 @@ function setupThemeToggle() {
     if (meta) meta.setAttribute('content', next === 'light' ? '#f1eee6' : '#0a0a0b')
     track('theme_toggled', { theme: next })
   })
+}
+
+/** Body copy that sits directly on the WebGL field. Keep in sync with the CSS shield rules. */
+const SHIELDED = '.lede, .prose-lg, .cs-section, .tl-body, .tl-note, .stack-group'
+
+/**
+ * Show the frosted panel behind body copy whenever the cursor's glow trail is near it, not just
+ * when the pointer is on the text. The field's trail glows visibly to ~20% of the viewport
+ * height around the pointer and fades over ~1.2s, so blocks inside that radius get .is-shielded
+ * and keep it until the trail behind them has faded.
+ */
+function setupGlowShield() {
+  if (!finePointer() || reduceMotion()) return
+  const LINGER = 1200
+  const until = new WeakMap<Element, number>()
+  let frame = 0
+  let px = -1
+  let py = -1
+
+  const update = () => {
+    frame = 0
+    if (!document.documentElement.classList.contains('has-gl')) return
+    const now = performance.now()
+    const reach = window.innerHeight * 0.2
+    for (const el of document.querySelectorAll(SHIELDED)) {
+      const r = el.getBoundingClientRect()
+      if (r.bottom < -reach || r.top > window.innerHeight + reach) {
+        el.classList.remove('is-shielded')
+        continue
+      }
+      const dx = Math.max(r.left - px, 0, px - r.right)
+      const dy = Math.max(r.top - py, 0, py - r.bottom)
+      if (dx * dx + dy * dy < reach * reach) until.set(el, now + LINGER)
+      const on = (until.get(el) ?? 0) > now
+      el.classList.toggle('is-shielded', on)
+    }
+  }
+  const schedule = () => {
+    if (!frame) frame = requestAnimationFrame(update)
+  }
+
+  window.addEventListener(
+    'pointermove',
+    (event) => {
+      px = event.clientX
+      py = event.clientY
+      schedule()
+    },
+    { passive: true },
+  )
+  // Scrolling moves text under a still pointer; and panels must switch off once the trail fades.
+  window.addEventListener('scroll', schedule, { passive: true })
+  setInterval(schedule, 300)
 }
 
 function setupCursor() {
