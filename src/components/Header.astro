@@ -14,7 +14,10 @@ const isContact = path.startsWith('/contact')
     <a href="/about/" aria-current={isAbout ? 'page' : undefined}>About</a>
     <a href="/contact/" aria-current={isContact ? 'page' : undefined}>Contact</a>
     <button class="theme-toggle" type="button" data-theme-toggle aria-label="Switch color theme">
-      <span aria-hidden="true">◐</span>
+      <svg class="theme-icon" viewBox="0 0 20 20" aria-hidden="true">
+        <circle cx="10" cy="10" r="8.25" fill="none" stroke="currentColor" stroke-width="1.5"></circle>
+        <path d="M10 1.75a8.25 8.25 0 0 1 0 16.5z" fill="currentColor"></path>
+      </svg>
     </button>
   </nav>
 </header>

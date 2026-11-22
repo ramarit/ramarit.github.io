@@ -296,9 +296,13 @@ img {
   background: none;
   color: inherit;
   cursor: pointer;
-  font-size: 1.3rem !important;
-  line-height: 1;
   transition: background-color 0.2s ease;
+}
+/* Drawn icon (not the ◐ character, whose fallback-font metrics sat off the labels), sized to
+   read with the nav text and centred on the uppercase labels. */
+.theme-icon {
+  width: 1.05rem;
+  height: 1.05rem;
 }
 .theme-toggle:hover {
   background: color-mix(in oklab, currentColor 12%, transparent);
