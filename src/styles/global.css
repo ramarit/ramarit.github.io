@@ -893,6 +893,10 @@ main {
     grid-template-columns: minmax(11rem, 17rem) 1fr;
     align-items: start;
   }
+  /* No stat: keep the text in the same column as the roles that have one. */
+  .tl-grid.no-stat .tl-body {
+    grid-column: 2;
+  }
 }
 .tl-stat {
   margin: 0;

@@ -6,8 +6,10 @@ export type Role = {
   /** Oldest first, so the promotion path reads left to right. */
   titles: { title: string; dates: string }[]
   /** The big number. `count` animates 0 → count; omit it for non-numeric values like "8 → 1". */
-  /** Omit for a compact entry (meta line + headline only). */
+  /** The big number. Optional: without it the role shows its headline and proof only. */
   stat?: { value: string; count?: number; prefix?: string; suffix?: string; label: string }
+  /** A minor role: meta line + one sentence, no proof list. */
+  compact?: boolean
   /** What changed, in one line. */
   headline: string
   /** The proof behind it. */
@@ -39,6 +41,7 @@ export const experience: Role[] = [
     place: 'Part-time',
     dates: '2019 — now',
     titles: [],
+    compact: true,
     headline: 'Brought in to fix sites other agencies left behind.',
     points: [],
   },
@@ -60,13 +63,11 @@ export const experience: Role[] = [
     place: 'Everett, WA',
     dates: '2017 — 2018',
     titles: [{ title: 'Front-End Web Developer', dates: '2017' }],
-    stat: { value: '90%', count: 90, suffix: '%', label: 'better data accuracy' },
     headline: 'Proposed and built the automation behind a global, multi-CMS migration to Drupal.',
     points: [
       'Hired to build landing pages and emails for marketing, then took on extra projects for the global web team.',
       'Custom Python libraries and web scrapers that matched URLs to product IDs, transformed content for translation and uploaded entries automatically across the multilingual site.',
-      'Improved data accuracy by 90% and saved days of manual work on every migration project.',
-      'The migration finished ahead of schedule and needed fewer contractors.',
+      'Saved days of manual work on every migration project; the migration finished ahead of schedule and needed fewer contractors.',
     ],
   },
 ]
