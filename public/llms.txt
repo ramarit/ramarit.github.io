@@ -1,0 +1,23 @@
+# Ryan Amarit
+
+> Ryan Amarit is a web lead and product engineer who plans, builds and ships fast, accessible websites, design systems, content platforms and products.
+
+Ryan Amarit is the Web Development Tech Lead at 8am (formerly AffiniPay), where he leads the platform behind eight B2B SaaS brand websites, the Tailwind and Storybook design system they share, and the Contentful tools content teams publish with. He has nine years of web experience across in-house and agency teams, and builds RulerIQ, a SaaS that shows brands what AI assistants say about them.
+
+## Key pages
+- [Home](https://www.ryanamarit.com/): overview, process, selected work, skills and track record
+- [Work](https://www.ryanamarit.com/projects/): case studies and agency work
+- [8am Web Platform case study](https://www.ryanamarit.com/projects/8am-web-platform/): eight brand sites moved onto one Astro platform; Awwwards Honorable Mention and CSSDA Special Kudos (2026 Fall Release)
+- [RulerIQ case study](https://www.ryanamarit.com/projects/ruleriq/): an AI-visibility SaaS built with a team of AI coding agents
+- [About](https://www.ryanamarit.com/about/): background and education
+- [Contact](https://www.ryanamarit.com/contact/): email and LinkedIn
+
+## Focus areas
+- Web platforms and headless CMS (Astro, Next.js, React, Vue, Contentful, Sanity)
+- Design systems (Tailwind, Storybook, Figma, WCAG 2.1 AA)
+- Growth and search (technical SEO, AEO, GA4, A/B testing, Core Web Vitals)
+- AI workflows (Claude Code, agent harnesses, MCP servers, spec-driven development)
+
+## Elsewhere
+- LinkedIn: https://www.linkedin.com/in/ryanamarit/
+- GitHub: https://github.com/ramarit

@@ -297,8 +297,14 @@ main {
   padding-top: calc(var(--header-h) + 2rem);
   padding-bottom: 2rem;
 }
-.hero-name {
+/* Title label + name sit together at the bottom of the hero's first row. */
+.hero-head {
   align-self: end;
+}
+.hero-title {
+  margin: 0 0 1.25rem;
+}
+.hero-name {
   font-family: var(--display);
   font-weight: 800;
   font-size: clamp(4.5rem, 19vw, 22rem);

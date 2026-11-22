@@ -4,10 +4,13 @@ const craftList = new Intl.ListFormat('en', { type: 'conjunction' }).format(site
 ---
 
 <section class="wrap hero" data-section="hero" data-gl="hero">
-  <h1 class="hero-name" data-hero-name aria-label={site.name}>
-    <span class="line">Ryan</span>
-    <span class="line">Amarit</span>
-  </h1>
+  <div class="hero-head">
+    <p class="eyebrow hero-title">{site.role}</p>
+    <h1 class="hero-name" data-hero-name aria-label={site.name}>
+      <span class="line">Ryan</span>
+      <span class="line">Amarit</span>
+    </h1>
+  </div>
   <div class="hero-foot" data-hero-foot>
     <div class="hero-role">
       <p class="sr-only">I plan, build and ship {craftList}.</p>
