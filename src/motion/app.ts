@@ -13,6 +13,7 @@ import { hero } from './scenes/hero'
 import { process } from './scenes/process'
 import { work } from './scenes/work'
 import { stack } from './scenes/stack'
+import { notFound } from './scenes/notFound'
 import { timeline } from './scenes/timeline'
 import { contact } from './scenes/contact'
 import { split } from './scenes/split'
@@ -26,6 +27,7 @@ const pageScenes: PageScene[] = [
   { selector: '.process', run: process },
   { selector: '.work', run: work },
   { selector: '.stack', run: stack },
+  { selector: '.not-found', run: notFound },
   { selector: '.timeline', run: timeline },
   { selector: '.contact', run: contact },
 ]

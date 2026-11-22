@@ -1,16 +1,52 @@
 ---
 import Base from '../layouts/Base.astro'
+const steps = [
+  { name: 'Sketch', done: true },
+  { name: 'Structure', done: false },
+  { name: 'Code', done: false },
+  { name: 'Ship', done: false },
+]
 ---
 
-<Base title="Not found" description="That page does not exist.">
-  <section class="wrap page-hero" data-section="not-found" data-gl="page">
-    <p class="eyebrow">404</p>
-    <h1 class="page-title" data-split>Nothing<br />here.</h1>
-    <p class="lede" style="margin-top:2rem">
-      The page you were looking for moved, or never existed. The work and the about page are still
-      where you left them.
+<Base title="Not found" description="That page does not exist." noindex>
+  <section class="wrap page-hero not-found" data-section="not-found" data-gl="page">
+    <p class="eyebrow">Error 404</p>
+
+    <!-- Decorative: the eyebrow and heading say what happened. -->
+    <div class="nf-stage" data-nf-stage aria-hidden="true">
+      <div class="nf-code">
+        <span class="nf-digit" data-nf-digit>4</span><span class="nf-digit" data-nf-digit>0</span><span
+          class="nf-digit"
+          data-nf-digit>4</span
+        >
+      </div>
+      <svg class="nf-sketch" viewBox="0 0 600 220" preserveAspectRatio="none">
+        <path
+          data-nf-stroke
+          d="M18,150 C90,60 170,190 250,110 C320,40 360,170 430,120 C480,85 520,70 585,64"></path>
+      </svg>
+    </div>
+
+    <h1 class="page-title nf-title" data-split>This page never made it past sketch.</h1>
+
+    <ol class="nf-steps" aria-label="This page's progress">
+      {
+        steps.map((s) => (
+          <li class:list={{ done: s.done }}>
+            <span aria-hidden="true">{s.done ? '✓' : '✗'}</span> {s.name}
+            {!s.done && <span class="sr-only"> (not reached)</span>}
+          </li>
+        ))
+      }
+    </ol>
+
+    <p class="lede nf-lede">
+      It was an idea once. It never got a structure, the code or a launch. Everything that did ship is
+      one click away.
     </p>
-    <p class="btn-row" style="margin-top:2.5rem">
+    <p class="nf-hint" data-nf-hint>Go on, throw the numbers.</p>
+
+    <p class="btn-row nf-actions">
       <a class="btn btn-accent" href="/">Back home <span class="btn-arrow" aria-hidden="true">→</span></a>
       <a class="btn" href="/projects/">See the work <span class="btn-arrow" aria-hidden="true">→</span></a>
     </p>
