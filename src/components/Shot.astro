@@ -1,0 +1,17 @@
+---
+import type { ImageMetadata } from 'astro'
+import { Image } from 'astro:assets'
+
+interface Props {
+  src: ImageMetadata
+  sizes: string
+}
+const { src, sizes } = Astro.props
+---
+
+<!-- A screenshot in a minimal browser frame, floated inside a gradient cover. Decorative: the
+     card or page around it already names the project. -->
+<div class="shot" aria-hidden="true">
+  <div class="shot-bar"><i></i><i></i><i></i></div>
+  <Image src={src} alt="" widths={[480, 800, 1200]} {sizes} loading="lazy" decoding="async" />
+</div>

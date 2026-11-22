@@ -19,6 +19,7 @@ interface Props {
 
 const { project, next } = Astro.props
 const index = String(projects.findIndex((p) => p.slug === project.slug) + 1).padStart(2, '0')
+import Shot from '../../components/Shot.astro'
 ---
 
 <Base title={project.title} description={project.summary} palette="work">
@@ -67,6 +68,7 @@ const index = String(projects.findIndex((p) => p.slug === project.slug) + 1).pad
     <div class="work-cover" style={`--h:${project.hue}`} aria-hidden="true">
       <div class="art"></div>
       <div class="grid-dots"></div>
+      {project.shot && <Shot src={project.shot} sizes="(min-width: 1000px) 60vw, 70vw" />}
       <span class="index">{index}</span>
     </div>
   </div>

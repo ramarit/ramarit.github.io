@@ -1,5 +1,6 @@
 ---
 import type { Project } from '../content/work'
+import Shot from './Shot.astro'
 interface Props {
   project: Project
   index: number
@@ -22,6 +23,7 @@ const external = !project.caseStudy
   <div class="work-cover" style={`--h:${project.hue}`} aria-hidden="true">
     <div class="art" data-parallax></div>
     <div class="grid-dots"></div>
+    {project.shot && <Shot src={project.shot} sizes="(min-width: 1000px) 40vw, (min-width: 700px) 32vw, 64vw" />}
     <span class="index">{String(index + 1).padStart(2, '0')}</span>
   </div>
   <div class="work-body">

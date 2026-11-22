@@ -1,3 +1,10 @@
+import type { ImageMetadata } from 'astro'
+import shot8am from '../assets/work/8am.jpg'
+import shotRulerIQ from '../assets/work/ruleriq.jpg'
+import shotModern from '../assets/work/modern-art-museum.jpg'
+import shotSinclair from '../assets/work/sinclair-oil.jpg'
+import shotRenfro from '../assets/work/renfro-foods.jpg'
+
 export type Project = {
   slug: string
   title: string
@@ -8,6 +15,8 @@ export type Project = {
   tags: string[]
   /** Hue for the generated cover art (0–360). */
   hue: number
+  /** Homepage screenshot, shown in a browser frame inside the cover art. */
+  shot?: ImageMetadata
   /** Internal case study page, or an external link. */
   caseStudy: boolean
   href?: string
@@ -27,6 +36,7 @@ export const projects: Project[] = [
       'One platform, design system and content model behind 8 B2B SaaS brand websites, from 8am.com to MyCase, LawPay, CASEpeer and Docketwise.',
     tags: ['Astro', 'Vue', 'React', 'TypeScript', 'Contentful', 'Tailwind', 'Storybook', 'GSAP'],
     hue: 78,
+    shot: shot8am,
     caseStudy: true,
     links: [
       { label: '8am.com', href: 'https://www.8am.com/' },
@@ -94,6 +104,7 @@ export const projects: Project[] = [
       'A SaaS that asks ChatGPT, Perplexity, Gemini and Claude what buyers ask, and shows a brand which pages AI cites and what to fix.',
     tags: ['Next.js', 'TypeScript', 'Postgres', 'MCP', 'Stripe', 'AI agents'],
     hue: 32,
+    shot: shotRulerIQ,
     caseStudy: true,
     links: [{ label: 'ruleriq.com', href: 'https://ruleriq.com' }],
     sections: [
@@ -140,6 +151,7 @@ export const projects: Project[] = [
       'A component-based Drupal 8 theme with responsive layouts and flexible content management for one of the country’s great modern art museums.',
     tags: ['Drupal 8', 'SCSS', 'JavaScript'],
     hue: 210,
+    shot: shotModern,
     caseStudy: false,
     href: 'https://www.themodern.org/',
   },
@@ -153,6 +165,7 @@ export const projects: Project[] = [
       'A corporate site on a custom Drupal component architecture, with an interactive “Find a Station” locator.',
     tags: ['Drupal 8', 'SCSS', 'JavaScript'],
     hue: 150,
+    shot: shotSinclair,
     caseStudy: false,
     href: 'https://www.sinclairoil.com/',
   },
@@ -166,6 +179,7 @@ export const projects: Project[] = [
       'An e-commerce site on a custom Shopify component architecture, with better navigation, product filtering and a mobile-first design.',
     tags: ['Shopify', 'Liquid', 'SCSS', 'JavaScript'],
     hue: 4,
+    shot: shotRenfro,
     caseStudy: false,
     href: 'https://www.renfrofoods.com/',
     award: '2022 Best of Interactive · American Advertising Awards, Fort Worth',
