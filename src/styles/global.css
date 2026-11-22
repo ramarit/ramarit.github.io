@@ -903,7 +903,6 @@ main {
 /* ── Footer ─────────────────────────────────────────────── */
 .site-footer {
   display: flex;
-  flex-wrap: wrap;
   justify-content: space-between;
   gap: 1rem;
   padding-block: 2rem;
