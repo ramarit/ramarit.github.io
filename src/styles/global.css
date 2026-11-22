@@ -449,6 +449,29 @@ main {
 .js-motion .process-steps li.is-active {
   border-top-color: var(--accent);
 }
+/* The active step sits on a frosted panel (same look as the hover panels) that moves with it.
+   Starts just under the accent rule; bleeds stay under half the 1.25rem gap between steps. */
+.js-motion .process-steps li {
+  position: relative;
+  isolation: isolate;
+}
+.js-motion .process-steps li::before {
+  content: '';
+  position: absolute;
+  inset: 0.45rem -0.8rem -0.6rem;
+  z-index: -1;
+  border-radius: 12px;
+  background: color-mix(in oklab, var(--bg) 78%, transparent);
+  backdrop-filter: blur(14px);
+  -webkit-backdrop-filter: blur(14px);
+  box-shadow: 0 0 0 1px var(--line);
+  opacity: 0;
+  transition: opacity 0.4s ease;
+  pointer-events: none;
+}
+.js-motion .process-steps li.is-active::before {
+  opacity: 1;
+}
 .process-steps h3 {
   font-family: var(--display);
   font-size: 1.5rem;
@@ -1176,8 +1199,12 @@ main {
   gap: 1rem 3rem;
 }
 @media (min-width: 900px) {
+  /* The text column stops at the paragraphs' own 62ch, so the section (and its hover panel)
+     ends where the text does instead of spanning the page. */
   .cs-section {
-    grid-template-columns: 18rem 1fr;
+    grid-template-columns: 18rem auto; /* auto = the paragraphs' own max-width (62ch at their size) */
+    width: fit-content;
+    max-width: 100%;
   }
 }
 .cs-section h2 {
@@ -1313,9 +1340,11 @@ main {
   .stack-group::before {
     content: '';
     position: absolute;
-    inset: -0.9rem -1.1rem;
+    /* The bleed must stay under half of the tightest gap next to any shielded block
+       (stack columns 2rem, work head 1.5rem), or neighbouring panels touch or overlap. */
+    inset: -0.6rem -0.7rem;
     z-index: -1;
-    border-radius: 14px;
+    border-radius: 12px;
     background: color-mix(in oklab, var(--bg) 78%, transparent);
     backdrop-filter: blur(14px);
     -webkit-backdrop-filter: blur(14px);
@@ -1323,6 +1352,11 @@ main {
     opacity: 0;
     transition: opacity 0.35s ease;
     pointer-events: none;
+  }
+  /* Hug the text (its own max-widths) instead of spanning the whole grid column. */
+  .tl-note,
+  .tl-body {
+    width: fit-content;
   }
   /* :hover, plus .is-shielded from app.ts whenever the cursor glow is near the block. */
   .lede:hover::before,
