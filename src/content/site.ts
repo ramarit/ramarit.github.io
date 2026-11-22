@@ -12,13 +12,6 @@ export const site = {
   crafts: ['websites', 'product features', 'design systems', 'content platforms', 'AI tools'],
   intro:
     'For nine years I have planned, built and led the websites, design systems and content platforms that marketing and product teams ship on: setting priorities with stakeholders, writing the code, and measuring what it does.',
-  // Headline numbers on the About page. Every one is backed elsewhere on the site.
-  facts: [
-    { value: '8 → 1', label: 'Brand sites on one platform' },
-    { value: '40%', label: 'Faster page launches' },
-    { value: '2', label: 'Promotions in five years' },
-    { value: '55+', label: 'Client sites supported' },
-  ],
 }
 
 export const process = [

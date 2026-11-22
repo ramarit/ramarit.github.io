@@ -1332,41 +1332,6 @@ main {
 .prose-lg p + p {
   margin-top: 1.25rem;
 }
-/* About: headline numbers. Value big and lime above its label (dt stays first in the markup
-   for screen readers; the order is visual only). */
-.facts {
-  display: grid;
-  grid-template-columns: repeat(auto-fit, minmax(9rem, 1fr));
-  gap: 1.5rem 1.25rem;
-  margin: 2rem 0;
-  padding-block: 1.5rem;
-  border-block: 1px solid var(--line);
-}
-.facts div {
-  display: flex;
-  flex-direction: column;
-  gap: 0.35rem;
-}
-.facts dt {
-  order: 2;
-  font-family: var(--mono);
-  font-size: 0.72rem;
-  letter-spacing: 0.08em;
-  text-transform: uppercase;
-  color: var(--ink-soft);
-}
-.facts dd {
-  order: 1;
-  margin: 0;
-  font-family: var(--display);
-  font-weight: 800;
-  font-size: clamp(2.2rem, 3.6vw, 3.25rem);
-  line-height: 1;
-  letter-spacing: -0.03em;
-  white-space: nowrap;
-  color: var(--accent);
-}
-
 /* ── Cursor ─────────────────────────────────────────────── */
 .cursor {
   position: fixed;
