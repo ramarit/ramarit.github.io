@@ -21,7 +21,7 @@ export const experience: Role[] = [
     points: [
       'Tech lead for the platform behind 8 brand websites; led the migrations onto one Astro monorepo.',
       'Built the Tailwind + Storybook component library and the Contentful tools content teams publish with.',
-      'Set up the team’s AI workflows: grilling reviews, a bug-to-PR pipeline and spec-driven development.',
+      'Set up the team’s AI workflows: refinement reviews, a bug-to-PR pipeline and spec-driven development.',
     ],
   },
   {
