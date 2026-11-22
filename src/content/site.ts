@@ -72,7 +72,7 @@ export const stack = [
       'MCP servers',
       'Custom skills',
       'Spec-driven dev',
-      'AI code review',
+      'AI ticket grilling',
       'Bug-to-PR pipeline',
     ],
   },

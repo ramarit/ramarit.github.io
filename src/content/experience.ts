@@ -33,7 +33,7 @@ export const experience: Role[] = [
       'New pages launch 40% faster on the multi-brand page system.',
       'Awwwards Honorable Mention and CSSDA Special Kudos for the 2026 Fall Release.',
       'Contentful tools that let content teams publish without waiting on a developer.',
-      'AI workflows for the team: adversarial AI code reviews, a bug-to-PR pipeline and spec-driven development.',
+      'AI workflows for the team: ticket grilling before sprint planning, a bug-to-PR pipeline and spec-driven development.',
     ],
   },
   {
