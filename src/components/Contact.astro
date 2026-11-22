@@ -18,17 +18,21 @@ const Heading = page ? 'h1' : 'div'
   </Heading>
   {page && <p class="lede contact-note">Email is the quickest way to reach me. I usually reply within a day or two.</p>}
   <div class="contact-links">
-    <a class="magnet primary" href={`mailto:${site.email}`} data-magnetic data-track="social_link_clicked" data-track-name="email"
-      >{site.email}</a
+    <a
+      class="btn btn-accent btn-lg btn-email magnet"
+      href={`mailto:${site.email}`}
+      data-magnetic
+      data-track="social_link_clicked"
+      data-track-name="email">{site.email} <span class="btn-arrow" aria-hidden="true">→</span></a
     >
     <a
-      class="magnet"
+      class="btn btn-lg magnet"
       href={site.linkedin}
       target="_blank"
       rel="noopener noreferrer"
       data-magnetic
       data-track="social_link_clicked"
-      data-track-name="linkedin">LinkedIn ↗</a
+      data-track-name="linkedin">LinkedIn <span class="btn-arrow" aria-hidden="true">↗</span><span class="sr-only"> (opens in a new tab)</span></a
     >
   </div>
 </section>

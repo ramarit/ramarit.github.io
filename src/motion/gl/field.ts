@@ -112,12 +112,14 @@ void main() {
 `
 
 type Palette = { bg: string; c1: string; c2: string; c3: string; lum: [number, number] }
-// `lum` is the contrast guard: the [min, max] relative luminance the field may reach, chosen so
-// --ink-soft body copy keeps 4.5:1 on any pixel. Dark: #a9a59c (Y≈0.37) needs Y ≤ 0.043.
-// Light: #55524c (Y≈0.085) needs Y ≥ 0.56. Revisit these if --ink-soft changes.
+// `lum` is the contrast guard: the [min, max] relative luminance the field may reach.
+// It's open ([0, 1]) because body copy now gets a frosted panel whenever the cursor glow is near
+// it (see setupGlowShield in app.ts), so the trail can run at full brightness again.
+// To bring the guard back (e.g. if the panels go): dark [0, 0.043] and light [0.56, 1] keep
+// --ink-soft text at 4.5:1 on any pixel.
 const palettes: Record<'dark' | 'light', Palette> = {
-  dark: { bg: '#0a0a0b', c1: '#1c1f2b', c2: '#3b4a1a', c3: '#d4ff3a', lum: [0, 0.043] },
-  light: { bg: '#f1eee6', c1: '#d9d3c4', c2: '#b9b1ff', c3: '#4a3cff', lum: [0.56, 1] },
+  dark: { bg: '#0a0a0b', c1: '#1c1f2b', c2: '#3b4a1a', c3: '#d4ff3a', lum: [0, 1] },
+  light: { bg: '#f1eee6', c1: '#d9d3c4', c2: '#b9b1ff', c3: '#4a3cff', lum: [0, 1] },
 }
 
 function hex(h: string) {

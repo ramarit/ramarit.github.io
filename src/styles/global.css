@@ -454,11 +454,12 @@ main {
 .js-motion .process-steps li {
   position: relative;
   isolation: isolate;
+  padding: 1.4rem 1.25rem 1rem;
 }
 .js-motion .process-steps li::before {
   content: '';
   position: absolute;
-  inset: 0.45rem -0.8rem -0.6rem;
+  inset: 0.4rem 0 0;
   z-index: -1;
   border-radius: 12px;
   background: color-mix(in oklab, var(--bg) 78%, transparent);
@@ -881,28 +882,78 @@ main {
   color: var(--bg);
 }
 
+/* Buttons: one system for the whole site. Mono uppercase like the nav and eyebrows, pill
+   shaped like the skill pills, with a consistent height and an arrow that nudges on hover. */
 .btn {
   display: inline-flex;
   align-items: center;
-  gap: 0.5rem;
-  padding: 0.55rem 0.95rem;
+  justify-content: center;
+  gap: 0.6rem;
+  min-height: 2.75rem;
+  padding: 0.8rem 1.3rem;
   border-radius: 999px;
   border: 1px solid var(--line);
-  background: transparent;
+  background: color-mix(in oklab, var(--bg) 60%, transparent);
+  backdrop-filter: blur(8px);
+  -webkit-backdrop-filter: blur(8px);
   color: var(--ink);
   font-family: var(--mono);
-  font-size: 0.75rem;
-  letter-spacing: 0.04em;
+  font-size: 0.78rem;
+  font-weight: 500;
+  line-height: 1;
+  letter-spacing: 0.08em;
   text-transform: uppercase;
+  white-space: nowrap;
   cursor: pointer;
+  transition:
+    background-color 0.25s ease,
+    border-color 0.25s ease,
+    color 0.25s ease;
 }
 .btn:hover {
   border-color: var(--ink);
+  background: color-mix(in oklab, var(--ink) 8%, var(--bg));
 }
 .btn-accent {
   background: var(--accent);
   border-color: var(--accent);
   color: var(--accent-ink);
+}
+.btn-accent:hover {
+  background: var(--ink);
+  border-color: var(--ink);
+  color: var(--bg);
+}
+.btn-lg {
+  min-height: 3.5rem;
+  padding: 1rem 1.7rem;
+  font-size: 0.85rem;
+}
+/* An email address reads as an address, not a label. */
+.btn-email {
+  text-transform: none;
+  letter-spacing: 0.02em;
+}
+.btn-arrow {
+  display: inline-block;
+  transition: transform 0.3s cubic-bezier(0.2, 0.7, 0.2, 1);
+}
+.btn:hover .btn-arrow {
+  transform: translateX(3px);
+}
+.btn-row {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.75rem;
+}
+@media (prefers-reduced-motion: reduce) {
+  .btn,
+  .btn-arrow {
+    transition: none;
+  }
+  .btn:hover .btn-arrow {
+    transform: none;
+  }
 }
 /* ── Timeline ───────────────────────────────────────────── */
 .timeline {
@@ -1114,21 +1165,9 @@ main {
   gap: 1rem;
   margin-top: 3rem;
 }
+/* Contact buttons are .btn .btn-lg; .magnet only marks them for the magnetic hover effect. */
 .magnet {
-  display: inline-flex;
-  align-items: center;
-  justify-content: center;
-  padding: 1.1rem 1.6rem;
-  border-radius: 999px;
-  font-family: var(--mono);
-  font-size: 0.9rem;
-  border: 1px solid var(--line);
   will-change: transform;
-}
-.magnet.primary {
-  background: var(--accent);
-  color: var(--accent-ink);
-  border-color: var(--accent);
 }
 
 /* ── Footer ─────────────────────────────────────────────── */
@@ -1318,10 +1357,12 @@ main {
   opacity: 0;
 }
 
-/* ── Readable on hover ─────────────────────────────────────
+/* ── Readable panels ────────────────────────────────────────
    Body copy sits straight on the WebGL field, and the cursor trail glows right under whatever
-   you're reading. When the glow is near a block (or it's hovered) a frosted panel fades in. It's a pseudo-element,
-   so nothing reflows; fine pointers only (touch has no hover). */
+   you're reading. When the glow is near a block (.is-shielded, set in app.ts) or it's hovered,
+   a frosted panel fades in. The blocks carry real padding and the panel fills that box
+   exactly, so spacing is even on every side and panels can never overlap their neighbours.
+   Fine pointers only: touch has no cursor glow, so phones keep the plain layout. */
 @media (hover: hover) and (pointer: fine) {
   .lede,
   .prose-lg,
@@ -1329,8 +1370,12 @@ main {
   .tl-body,
   .tl-note,
   .stack-group {
+    --panel-pad-y: 1.25rem;
+    --panel-pad-x: 1.5rem;
     position: relative;
     isolation: isolate;
+    padding: var(--panel-pad-y) var(--panel-pad-x);
+    border-radius: 16px;
   }
   .lede::before,
   .prose-lg::before,
@@ -1340,11 +1385,9 @@ main {
   .stack-group::before {
     content: '';
     position: absolute;
-    /* The bleed must stay under half of the tightest gap next to any shielded block
-       (stack columns 2rem, work head 1.5rem), or neighbouring panels touch or overlap. */
-    inset: -0.6rem -0.7rem;
+    inset: 0;
     z-index: -1;
-    border-radius: 12px;
+    border-radius: inherit;
     background: color-mix(in oklab, var(--bg) 78%, transparent);
     backdrop-filter: blur(14px);
     -webkit-backdrop-filter: blur(14px);
@@ -1357,6 +1400,32 @@ main {
   .tl-note,
   .tl-body {
     width: fit-content;
+  }
+  /* Larger reading blocks get roomier padding. */
+  .prose-lg,
+  .cs-section {
+    --panel-pad-y: 1.75rem;
+    --panel-pad-x: 2rem;
+  }
+  /* Ledes and case-study sections must stay aligned with the headings above them and keep
+     their spacing, so they take no padding: their panel is drawn outside the text instead.
+     Their neighbours are far enough away that the bleed never touches them. */
+  .lede,
+  .cs-section {
+    padding: 0;
+  }
+  .lede {
+    --panel-pad-y: 1rem;
+    --panel-pad-x: 1.25rem;
+  }
+  .lede::before,
+  .cs-section::before {
+    inset: calc(-1 * var(--panel-pad-y)) calc(-1 * var(--panel-pad-x));
+  }
+  /* About: the text card lines up with the portrait and matches its height. */
+  .about-grid > .prose-lg {
+    align-self: stretch;
+    border-radius: 18px;
   }
   /* :hover, plus .is-shielded from app.ts whenever the cursor glow is near the block. */
   .lede:hover::before,
