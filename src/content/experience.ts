@@ -67,7 +67,7 @@ export const experience: Role[] = [
     points: [
       'Hired to build landing pages and emails for marketing, then took on extra projects for the global web team.',
       'Custom Python libraries and web scrapers that matched URLs to product IDs, transformed content for translation and uploaded entries automatically across the multilingual site.',
-      'Saved days of manual work on every migration project; the migration finished ahead of schedule and needed fewer contractors.',
+      'Saved weeks of manual work; the migration finished ahead of schedule and needed fewer contractors.',
     ],
   },
 ]
