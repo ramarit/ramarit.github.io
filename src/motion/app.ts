@@ -161,25 +161,51 @@ function teardownPage() {
 function setupHeaderHide() {
   const header = document.querySelector<HTMLElement>('.site-header')
   if (!header) return () => {}
+  // One movement at a time. Scrolling down from the top, the full-width header just slides away;
+  // it becomes the frosted pill (.is-scrolled) only once it's out of sight, so scrolling back up
+  // brings the pill straight down with no shape change on screen. Near the top it's full width.
+  const TOP = 120
+  const SLIDE_MS = 450 // matches the header's transform transition
+  let morphTimer = 0
+  const isHidden = () => header.classList.contains('is-hidden')
   const setHidden = (hidden: boolean) => header.classList.toggle('is-hidden', hidden)
-  // Past the top, the header gets a frosted backdrop so it reads over any content.
   const setScrolled = (scrolled: boolean) => header.classList.toggle('is-scrolled', scrolled)
+
+  const show = () => {
+    window.clearTimeout(morphTimer)
+    setScrolled(true)
+    setHidden(false)
+  }
 
   const trigger = ScrollTrigger.create({
     start: 0,
     end: 'max',
     onUpdate: (self) => {
-      setScrolled(self.scroll() > 40)
-      if (header.contains(document.activeElement)) return setHidden(false)
-      if (self.scroll() < 120) return setHidden(false)
-      setHidden(self.direction === 1)
+      if (self.scroll() < TOP) {
+        window.clearTimeout(morphTimer)
+        setHidden(false)
+        setScrolled(false)
+        return
+      }
+      if (header.contains(document.activeElement) || self.direction === -1) return show()
+      if (!isHidden()) {
+        setHidden(true)
+        window.clearTimeout(morphTimer)
+        morphTimer = window.setTimeout(() => {
+          if (isHidden()) setScrolled(true)
+        }, SLIDE_MS)
+      }
     },
   })
-  const onFocus = () => setHidden(false)
+  const onFocus = () => {
+    if (window.scrollY >= TOP) show()
+    else setHidden(false)
+  }
   header.addEventListener('focusin', onFocus)
 
   return () => {
     trigger.kill()
+    window.clearTimeout(morphTimer)
     header.removeEventListener('focusin', onFocus)
     setHidden(false)
     setScrolled(false)
