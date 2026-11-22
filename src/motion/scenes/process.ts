@@ -55,7 +55,8 @@ export const process: Scene = (root, c) => {
 
   // Each segment is 1 unit long so the active step (progress × 4) matches what's on stage.
   // 1 — Sketch: draw the stroke.
-  tl.to(stroke, { drawSVG: '100%', duration: 0.8 }, 0.1)
+  // Starts at 0 so landing on the section (e.g. from the hero's scroll cue) never shows an empty stage.
+  tl.fromTo(stroke, { drawSVG: '0% 6%' }, { drawSVG: '100%', duration: 0.9 }, 0)
 
   // 2 — Structure: the stroke morphs into the frame (it stays from here on), the wireframe
   // draws in inside it, and the shader grids up.

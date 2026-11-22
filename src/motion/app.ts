@@ -240,12 +240,17 @@ function setupHashLinks() {
     const target = document.getElementById(decodeURIComponent(url.hash.slice(1)))
     if (!target) return
     event.preventDefault()
+    // Astro's ClientRouter also handles same-page hash links (with a native jump) and its
+    // listener runs first in the bubble phase. That jump desyncs ScrollSmoother from the native
+    // scroll, so pinned scenes (Process, Work) stop pinning. Claim the click here instead.
+    event.stopPropagation()
     if (smoother) smoother.scrollTo(target, true, 'top top')
     else target.scrollIntoView()
     history.pushState(null, '', url.hash)
   }
-  document.addEventListener('click', onClick)
-  return () => document.removeEventListener('click', onClick)
+  // Capture phase, so this runs before the router's bubble-phase listener.
+  document.addEventListener('click', onClick, true)
+  return () => document.removeEventListener('click', onClick, true)
 }
 
 function setupThemeToggle() {
