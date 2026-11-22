@@ -611,7 +611,8 @@ main {
   flex-wrap: wrap;
   justify-content: space-between;
   align-items: end;
-  gap: 1.5rem;
+  /* Wide enough that the intro's hover panel (1.25rem bleed) keeps clear air from "Work". */
+  gap: 1.5rem clamp(3rem, 6vw, 6rem);
   margin-bottom: 3rem;
 }
 .work-track {
