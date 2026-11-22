@@ -89,7 +89,7 @@ export const projects: Project[] = [
       {
         heading: 'The team',
         body: [
-          'Promoted twice in five years, from Web Developer to Senior Web Developer to Web Development Tech Lead. I set the web team’s priorities with Marketing, Growth, Design, Brand and Content, and mentor the other developers on the team.',
+          'I set the web team’s priorities with Marketing, Growth, Design, Brand and Content, manage our agency partners, and mentor the other developers on the team.',
         ],
       },
     ],
@@ -130,7 +130,7 @@ export const projects: Project[] = [
       {
         heading: 'Building with agents',
         body: [
-          'I run development with a team of AI coding agents. I write the specs, review every pull request and gate merges on CI (typecheck, tests, build): 240+ merged PRs and 700+ automated tests in the first three weeks.',
+          'I run development with a team of AI coding agents. I write the specs, review every pull request and gate merges on CI (typecheck, tests and build), so nothing ships that I haven’t read and the tests haven’t passed.',
         ],
       },
       {

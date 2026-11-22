@@ -51,7 +51,7 @@ export const experience: Role[] = [
     dates: '2018 — 2021',
     titles: [{ title: 'Web Developer', dates: '2018' }],
     stat: { value: '55+', count: 55, suffix: '+', label: 'client sites supported' },
-    headline: 'The developer clients talked to, from discovery to launch to support.',
+    headline: 'Ran client projects from discovery to launch to support.',
     points: [
       'Led discovery and technical implementation for 3–4 Drupal 8 builds a year.',
       'Trained client teams to update their own sites, and answered their support questions directly.',
