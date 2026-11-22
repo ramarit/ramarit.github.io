@@ -1291,6 +1291,49 @@ main {
   opacity: 0;
 }
 
+/* ── Readable on hover ─────────────────────────────────────
+   Body copy sits straight on the WebGL field, and the cursor trail glows right under whatever
+   you're reading. Hovering a block fades in a frosted panel behind it. It's a pseudo-element,
+   so nothing reflows; fine pointers only (touch has no hover). */
+@media (hover: hover) and (pointer: fine) {
+  .lede,
+  .prose-lg,
+  .cs-section,
+  .tl-body,
+  .tl-note,
+  .stack-group {
+    position: relative;
+    isolation: isolate;
+  }
+  .lede::before,
+  .prose-lg::before,
+  .cs-section::before,
+  .tl-body::before,
+  .tl-note::before,
+  .stack-group::before {
+    content: '';
+    position: absolute;
+    inset: -0.9rem -1.1rem;
+    z-index: -1;
+    border-radius: 14px;
+    background: color-mix(in oklab, var(--bg) 78%, transparent);
+    backdrop-filter: blur(14px);
+    -webkit-backdrop-filter: blur(14px);
+    box-shadow: 0 0 0 1px var(--line);
+    opacity: 0;
+    transition: opacity 0.35s ease;
+    pointer-events: none;
+  }
+  .lede:hover::before,
+  .prose-lg:hover::before,
+  .cs-section:hover::before,
+  .tl-body:hover::before,
+  .tl-note:hover::before,
+  .stack-group:hover::before {
+    opacity: 1;
+  }
+}
+
 /* ── JS-dependent pre-states (never hide content without JS) ──
    Opacity, not visibility: visibility: hidden drops content from the accessibility tree. */
 .js-motion [data-hero-name],
