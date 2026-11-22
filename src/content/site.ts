@@ -1,7 +1,7 @@
 export const site = {
   name: 'Ryan Amarit',
-  role: 'Design Engineer',
-  title: 'Ryan Amarit — Design Engineer',
+  role: 'Web Lead & Product Engineer',
+  title: 'Ryan Amarit — Web Lead & Product Engineer',
   location: 'Fort Worth, TX',
   email: 'ramarit@gmail.com',
   linkedin: 'https://www.linkedin.com/in/ryanamarit/',
