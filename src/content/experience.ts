@@ -61,8 +61,12 @@ export const experience: Role[] = [
     dates: '2017 — 2018',
     titles: [{ title: 'Front-End Web Developer', dates: '2017' }],
     stat: { value: '90%', count: 90, suffix: '%', label: 'better data accuracy' },
-    headline: 'Automated CMS content migration in Python.',
-    points: ['Improved data accuracy by 90% and saved days of manual work on every migration project.'],
+    headline: 'Proposed and built the automation behind a global, multi-CMS migration to Drupal.',
+    points: [
+      'Hired to build landing pages and emails for marketing, then took on extra projects for the global web team.',
+      'Custom Python libraries and web scrapers that matched URLs to product IDs, transformed content for translation and uploaded entries automatically across the multilingual site.',
+      'Improved data accuracy by 90% and saved days of manual work on every migration project.',
+    ],
   },
 ]
 
